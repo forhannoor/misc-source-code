@@ -1,0 +1,38 @@
+float c,w;
+int a;
+char b,i;
+int x;
+float * d;
+
+int main()
+{
+    int s;
+    float q=4.6768;
+    int y;
+    char *p="This is a string";
+    char z='U';
+    /* This is a comment. */
+    x=a+x;
+    s=x+a;
+    y=s+x;
+    y=s-x;
+    s=s%x;
+    s=0;
+    s++;
+    
+    for(x=0;x<5;x++)
+    return 0;
+    
+    if(x<2)
+    return 0;
+    
+    else 
+    return 1;
+    
+    while(x<4)
+    y++;
+    
+    do
+    return 3;
+    while(x<100);
+}
