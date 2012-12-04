@@ -1,0 +1,64 @@
+" enable syntax highlighting! most important! 
+syntax on 
+" hightlight search results 
+set hlsearch 
+" sets width of the tabs 
+set tabstop=4 
+" sets indentation length set 
+set shiftwidth=4 
+" automatically indents codeblocks 
+set ai 
+" shows useful info in right bottom corner! 
+set showcmd 
+" shows line numbers 
+set number 
+" search for the word as you type the search query 
+set incsearch 
+" highlights matching bracket 
+set showmatch 
+" max number of tabs 
+set tabpagemax=20 
+" wrap text off 
+set nowrap 
+" shows current line where cursor is present 
+set cursorline 
+" sets the color scheme used for syntax highlighting 
+" colorscheme desert
+colorscheme distinguished
+set guifont=Consolas:h12:cDEFAULT
+filetype on
+filetype plugin on
+let g:pydiction_location = 'D:/Vim/vimfiles/ftplugin/pydiction/complete-dict' 
+imap <C-Space> <C-x><C-o>
+imap <C-@> <C-Space>
+set nocompatible
+source $VIMRUNTIME/vimrc_example.vim
+source $VIMRUNTIME/mswin.vim
+set nobackup
+set nowritebackup
+behave mswin
+
+set diffexpr=MyDiff()
+function MyDiff()
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let eq = ''
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      let cmd = '""' . $VIMRUNTIME . '\diff"'
+      let eq = '"'
+    else
+      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+endfunction
