@@ -68,11 +68,10 @@
    (assert (color-canary yellow)))
 
 (defrule MAIN::delicious
-(is-delicious ?x)
-=>
-(assert(we-can-eat ?x))
-(printout t "We can eat "?x crlf)
-)
+   (is-delicious ?x)
+   =>
+   (assert(we-can-eat ?x))
+   (printout t "We can eat "?x crlf))
 
 (defrule MAIN::dangerous
    (is-dangerous ?x)
