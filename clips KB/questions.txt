@@ -1,0 +1,18 @@
+Premise:
+========
+
+All animals have skin. Fish is one kind of animal, birds are another 
+type and mammals are a third kind. Normally fish has gills and can swim,
+while birds have wings and can fly. While fish and birds usually lay
+eggs, mammals do not. Although sharks are fish, they do not lay eggs.
+They are very dangerous. Salmon is another fish and is considered a
+delicacy. Canary is a bird and is yellow. Ostrich is a bird, which 
+is very tall, but cannot fly, only walk.
+
+Questions:
+	1. Can canaries fly?
+	2. What is the color of canaries?
+	3. Can ostriches fly?
+	4. Do canaries have skin?
+	5. Are sharks dangerous?
+	6. Can you eat salmon?
