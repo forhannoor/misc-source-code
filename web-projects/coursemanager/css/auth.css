@@ -1,0 +1,62 @@
+body{
+    background: url('../assets/images/pattern.png');
+}
+.pageTitle{
+    font-size: x-large;
+    color:  #444;
+    margin-bottom: 30px;
+}
+
+/* login form div */
+.mainInfo{
+    width: 400px;
+    border-style: solid;
+    padding: 2em;
+    border-radius: 15px;
+    margin-top: 150px;
+    margin-left: 450px;
+    height: 250px;
+    -webkit-box-shadow: #142E2E 5px 5px 5px;
+    -moz-box-shadow: #142E2E 5px 5px 5px; 
+    box-shadow: #142E2E 5px 5px 5px;
+    background: white;
+}
+
+#label_{
+    width: 150px;
+    float: left;
+}
+
+#input_{
+    float: left;
+    width: 250;
+}
+
+input[type=text], input[type=password]{
+    width: 200px;
+}
+
+/* registration form div */
+.mainInfo2{
+    width: 260px;
+    border-style: solid;
+    padding: 2em;
+    border-radius: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    /*margin-top: 150px;*/
+    margin-left: 450px;
+    /*height: 250px;*/
+    -webkit-box-shadow: #142E2E 5px 5px 5px;
+    -moz-box-shadow: #142E2E 5px 5px 5px; 
+    box-shadow: #142E2E 5px 5px 5px;
+    background: white;
+}
+
+.mainInfo2 input{
+    width: 250px;
+}
+
+.mainInfo2 input[type=submit]{
+    width: 90px;
+}
