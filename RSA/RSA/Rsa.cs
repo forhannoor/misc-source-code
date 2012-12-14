@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using Mono.Security.Cryptography;
+using Mono.Math;
+
 
 namespace MyRsa
 {
@@ -198,6 +200,34 @@ namespace MyRsa
 				r[i]=(byte)temp;
 			}
 
+			return r;
+		}
+
+
+		/* get plaintext using biginteger class. This is required because default int cannot handle large modpow function */
+		public byte[] getMyPlainText(int [] a, int d, int n)
+		{
+			int l=a.Length;
+			byte [] r=new byte[l];
+			
+			for(int i=0; i<a.Length; i++)
+			{
+				int temp=a[i];
+				
+				/* if temp=199 which represents blankspace, handle it differently */
+				if(temp==199)
+				{
+					r[i]=(byte)temp;
+					continue;
+				}
+
+				BigInteger bi=temp;
+				bi=bi.ModPow(d,n);
+				string tempString=bi.ToString();
+				int g=Int32.Parse(tempString);
+				r[i]=(byte)g;
+			}
+			
 			return r;
 		}
 

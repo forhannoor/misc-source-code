@@ -19,8 +19,8 @@ namespace MyRsa
 			string content=r.simpleByteToString(arr);
 			Console.WriteLine (content);
 
-			int a=3;
-			int b=13;
+			int a=7;
+			int b=19;
 			int n=r.getN(a,b);
 			Console.WriteLine ("N:"+n);
 			int phi=r.getPhiN(a,b);
@@ -33,9 +33,11 @@ namespace MyRsa
 			Console.WriteLine ("Cipher Text:");
 			Util.print(cipherText);
 			Console.WriteLine ();
-			byte [] plainText=r.getPlainText(cipherText,d,n);
+			byte [] plainText=r.getMyPlainText(cipherText,d,n);
 			Console.WriteLine ("Plain Text:");
 			Util.print(plainText);
+			string textBack=r.simpleByteToString(plainText);
+			Console.WriteLine (textBack);
 		}
 	}
 }
