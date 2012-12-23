@@ -17,7 +17,10 @@
         
         public function set_comment()
         {
-            $data=array(
+			$x=$this->input->post('id');
+            
+			$data=array(
+				'id' => $x,
                 'name' => $this->input->post('name'),
                 'comment' => $this->input->post('comment')
             );

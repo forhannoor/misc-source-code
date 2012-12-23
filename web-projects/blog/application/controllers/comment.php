@@ -30,7 +30,7 @@ class Comment extends CI_Controller
         {
             $this->load->model('Comment_model');
             $this->Comment_model->set_comment();
-            redirect('blogger/index', 'refresh');    
+			redirect('blogger/index', 'refresh');    
         }
     }
 }

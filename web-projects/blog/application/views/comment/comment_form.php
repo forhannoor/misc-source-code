@@ -3,6 +3,7 @@
 
 echo validation_errors();
 echo form_open('comment/make_comment');
+echo form_hidden('id', $this->uri->segment(3));
 echo form_label('Name', 'name');
 echo '<br/>';
 echo form_input('name');

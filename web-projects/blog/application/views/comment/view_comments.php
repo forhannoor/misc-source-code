@@ -12,6 +12,7 @@
         echo '<br/>';
         echo $value->comment;
         echo '<br/>';
+		echo '<br/>';
     }
     
     echo anchor('comment/make_comment/'.$this->uri->segment(3), 'Make Comment');
