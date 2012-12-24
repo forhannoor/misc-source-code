@@ -23,11 +23,42 @@
     background: darkolivegreen;
 }
 
-#footer{   
+#footer{
     text-align: center;
     background: darkolivegreen;
 }
 
 #main_content{
     background: darkseagreen;
+}
+
+#login_form{
+    margin-top: 150px;
+    margin-left: 420px;
+    margin-right: 420px;
+    margin-bottom: 100px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 15px;
+    padding: 1em;
+    background: darkseagreen;
+    font-family: sans-serif;
+}
+
+#login_form input[type=text]{
+    display: block;
+}
+
+#login_form input[type=password]{
+    display: block;
+}
+
+#login_form input[type=submit]{
+    padding: 0.3em;
+    width: 60px;
+}
+
+a:hover{
+    text-decoration: none;
+    color: red;
 }
