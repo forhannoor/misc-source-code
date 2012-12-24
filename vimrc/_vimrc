@@ -24,8 +24,13 @@ set nowrap
 set cursorline 
 " sets the color scheme used for syntax highlighting 
 " colorscheme desert
-colorscheme distinguished
-set guifont=Consolas:h12:cDEFAULT
+if has("gui_running")
+	colorscheme twilight
+	set guifont=Consolas:h12:cDEFAULT
+else
+	colorscheme desert
+endif
+
 filetype on
 filetype plugin on
 let g:pydiction_location = 'D:/Vim/vimfiles/ftplugin/pydiction/complete-dict' 
@@ -62,3 +67,7 @@ function MyDiff()
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
+
+if has("gui_running")
+	set lines=35 columns=95
+endif
