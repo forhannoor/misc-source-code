@@ -1,4 +1,6 @@
 using System;
+using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
@@ -155,6 +157,7 @@ namespace MyRsa
 		/* 1<m<n or it will not work */
 		public int[] getCipherText(byte [] a, int e, int n)
 		{
+			DateTime start=DateTime.Now;
 			int length=a.Length;
 			int [] c= new int[length];
 			
@@ -163,7 +166,7 @@ namespace MyRsa
 				int temp=a[i];
 
 				/* if temp=199 which represents blankspace, handle it differently */
-				if(temp==199)
+				if(temp==199 || temp==200 || temp==201)
 				{
 					c[i]=temp;
 					continue;
@@ -173,7 +176,38 @@ namespace MyRsa
 				temp%=n;
 				c[i]=temp;
 			}
+
+			TimeSpan elapsed=DateTime.Now-start;
+			Console.WriteLine ("Message to ciphertext using sequential execution: "+elapsed.TotalMilliseconds+" milliseconds");
+			return c;
+		}
+
+		public int[] parallelGetCipherText(byte [] a, int e, int n)
+		{
+			DateTime start=DateTime.Now;
+			int length=a.Length;
+			int [] c= new int[length];
+
+			Parallel.For(0,length,i =>
+			             	{
+								int temp=a[i];
+								
+								/* if temp=199 or 200 or 201, handle it differently */
+								if(temp==199 || temp==200 || temp==201)
+								{
+									c[i]=temp;
+								}
+								
+								else
+								{
+									temp=(int)Math.Pow(temp, e);
+									temp%=n;
+									c[i]=temp;
+								}
+							});
 			
+			TimeSpan elapsed=DateTime.Now-start;
+			Console.WriteLine ("Message to ciphertext using parallel execution: "+elapsed.TotalMilliseconds+" milliseconds");
 			return c;
 		}
 
@@ -215,7 +249,7 @@ namespace MyRsa
 				int temp=a[i];
 				
 				/* if temp=199 which represents blankspace, handle it differently */
-				if(temp==199)
+				if(temp==199 || temp==200 || temp==201)
 				{
 					r[i]=(byte)temp;
 					continue;
@@ -289,6 +323,14 @@ namespace MyRsa
 				else if(temp==' ')
 					t=(byte)199;
 
+				/* if the char is new line, make it 200 */
+				else if(temp=='\n')
+					t=(byte)200;
+
+				/* if the char is carriage return, make it 201 */
+				else if(t==13)
+					t=(byte)201;
+
 				else
 					t=(byte)(t-55);
 
@@ -316,6 +358,14 @@ namespace MyRsa
 				/* byte 199 represents blank space, so consider it properly */
 				else if(temp==199)
 					temp=(byte)32;
+
+				/* byte 200 represents new line, so consider it properly */
+				else if(temp==200)
+					temp=(byte)10;
+
+				/* byte 199 represents blank space, so consider it properly */
+				else if(temp==201)
+					temp=(byte)13;
 
 				else
 					temp=(byte)(temp+55);

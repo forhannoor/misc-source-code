@@ -13,8 +13,6 @@ namespace MyRsa
 		/* prints int array */
 		public static void print(int [] a)
 		{
-			Console.WriteLine ();
-			
 			for(int i=0; i<a.Length; i++)
 				Console.Write(a[i]);
 			
@@ -25,8 +23,6 @@ namespace MyRsa
 		/* prints byte array */
 		public static void print(byte [] a)
 		{
-			Console.WriteLine ();
-			
 			for(int i=0; i<a.Length; i++)
 				Console.Write(a[i]);
 			

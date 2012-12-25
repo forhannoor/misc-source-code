@@ -12,12 +12,16 @@ namespace MyRsa
 //			win.Show ();
 //			Application.Run ();
 			Rsa r= new Rsa();
-			string x=Util.readFromFile("test.txt");
-			Console.WriteLine (x);
+			string x=Util.readFromFile("INPUT.txt");
+			//Console.WriteLine (x);
 			byte [] arr=r.simpleStringToByte(x);
+			Console.WriteLine ("Original Content: ");
+			Console.WriteLine (x);
+			Console.WriteLine ();
+			Console.WriteLine ("Message in byte form:");
 			Util.print(arr);
 			string content=r.simpleByteToString(arr);
-			Console.WriteLine (content);
+			//Console.WriteLine (content);
 
 			int a=7;
 			int b=19;
@@ -29,14 +33,21 @@ namespace MyRsa
 			int d=r.getMyD(phi, e);
 			Console.WriteLine ("E:"+e);
 			Console.WriteLine ("D:"+d);
-			int [] cipherText=r.getCipherText(arr, e, n);
-			Console.WriteLine ("Cipher Text:");
+			int [] cipherText=r.parallelGetCipherText(arr,e,n);
+			Console.WriteLine ();
+			Console.WriteLine ("Cipher Text using parallel execution:");
 			Util.print(cipherText);
 			Console.WriteLine ();
+			int [] seqCipherText=r.getCipherText(arr,e,n);
+			Console.WriteLine ("Cipher Text using sequential execution:");
+			Util.print(seqCipherText);
+			Console.WriteLine ();
 			byte [] plainText=r.getMyPlainText(cipherText,d,n);
-			Console.WriteLine ("Plain Text:");
+			Console.WriteLine ("Deciphered Message in byte form:");
 			Util.print(plainText);
+			Console.WriteLine ();
 			string textBack=r.simpleByteToString(plainText);
+			Console.WriteLine ("Deciphered Message in text form:");
 			Console.WriteLine (textBack);
 		}
 	}
