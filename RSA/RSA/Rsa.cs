@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Mono.Security.Cryptography;
 using Mono.Math;
-
+using System.Numerics;
 
 namespace MyRsa
 {
@@ -109,7 +110,7 @@ namespace MyRsa
 
 
 		/* Get md5 hash */
-		public string getMD5Hash(string input)
+		public static string getMD5Hash(string input)
 		{
 			MD5 md5 = MD5.Create();
 			byte[] inputBytes = Encoding.ASCII.GetBytes(input);
@@ -152,6 +153,19 @@ namespace MyRsa
 			return c;
 		}
 
+
+		public string byteToString(int [] b)
+		{
+			int l=b.Length;
+			byte [] m=new byte[l];
+
+			for (int i = 0; i < l; i++) {
+				m[i]=(byte)b[i];	
+			}
+
+			string c=Encoding.UTF8.GetString(m);
+			return c;
+		}
 		
 		/* get ciphertext */
 		/* 1<m<n or it will not work */
@@ -255,7 +269,7 @@ namespace MyRsa
 					continue;
 				}
 
-				BigInteger bi=temp;
+				Mono.Math.BigInteger bi=temp;
 				bi=bi.ModPow(d,n);
 				string tempString=bi.ToString();
 				int g=Int32.Parse(tempString);
@@ -370,6 +384,108 @@ namespace MyRsa
 				else
 					temp=(byte)(temp+55);
 
+				char x=(char)temp;
+				z+=x;
+			}
+			
+			return z;
+		}
+
+		public string intToString(int [] c)
+		{
+			int s=c.Length;
+			string z="";
+			
+			for(int i=0; i<s; i++)
+			{
+				int temp=c[i];
+				
+				/* if byte represents a number, handle it that way */
+				if(temp>=0 && temp<=9)
+					temp=(int)(temp+48);
+				
+				/* byte 199 represents blank space, so consider it properly */
+				else if(temp==199)
+					temp=(int)32;
+				
+				/* byte 200 represents new line, so consider it properly */
+				else if(temp==200)
+					temp=(int)10;
+				
+				/* byte 199 represents blank space, so consider it properly */
+				else if(temp==201)
+					temp=(int)13;
+				
+				else
+					temp=(int)(temp+55);
+				
+				char x=(char)temp;
+				z+=x;
+			}
+			
+			return z;
+		}
+		
+		public string myIntToString(int [] c)
+		{
+			int s=c.Length;
+			string z="";
+			
+			for(int i=0; i<s; i++)
+			{
+				int temp=c[i];
+				char t=(char)temp;
+//				/* if byte represents a number, handle it that way */
+//				if(temp>=0 && temp<=9)
+//					temp=(int)(temp+48);
+//				
+//				/* byte 199 represents blank space, so consider it properly */
+//				else if(temp==199)
+//					temp=(int)32;
+//				
+//				/* byte 200 represents new line, so consider it properly */
+//				else if(temp==200)
+//					temp=(int)10;
+//				
+//				/* byte 199 represents blank space, so consider it properly */
+//				else if(temp==201)
+//					temp=(int)13;
+//				
+//				else
+//					temp=(int)(temp+55);
+//				
+//				char x=(char)temp;
+				z+=t;
+			}
+			
+			return z;
+		}
+		
+		public string SimpleIntToString(int [] c)
+		{
+			int s=c.Length;
+			string z="";
+			
+			for(int i=0; i<s; i++)
+			{
+				int temp=c[i];
+				
+				/* if byte represents a number, handle it that way */
+				/* byte 199 represents blank space, so consider it properly */
+				if(temp==199)
+					temp=(int)32;
+				
+				/* byte 200 represents new line, so consider it properly */
+				else if(temp==200)
+					temp=(int)10;
+				
+				/* byte 199 represents blank space, so consider it properly */
+				else if(temp==201)
+					temp=(int)13;
+				
+				else
+					temp=(int)(temp+55);
+				
 				char x=(char)temp;
 				z+=x;
 			}
