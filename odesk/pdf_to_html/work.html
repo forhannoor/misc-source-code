@@ -7,13 +7,14 @@
             }
             
             #content{
-                margin: 100px 150px 20px 150px;
+                margin: 50px 380px 150px 380px;
             }
             
             #mytable{
-                border: solid 1px;
-                border-color: silver;
+                /*border: solid 0.4px;*/
+                /*border-color: grey;*/
                 margin-top: 20px;
+                border-collapse: collapse;
             }
             
             #mytable th, #mytable td{
@@ -25,12 +26,12 @@
                 font-weight: bold;
             }
             
-            #mytable td:nth-child(3){
+            #mytable td:nth-child(3), #mytable td:nth-child(6){
                 text-align: center;
             }
             
             .colored{
-                background-color: silver;
+                background-color: #E6E6E6;
             }
             
             .result_yellow{
@@ -44,270 +45,440 @@
             .result_red{
                 background-color: red;
             }
+            
+            .heading{
+                text-align: center;
+            }
+            
+            #mylist li{
+                margin-left: -20px;
+            }
         </style>
     </head>
     <body>
         <div id="content">
-        <b>John Smith</b> – 10/2/12, build 36. Nutrigenomics Map: <b>Methylation</b><br/>
-        Nutritional Methylation Pathway Analysis
-        <table id="mytable" cellspacing="0">
-            <th style="width: 150px; text-align: left;">RS#</th>
-            <th style="width: 50px;">Call</th>
-            <th style="width: 130px;">Risk Allele</th>
-            <th style="width: 150px; text-align: left;">Gene</th>
-            <th style="width: 100px;">Variation</th>
-            <th style="width: 50px;">Result</th>
+            <center><b>John Smith</b> – 10/2/12, build 36. Nutrigenomics Map: <b>Methylation</b><br/>
+            Nutritional Methylation Pathway Analysis</center>
+            <table id="mytable" cellspacing="0">
+                <th style="width: 150px; text-align: left;">RS#</th>
+                <th style="width: 50px;">Call</th>
+                <th style="width: 130px;">Risk Allele</th>
+                <th style="width: 150px; text-align: left;">Gene</th>
+                <th style="width: 100px;">Variation</th>
+                <th style="width: 50px; background-color: #E6E6E6;">Result</th>
+                
+                <tr class="colored">
+                	<td>rs3741049</td>
+                	<td>AG</td>
+                	<td>A</td>
+                	<td>ACAT1-02</td>
+                	<td></td>
+                	<td class="result_yellow">+/-</td>
+                </tr>
+                <tr>
+                	<td>rs819147</td>
+                	<td>TT</td>
+                	<td>C</td>
+                	<td>AHCY-01</td>
+                	<td></td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr>
+                	<td>rs819134</td>
+                	<td>AA</td>
+                	<td>G</td>
+                	<td>AHCY-02</td>
+                	<td></td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr>
+                	<td>rs819171</td>
+                	<td>TT</td>
+                	<td>C</td>
+                	<td>AHCY-19</td>
+                	<td></td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs585800</td>
+                	<td>N/A</td>
+                	<td>T</td>
+                	<td>BHMT</td>
+                	<td style="text-align: center;">1</td>
+                	<td style="background-color: white;">N/A</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs567754</td>
+                	<td>TT</td>
+                	<td>T</td>
+                	<td>BHMT</td>
+                	<td style="text-align: center;">2</td>
+                	<td class="result_red">+/+</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs617219</td>
+                	<td>CC</td>
+                	<td>C</td>
+                	<td>BHMT</td>
+                	<td style="text-align: center;">4</td>
+                	<td class="result_red">+/+</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs651852</td>
+                	<td>CT</td>
+                	<td>T</td>
+                	<td>BHMT</td>
+                	<td style="text-align: center;">8</td>
+                	<td class="result_yellow">+/-</td>
+                </tr>
+                <tr>
+                	<td>rs234706</td>
+                	<td>AG</td>
+                	<td>A</td>
+                	<td>CBS</td>
+                	<td>C699T</td>
+                	<td class="result_yellow">+/-</td>
+                </tr>
+                <tr>
+                	<td>rs1801181</td>
+                	<td>N/C</td>
+                	<td>A</td>
+                	<td>CBS</td>
+                	<td>A360A</td>
+                	<td>N/C</td>
+                </tr>
+                <tr>
+                	<td>rs2298758</td>
+                	<td>GG</td>
+                	<td>A</td>
+                	<td>CBS</td>
+                	<td>N212N</td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs4680</td>
+                	<td>AA</td>
+                	<td>A</td>
+                	<td>COMT</td>
+                	<td>V158M</td>
+                	<td class="result_red">+/+</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs4633</td>
+                	<td>TT</td>
+                	<td>T</td>
+                	<td>COMT</td>
+                	<td>H62H</td>
+                	<td class="result_red">+/+*</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs769224</td>
+                	<td>GG</td>
+                	<td>A</td>
+                	<td>COMT</td>
+                	<td></td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr>
+                	<td>rs6323</td>
+                	<td>T</td>
+                	<td>T</td>
+                	<td>MAO A</td>
+                	<td>R297R </td>
+                	<td class="result_red">+/+</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs1801131</td>
+                	<td>GG</td>
+                	<td>G</td>
+                	<td>MTHFR</td>
+                	<td>A1298C</td>
+                	<td class="result_red">+/+</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs1801133</td>
+                	<td>GG</td>
+                	<td>A</td>
+                	<td>MTHFR</td>
+                	<td>C677T</td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr>
+                	<td>rs2066470</td>
+                	<td>AG</td>
+                	<td>A</td>
+                	<td>MTHFR 03</td>
+                	<td>P39P</td>
+                	<td class="result_yellow">+/-</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs1805087</td>
+                	<td>AA</td>
+                	<td>G</td>
+                	<td>MTR</td>
+                	<td>A2756G</td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr>
+                	<td>rs1801394</td>
+                	<td>AG</td>
+                	<td>G</td>
+                	<td>MTRR</td>
+                	<td>A66G</td>
+                	<td class="result_yellow">+/-</td>
+                </tr>
+                <tr>
+                	<td>rs10380</td>
+                	<td>CC</td>
+                	<td>T</td>
+                	<td>MTRR</td>
+                	<td>H595Y</td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr>
+                	<td>rs162036</td>
+                	<td>AA</td>
+                	<td>G</td>
+                	<td>MTRR</td>
+                	<td>K350A</td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr>
+                	<td>rs2287780</td>
+                	<td>CC</td>
+                	<td>T</td>
+                	<td>MTRR</td>
+                	<td>R415T</td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr>
+                	<td>rs2303080</td>
+                	<td>N/A</td>
+                	<td>T</td>
+                	<td>MTRR</td>
+                	<td>S257T</td>
+                	<td>N/A</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs1802059</td>
+                	<td>AA</td>
+                	<td>A</td>
+                	<td>MTRR-11</td>
+                	<td>A664A</td>
+                	<td class="result_red">+/+</td>
+                </tr>
+                <tr>
+                	<td>rs1799983</td>
+                	<td>N/A</td>
+                	<td>T</td>
+                	<td>NOS 3</td>
+                	<td>D298E</td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs1979277</td>
+                	<td>AG</td>
+                	<td>A</td>
+                	<td>SHMT1</td>
+                	<td>C1420T</td>
+                	<td class="result_yellow">+/-</td>
+                </tr>
+                <tr>
+                	<td></td>
+                	<td>N/A</td>
+                	<td>C</td>
+                	<td>SUOX</td>
+                	<td>S370S</td>
+                	<td>N/A</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs1544410</td>
+                	<td>CC</td>
+                	<td>T</td>
+                	<td>VDR</td>
+                	<td>Bsm</td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs731236</td>
+                	<td>AA</td>
+                	<td>G</td>
+                	<td>VDR</td>
+                	<td>Taq</td>
+                	<td class="result_green">-/-</td>
+                </tr>
+                <tr class="colored">
+                	<td>rs10735810</td>
+                	<td>N/C</td>
+                	<td>T</td>
+                	<td>VDR</td>
+                	<td>Fok I</td>
+                	<td style="background-color: white;">N/C</td>
+                </tr>
+            </table>
+            <p style="font-size: small; margin-top: 0px;">-/- = not present; +/- = one mutation; +/+ = double mutation; +/+* = mutation on the X chromosome in a male.</p><br/>
+            <h2 class="heading">John’s Nutrigenomics Report
+            (Analysis/Interpretation)</h2>
+    
+            Note: If you are curious about what I think are the most important findings and if you want to learn about them right away, please scroll down to the <b>summary</b> at the end.<br/>
             
-            <tr class="colored">
-            	<td>rs3741049</td>
-            	<td>AG</td>
-            	<td>A</td>
-            	<td>ACAT1-02</td>
-            	<td></td>
-            	<td class="result_yellow">+/-</td>
-            </tr>
-            <tr>
-            	<td>rs819147</td>
-            	<td>TT</td>
-            	<td>C</td>
-            	<td>AHCY-01</td>
-            	<td></td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr>
-            	<td>rs819134</td>
-            	<td>AA</td>
-            	<td>G</td>
-            	<td>AHCY-02</td>
-            	<td></td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr>
-            	<td>rs819171</td>
-            	<td>TT</td>
-            	<td>C</td>
-            	<td>AHCY-19</td>
-            	<td></td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs585800</td>
-            	<td>N/A</td>
-            	<td>T</td>
-            	<td>BHMT</td>
-            	<td style="text-align: center;">1</td>
-            	<td style="background-color: white;">N/A</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs567754</td>
-            	<td>TT</td>
-            	<td>T</td>
-            	<td>BHMT</td>
-            	<td style="text-align: center;">2</td>
-            	<td class="result_red">+/+</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs617219</td>
-            	<td>CC</td>
-            	<td>C</td>
-            	<td>BHMT</td>
-            	<td style="text-align: center;">4</td>
-            	<td class="result_red">+/+</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs651852</td>
-            	<td>CT</td>
-            	<td>T</td>
-            	<td>BHMT</td>
-            	<td style="text-align: center;">8</td>
-            	<td class="result_yellow">+/-</td>
-            </tr>
-            <tr>
-            	<td>rs234706</td>
-            	<td>AG</td>
-            	<td>A</td>
-            	<td>CBS</td>
-            	<td>C699T</td>
-            	<td class="result_yellow">+/-</td>
-            </tr>
-            <tr>
-            	<td>rs1801181</td>
-            	<td>N/C</td>
-            	<td>A</td>
-            	<td>CBS</td>
-            	<td>A360A</td>
-            	<td>N/C</td>
-            </tr>
-            <tr>
-            	<td>rs2298758</td>
-            	<td>GG</td>
-            	<td>A</td>
-            	<td>CBS</td>
-            	<td>N212N</td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs4680</td>
-            	<td>AA</td>
-            	<td>A</td>
-            	<td>COMT</td>
-            	<td>V158M</td>
-            	<td class="result_red">+/+</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs4633</td>
-            	<td>TT</td>
-            	<td>T</td>
-            	<td>COMT</td>
-            	<td>H62H</td>
-            	<td class="result_red">+/+*</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs769224</td>
-            	<td>GG</td>
-            	<td>A</td>
-            	<td>COMT</td>
-            	<td></td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr>
-            	<td>rs6323</td>
-            	<td>T</td>
-            	<td>T</td>
-            	<td>MAO A</td>
-            	<td>R297R </td>
-            	<td class="result_red">+/+</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs1801131</td>
-            	<td>GG</td>
-            	<td>G</td>
-            	<td>MTHFR</td>
-            	<td>A1298C</td>
-            	<td class="result_red">+/+</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs1801133</td>
-            	<td>GG</td>
-            	<td>A</td>
-            	<td>MTHFR</td>
-            	<td>C677T</td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr>
-            	<td>rs2066470</td>
-            	<td>AG</td>
-            	<td>A</td>
-            	<td>MTHFR 03</td>
-            	<td>P39P</td>
-            	<td class="result_yellow">+/-</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs1805087</td>
-            	<td>AA</td>
-            	<td>G</td>
-            	<td>MTR</td>
-            	<td>A2756G</td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr>
-            	<td>rs1801394</td>
-            	<td>AG</td>
-            	<td>G</td>
-            	<td>MTRR</td>
-            	<td>A66G</td>
-            	<td class="result_yellow">+/-</td>
-            </tr>
-            <tr>
-            	<td>rs10380</td>
-            	<td>CC</td>
-            	<td>T</td>
-            	<td>MTRR</td>
-            	<td>H595Y</td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr>
-            	<td>rs162036</td>
-            	<td>AA</td>
-            	<td>G</td>
-            	<td>MTRR</td>
-            	<td>K350A</td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr>
-            	<td>rs2287780</td>
-            	<td>CC</td>
-            	<td>T</td>
-            	<td>MTRR</td>
-            	<td>R415T</td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr>
-            	<td>rs2303080</td>
-            	<td>N/A</td>
-            	<td>T</td>
-            	<td>MTRR</td>
-            	<td>S257T</td>
-            	<td>N/A</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs1802059</td>
-            	<td>AA</td>
-            	<td>A</td>
-            	<td>MTRR-11</td>
-            	<td>A664A</td>
-            	<td class="result_red">+/+</td>
-            </tr>
-            <tr>
-            	<td>rs1799983</td>
-            	<td>N/A</td>
-            	<td>T</td>
-            	<td>NOS 3</td>
-            	<td>D298E</td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs1979277</td>
-            	<td>AG</td>
-            	<td>A</td>
-            	<td>SHMT1</td>
-            	<td>C1420T</td>
-            	<td class="result_yellow">+/-</td>
-            </tr>
-            <tr>
-            	<td></td>
-            	<td>N/A</td>
-            	<td>C</td>
-            	<td>SUOX</td>
-            	<td>S370S</td>
-            	<td>N/A</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs1544410</td>
-            	<td>CC</td>
-            	<td>T</td>
-            	<td>VDR</td>
-            	<td>Bsm</td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs731236</td>
-            	<td>AA</td>
-            	<td>G</td>
-            	<td>VDR</td>
-            	<td>Taq</td>
-            	<td class="result_green">-/-</td>
-            </tr>
-            <tr class="colored">
-            	<td>rs10735810</td>
-            	<td>N/C</td>
-            	<td>T</td>
-            	<td>VDR</td>
-            	<td>Fok I</td>
-            	<td style="background-color: white;">N/C</td>
-            </tr>
-        </table>
-        <p style="font-size: small; margin-top: 0px;">-/- = not present; +/- = one mutation; +/+ = double mutation; +/+* = mutation on the X chromosome in a male.</p>
+            <h2>John’s Reports Files</h2>
+            
+            In addition to this document, I have attached the following files:<br/><br/>
+            
+            Methylation SNPs Overview.pdf<br/>
+            Methylation SNPs Detailed.pdf<br/>
+            Hemachromatosis SNPs Detailed.pdf<br/>
+            Misc SNPs Detailed.pdf<br/><br/>
+            
+            Promethease.zip (This is an archived file - uncompress, and open the first file found inside the folder "Promethease"  right next to the folder "promethease_data")<br/><br/>
+            
+            In the PDF reports, the color green means that she don’t have what’s considered a “risk variant”, whereas yellow (+/-) or red (+/+) means that John has one or two risk variants.<br/><br/>
+    
+    
+    
+            <h2>Overview</h2>
+            
+            I have processed John’s 23andMe results with two different systems in order to analyze and comment on results:<br/><br/>
+            
+            1) My own software, which currently extracts SNPs (Single Nucleotide Polymorphisms) related to what's called methylation (more on that later), hemachromatosis (iron storage disease), and some other potentially interesting SNPs. In the PDFs that I am attaching there are brief technical explanations of the SNPs that I have looked for. (These explanations should be seen as pointers for further learning as this field is complex and involves biochemical processes that are still not completely understood.)
+            <br/><br/>
+            2) The software Promethease, which is like an advanced version of 23andMe's own reporting in terms of what it reveals. I use Promethease primarily to detect a cluster of SNPs related to what's called APOE (more later). You may find some interesting material in Promethease (files attached so that you can study them), but beyond APOE I don't evaluate the data in Promethease as, like 23andMe itself, it doesn't have a nutrition/lifestyle focus.<br/><br/>
+            
+            The data extracted encompass what I believe to be the currently most interesting SNPs for the purpose of troubleshooting health complaints and optimizing health overall. (I also included two SNPs related to ACTN3 and OXTR which I think have more of a curiosity interest.)<br/><br/>
+            
+            Note that 23andMe is not necessarily 100% accurate in its methodology for identifying genes. In other words, there may be some errors in John’s basic 23andMe data, so they (or the information contained in this report) should not be relied on for making drastic health related decisions. (No single laboratory test should ever be used that way.)<br/><br/>
+            
+            Another consideration is that the presence of a certain genetic "defect" or variant doesn't necessarily lead to a <b>functional defect</b>, because the body may be able to compensate through several types of mechanisms, some of which may not yet be known by science.<br/></br>
+            
+            For the above reasons she should be very careful about using John’s genetics results as the sole basis for a "treatment" or a dietary-, or supplementation program. Ideally, she should do further testing to evaluate how well her body actually functions in the areas of concern raised by a genetic evaluation.</br></br>
+            
+            This said, it is very common that potential genetic bottle necks identified in this way are relevant to a person's health and what he or she needs to do to get healthy and to stay healthy. Personally, I think that the more we are exposed to environmental stressors such as from bad diets or toxic exposures, the more our genetic weaknesses may become problematic for us.<br/><br/>
+            
+            
+            <h2>About APOE Status</h2>
+            
+            I use the Promethease software to identify APOE genotype.<br/><br/> 
+            
+            APOE stands for "apolipoprotein E" and is involved in lipoprotein-, cholesterol- and fat soluble vitamin transport.<br/><br/>
+            
+            APOE is also believed to transport heavy metals (including mercury) out of the brain. The latter function may be the link between Alzheimer's disease and its association with mercury- and aluminum exposure and the accumulation of these and other heavy metals in the body.<br/><br/> 
+            
+            There are essentially three basic variants of the APOE protein, and each one is associated with more or less risk for acquiring heart disease and Alzheimer's (possibly other diseases, such as Parkinson's, as well), and also (but more speculatively) to APOE's variable capacity for eliminating toxic metals depending on which variants one has.<br/><br/>
+            
+            The APOE variants are:<br/><br/>
+            
+            APOE 2: "better"<br/>
+            APOE 3: "normal"<br/>
+            APOE 4: "bad"<br/><br/>
+            
+            Each person has a combination of two of the above, so a person can have for example APOE 4:4 or APOE 3:4 or APOE 3:3, APOE 2:3, APOE 2:4, and so on.<br/><br/>
+            
+            Combinations with a "4" are often flagged as a risk factor for Alzheimer's disease, and APOE 4:4 is considered a risk factor for "early onset" of the disease.<br/><br/>
+            
+            <h2>John’s APOE Status</h2>
+            
+            John was found by Promethease to carry one copy of the APOE 3 variant and one copy of the APOE 4. In other words, she has APOE 3:4 which correlates with a somewhat greater than average risk for Alzheimer's disease and with some propensity to accumulate mercury and other heavy metals in the brain.<br/><br/>
+            
+            Below is a link to a presentation about a proposed mechanism behind the links between APOE 4, mercury, and Alzheimer's. I believe that this theory is credible, but not yet conclusively proven.<br/><br/>
+            
+            <a href="https://www.shetube.com/watch?v=922vQfyHe7o">https://www.shetube.com/watch?v=922vQfyHe7o</a><br/><br/>
+            
+            Things for you to consider is to eliminate John’s exposure to heavy metals and mercury, including intakes of foods that may contain mercury, for example certain types of fish such as tuna – there is plenty of information about safe vs. non-safe fish types on the Internet.<br/><br/><br/>
+            
+            
+            
+            To assess if John has mercury stored, she may do a hair minerals test and have it analyzed according to Cutler's “counting rules”, which is a statistical method to detect "hidden" stored mercury. People with APOE 4 in particular will not necessarily show high levels of blood- or hair mercury as the problem is precisely that mercury gets stored up in the body, including in the brain. According to David Vaughan, conspicuously low hair levels of mercury and other toxic metals are regardless of “counting rules” a sign that there is probably mercury stored in the body.<br/><br/>
+            
+            Urinary challenge testing with chelators (a popular method) should according to credible practitioners be avoided as the risk is that mercury is redistributed in harmful ways. For example mercury chelated out from the fat tissue may readily settle in the brain. (Chelators are not necessarily “directional” in a way that is desirable.)<br/><br/>
+     
+            <h2>About Methylation</h2>
+            
+            "Methylation" is the broad label for biochemical processes involving enzymes "tagging and untagging" bioactive molecules with "methyl groups" (CH<sub>3</sub>).<br/><br/>
+            
+            As these processes are both ubiquitous in the body and governed by specific genes in which common variants/mutations are common, methylation is one of the most important areas where nutrition can interact with one's genetic makeup in a powerful but non-obvious way. This makes genetic testing a very helpful tool.<br/><br/>
+            
+            Methylation concerns countless processes in the body including neurotransmitter production/balance, the detoxification and elimination of environmental- and internally generated toxins, the turning on and off of genes ("epigenetics" or "gene expression"), and immune function.<br/><br/>
+            
+            Problems with methylation has been tied to psychiatric diseases and syndromes such as Autism, Schizophrenia and others, but can also affect a more healthy person's ability to concentrate on tasks and to experience appropriate emotions.<br/><br/>
+            
+            Methylation problems are also tied to many types of cancer because of methylation's role in regulating gene expression as well as protecting the body from toxicity from carcinogens.<br/><br/>
+            
+            There is a great deal of information on the Internet about methylation. The video presentation linked to below has a good overview of the subject, but is fairly complex:  <br/><br/>
+            <a href="https://www.shetube.com/watch?v=QRHif2aVPvw&list=UUCbqtdQdLLsiDgsYYP2E0NQ&index=1">https://www.shetube.com/watch?v=QRHif2aVPvw&list=UUCbqtdQdLLsiDgsYYP2E0NQ&index=1</a><br/><br/>
+            
+            The two sources linked to below (including a free e-book) contain even more complex information, but are, I think the best starting points for exploring methylation from a nutritional standpoint. The methylation related genes that my software looks for are derived from the work of Dr Amy Yasko, who is the author of the first source.<br/><br/>
+            
+            <a href="http://www.holisticheal.com/media/downloads/autism-pathways-to-recovery-book.pdf">http://www.holisticheal.com/media/downloads/autism-pathways-to-recovery-book.pdf</a><br/><br/>
+            
+            <a href="http://www.heartfixer.com/AMRI-Nutrigenomics.htm#MAO%20A:%A0%20Monoamine%20Oxidase%20A">http://www.heartfixer.com/AMRI-Nutrigenomics.htm#MAO%20A:%A0%20Monoamine%20Oxidase%20A</a><br/><br/>
+    
+    
+            <h2>John’s Methylation SNPs</h2>
+            
+            I suggest that you keep the attached Methylation SNPs Overview document on hand when reading this section.<br/><br/>
+            
+            Of note here is that there mostly green and yellows on John’s methylation overview, making me doubt that she has many actual bottle necks in this area. (Of course this picture could change if I knew about any health struggles that she is having.)<br/><br/>
+            
+            <h4>COMT V158M (+/-), COMT H62H (+/-) VDR taq (-/-)</h4> 
+            
+            Catechol–O–Methyl Transferase <b>(COMT)</b> degrades dopamine, norepinephrine, and to a lesser extent other neurotransmitter substances. John has two single copies (heterozygous) mutations that down-regulate COMT and therefore may result in higher dopamine levels. <br/><br/> When COMT down-regulation is present, too many methyl groups such as from methylcobalamin (methyl-B12), 5-methyltetrahydrofolate (5-MTHF),  S-adenosylmethionine (SAMe), and trimethylglycine (TMG) can lead to mood swings or feeling wired or stressed up.<br/><br/>
+            
+            <b>Overall, John should be careful and titrate slowly if she ever takes “methyl-donor” supplements such as some liver- or detox- supplements including the specific items mentioned above. Note that she also lacks most mutations (e.g., MTHFR) that would increase her need for such supplements.</b><br/><br/>
+            
+            Tiana’s form of vitamin D receptor (VDR taq) may somewhat intensify the effects of her COMT mutations.<br/><br/><br/>
+            
+            
+            <b>BHMT 2(+/+) , BHMT 4(+/+), BHMT 8 (+/+)</b><br/><br/>
+            
+            You have three double (or "homozygous”) mutations in the gene that codes for Betaine-Homocysteine Methyltransferase (BHMT). These mutations may limit the conversion of homocysteine back into methionine through a "short cut" that is not dependent on folate and B12.<br/><br/>
+            
+            For this reason, BHMT may cause homocysteine to more easily convert into toxic sulfur compounds and ammonia. Ammonia detoxification depends on a molecule called BH4 which may impact your levels of neurotransmitters (discussed below). <br/><br/>
+            BHMT mutations may impact levels of norepinephrine in a way that has been tied to ADHD.<br/><br/>
+            
+            
+            If John experiences problems that could be traced to BHMT, phosphatidylcholine or phosphatidylserine may be used to stimulate BHMT for better function.<br/><br/><br/><br/>
+    
+            <b>MAO A R297R (+/-)</b><br/><br/>
+            
+            John has two copies of a mutation in the gene that codes for Monoamine Oxidase A which causes slower breakdown of serotonin. This is a very common variant, and perhaps not very significant, but in some individuals it could result in mood swings.<br/><br/>
+            
+            <b>MTHFD1 C105T (+/-)</b><br/><br/>
+            
+            Methylenetetrahydrofolate dehydrogenase 1 encodes an enzyme involved in the conversion of 1-carbon derivatives of tetrahydrofolate.<br/><br/>
+            
+            I don’t yet understand the significance of this particular variant, but I have included it since MTHFD1 mutations seem to have become increasingly discussed among people interested in methylation issues.<br/><br/>
+            
+            
+            <h2>John’s Hemachromatosis SNPs</h2>
+            
+            I look for these as some people with mystery health conditions have issues with iron metabolism.<br/><br/>
+            
+            Nothing significant was found in John’s case.<br/><br/>
+            
+            
+            <h2>John’s Misc SNPs</h2>
+            
+            This is various genes that may or may not be important.<br/><br/>
+            
+            As far as I understand these, nothing significant was found in John’s case, except perhaps a slightly increased need for vitamin A from animal products rather than from beta carotene from plant foods.<br/><br/>
+            
+            <h2>Summary</h2>
+    
+            The most significant findings are:
+        
+            <ul id="mylist">
+                <li>
+                    John’s APOE 3,4 status, which presents some concern regarding toxic metals.<br/><br/> 
+                </li>
+                <li>
+                    A relatively “clean” methylation profile, which doesn’t warrant any special investigation unless she has health problems that haven’t been resolved through metabolic typing, gluten free diet, and FDN protocols.
+                </li>
+            </ul>
+            
+            Please let me know if something is unclear or if you (or John) have questions!<br/><br/>
+    
+            All the best, 
         </div>
     </body>
 </html>
