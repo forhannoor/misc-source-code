@@ -1,0 +1,313 @@
+<html>
+    <head>
+        <title>Sample Report Long</title>
+        <style rel="stylesheet" type="text/css">
+            body{
+                font-family: Helvetica;
+            }
+            
+            #content{
+                margin: 100px 150px 20px 150px;
+            }
+            
+            #mytable{
+                border: solid 1px;
+                border-color: silver;
+                margin-top: 20px;
+            }
+            
+            #mytable th, #mytable td{
+                border: solid 1px;
+                border-color: silver;
+            }
+            
+            #mytable td:nth-child(4){
+                font-weight: bold;
+            }
+            
+            #mytable td:nth-child(3){
+                text-align: center;
+            }
+            
+            .colored{
+                background-color: silver;
+            }
+            
+            .result_yellow{
+                background-color: yellow;
+            }
+            
+            .result_green{
+                background-color: green;
+            }
+            
+            .result_red{
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+        <b>John Smith</b> – 10/2/12, build 36. Nutrigenomics Map: <b>Methylation</b><br/>
+        Nutritional Methylation Pathway Analysis
+        <table id="mytable" cellspacing="0">
+            <th style="width: 150px; text-align: left;">RS#</th>
+            <th style="width: 50px;">Call</th>
+            <th style="width: 130px;">Risk Allele</th>
+            <th style="width: 150px; text-align: left;">Gene</th>
+            <th style="width: 100px;">Variation</th>
+            <th style="width: 50px;">Result</th>
+            
+            <tr class="colored">
+            	<td>rs3741049</td>
+            	<td>AG</td>
+            	<td>A</td>
+            	<td>ACAT1-02</td>
+            	<td></td>
+            	<td class="result_yellow">+/-</td>
+            </tr>
+            <tr>
+            	<td>rs819147</td>
+            	<td>TT</td>
+            	<td>C</td>
+            	<td>AHCY-01</td>
+            	<td></td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr>
+            	<td>rs819134</td>
+            	<td>AA</td>
+            	<td>G</td>
+            	<td>AHCY-02</td>
+            	<td></td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr>
+            	<td>rs819171</td>
+            	<td>TT</td>
+            	<td>C</td>
+            	<td>AHCY-19</td>
+            	<td></td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs585800</td>
+            	<td>N/A</td>
+            	<td>T</td>
+            	<td>BHMT</td>
+            	<td style="text-align: center;">1</td>
+            	<td style="background-color: white;">N/A</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs567754</td>
+            	<td>TT</td>
+            	<td>T</td>
+            	<td>BHMT</td>
+            	<td style="text-align: center;">2</td>
+            	<td class="result_red">+/+</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs617219</td>
+            	<td>CC</td>
+            	<td>C</td>
+            	<td>BHMT</td>
+            	<td style="text-align: center;">4</td>
+            	<td class="result_red">+/+</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs651852</td>
+            	<td>CT</td>
+            	<td>T</td>
+            	<td>BHMT</td>
+            	<td style="text-align: center;">8</td>
+            	<td class="result_yellow">+/-</td>
+            </tr>
+            <tr>
+            	<td>rs234706</td>
+            	<td>AG</td>
+            	<td>A</td>
+            	<td>CBS</td>
+            	<td>C699T</td>
+            	<td class="result_yellow">+/-</td>
+            </tr>
+            <tr>
+            	<td>rs1801181</td>
+            	<td>N/C</td>
+            	<td>A</td>
+            	<td>CBS</td>
+            	<td>A360A</td>
+            	<td>N/C</td>
+            </tr>
+            <tr>
+            	<td>rs2298758</td>
+            	<td>GG</td>
+            	<td>A</td>
+            	<td>CBS</td>
+            	<td>N212N</td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs4680</td>
+            	<td>AA</td>
+            	<td>A</td>
+            	<td>COMT</td>
+            	<td>V158M</td>
+            	<td class="result_red">+/+</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs4633</td>
+            	<td>TT</td>
+            	<td>T</td>
+            	<td>COMT</td>
+            	<td>H62H</td>
+            	<td class="result_red">+/+*</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs769224</td>
+            	<td>GG</td>
+            	<td>A</td>
+            	<td>COMT</td>
+            	<td></td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr>
+            	<td>rs6323</td>
+            	<td>T</td>
+            	<td>T</td>
+            	<td>MAO A</td>
+            	<td>R297R </td>
+            	<td class="result_red">+/+</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs1801131</td>
+            	<td>GG</td>
+            	<td>G</td>
+            	<td>MTHFR</td>
+            	<td>A1298C</td>
+            	<td class="result_red">+/+</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs1801133</td>
+            	<td>GG</td>
+            	<td>A</td>
+            	<td>MTHFR</td>
+            	<td>C677T</td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr>
+            	<td>rs2066470</td>
+            	<td>AG</td>
+            	<td>A</td>
+            	<td>MTHFR 03</td>
+            	<td>P39P</td>
+            	<td class="result_yellow">+/-</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs1805087</td>
+            	<td>AA</td>
+            	<td>G</td>
+            	<td>MTR</td>
+            	<td>A2756G</td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr>
+            	<td>rs1801394</td>
+            	<td>AG</td>
+            	<td>G</td>
+            	<td>MTRR</td>
+            	<td>A66G</td>
+            	<td class="result_yellow">+/-</td>
+            </tr>
+            <tr>
+            	<td>rs10380</td>
+            	<td>CC</td>
+            	<td>T</td>
+            	<td>MTRR</td>
+            	<td>H595Y</td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr>
+            	<td>rs162036</td>
+            	<td>AA</td>
+            	<td>G</td>
+            	<td>MTRR</td>
+            	<td>K350A</td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr>
+            	<td>rs2287780</td>
+            	<td>CC</td>
+            	<td>T</td>
+            	<td>MTRR</td>
+            	<td>R415T</td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr>
+            	<td>rs2303080</td>
+            	<td>N/A</td>
+            	<td>T</td>
+            	<td>MTRR</td>
+            	<td>S257T</td>
+            	<td>N/A</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs1802059</td>
+            	<td>AA</td>
+            	<td>A</td>
+            	<td>MTRR-11</td>
+            	<td>A664A</td>
+            	<td class="result_red">+/+</td>
+            </tr>
+            <tr>
+            	<td>rs1799983</td>
+            	<td>N/A</td>
+            	<td>T</td>
+            	<td>NOS 3</td>
+            	<td>D298E</td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs1979277</td>
+            	<td>AG</td>
+            	<td>A</td>
+            	<td>SHMT1</td>
+            	<td>C1420T</td>
+            	<td class="result_yellow">+/-</td>
+            </tr>
+            <tr>
+            	<td></td>
+            	<td>N/A</td>
+            	<td>C</td>
+            	<td>SUOX</td>
+            	<td>S370S</td>
+            	<td>N/A</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs1544410</td>
+            	<td>CC</td>
+            	<td>T</td>
+            	<td>VDR</td>
+            	<td>Bsm</td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs731236</td>
+            	<td>AA</td>
+            	<td>G</td>
+            	<td>VDR</td>
+            	<td>Taq</td>
+            	<td class="result_green">-/-</td>
+            </tr>
+            <tr class="colored">
+            	<td>rs10735810</td>
+            	<td>N/C</td>
+            	<td>T</td>
+            	<td>VDR</td>
+            	<td>Fok I</td>
+            	<td style="background-color: white;">N/C</td>
+            </tr>
+        </table>
+        <p style="font-size: small; margin-top: 0px;">-/- = not present; +/- = one mutation; +/+ = double mutation; +/+* = mutation on the X chromosome in a male.</p>
+        </div>
+    </body>
+</html>
