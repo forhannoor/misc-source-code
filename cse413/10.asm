@@ -1,0 +1,41 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+
+	MSG		DB		'ENTER A HEX DIGIT: $'
+	MSG2	DB 		0DH, 0AH, 'IN DECIMAL IT IS: '
+	D1		DB		?
+	D2		DB		?, '$'
+	
+.CODE
+
+	MAIN PROC
+		
+		MOV AX, @DATA
+		MOV DS, AX
+		
+		MOV AH, 9
+		LEA DX, MSG
+		INT 21H
+		
+		MOV AH, 1
+		INT 21H
+		MOV AH, 0
+		SUB AL, 55
+		MOV BL, 10
+		DIV BL
+		ADD AL, 48
+		ADD AH, 48
+		MOV D1, AL
+		MOV D2, AH
+		
+		MOV AH, 9
+		LEA DX, MSG2
+		INT 21H
+		
+		MOV AH, 4CH
+		INT 21H
+		
+	MAIN ENDP
+
+END MAIN
