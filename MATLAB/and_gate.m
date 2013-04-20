@@ -14,8 +14,8 @@ function [weight, bias]=and_gate()
     t3=0;
     t4=1;
     
-    w=rand(1,2);
-    b=rand(1);
+    w=randint(1,2);
+    b=randint(1);
     
     % initial errors
     e1=1;
