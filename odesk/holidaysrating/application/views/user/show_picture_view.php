@@ -15,4 +15,7 @@
 </tr>
 <?php endfor ?>
 </table>
+<br />
+<br />
+<?php echo anchor('user/index', 'Back') ?>
 </div>

@@ -35,6 +35,8 @@ echo '<br/>';
 echo form_submit('', 'Submit');
 echo form_reset('', 'Reset');
 echo form_close();
-
+echo '<br/>';
+echo '<br/>';
+echo anchor('user/index', 'Back');
 ?>
 </div>

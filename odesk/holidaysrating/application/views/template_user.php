@@ -11,12 +11,15 @@
 <!-- Holiday, Travel, rating -->
 
 
-<link href="<?php echo base_url() ?>assets/css/holiday.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url() ?>assets/css/user.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.easing.1.3.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.wt-rotator.min.js"></script>    
-	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/preview.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.easing.1.3.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.wt-rotator.min.js"></script>    
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/preview.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css"/>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/projekktor-1.2.27r248.min.js"></script>
 </head>
 
 <body>
@@ -46,13 +49,13 @@
 <div class="logo"><img src="<?php echo base_url() ?>assets/images/logo.png" width="350" height="78" alt="logo" /></div>
 <div class="menu">
 <ul>
-<li><a href="index.html" class="active">HOME</a></li>
-<li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
-<li><a href="main/favorites.html">FAVORITES</a></li>
-<li><a href="main/worldmap.html">WORLDMAP</a></li>
-<li><a href="main/vote-now.html">VOTE NOW</a></li>
-<li><a href="main/video-dump.html">VIDEO DUMP</a></li>
-<li><a href="main/blog.html">BLOG</a></li>
+<li><?php echo anchor('home/index', 'HOME') ?></li>
+<li class="active"><?php echo anchor('user/index', 'MY PROFILE') ?></li>
+<li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
+<li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
+<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
+<li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
+<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
 </ul>
 </div>
 </div>
@@ -61,9 +64,11 @@
 
 <!-- banner -->
 <div id="banner">
+    <?php if(isset($banner)): ?>
     <?php foreach($banner->result() as $value): ?>
     <?php echo img('./uploads/banners/'.$value->name) ?>
     <?php endforeach ?>
+    <?php endif ?>
 </div>
 
 
@@ -73,9 +78,10 @@
 <div class="left-side">
 <div class="top"></div>
 <div class="middle">
+<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
 <ul class="profile-items">
-    <li><?php echo anchor('user/index', 'Inbox') ?></li>
-    <li><?php echo anchor('user/index', 'Send Message') ?></li>
+    <li><?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?></li>
+    <li><?php echo anchor('user/sent', "Sent Messages") ?></li>
     <li><?php echo anchor('user/upload_media', 'Upload Picture/Video') ?></li>
     <li><?php echo anchor('user/index', 'Change Password') ?></li>
     <li><?php echo anchor('user/index', 'Subscribe to Newsletter') ?></li>
@@ -83,9 +89,15 @@
     <li><?php echo anchor('auth/logout', 'Logout') ?></li>
 </ul>
 <br />
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border">
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="border"/>
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo $u_online->username ?></li>
+<?php endforeach ?>
+</ul>
 </div>
 <div class="bottom"></div>
 </div>
@@ -130,39 +142,36 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="clear"></div>
 
 
-
-
-
-<div class="first-coloum">
+<div class="first-column">
 <ul>
-<li><a href="index.html">HOME</a></li>
-<li><a href="main/favorites.html">FAVORITES</a></li>
-<li><a href="main/news.html">LATEST NEWS</a></li>
-<li><a href="main/blog.html">BLOG</a></li>
+<li><?php echo anchor('home/index', 'HOME') ?></li>
+<li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
+<li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
+<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
 </ul>
 </div>
-<div class="first-coloum">
+<div class="first-column">
 <ul>
-<li><a href="html/regions/africa.html">AFRICA</a></li>
-<li><a href="html/regions/antartica.html">ANTARTICA</a></li>
-<li><a href="html/regions/asia.html">ASIA</a></li>
-<li><a href="html/regions/central-america-and-the-caribbean.html">CENTRAL AMERICA</a></li>
+<li><?php echo anchor('regions/africa', 'AFRICA') ?></li>
+<li><?php echo anchor('regions/asia', 'ASIA') ?></li>
+<li><?php echo anchor('regions/caribbean', 'CARIBBEAN') ?></li>
+<li><?php echo anchor('regions/central_america', 'CENTRAL AMERICA') ?></li>
 </ul>
 </div>
-<div class="first-coloum">
+<div class="first-column">
 <ul>
-<li><a href="html/regions/europe.html">EUROPE</a></li>
-<li><a href="html/regions/north-america.html">NORTH AMERICA</a></li>
-<li><a href="html/regions/oceania.html">OCEANIA</a></li>
-<li><a href="html/regions/south-america.html">SOUTH AMERICA</a></li>
+<li><?php echo anchor('regions/europe', 'EUROPE') ?></li>
+<li><?php echo anchor('regions/north_america', 'NORTH AMERICA') ?></li>
+<li><?php echo anchor('regions/oceania', 'OCEANIA') ?></li>
+<li><?php echo anchor('regions/south_america', 'SOUTH AMERICA') ?></li>
 </ul>
 </div>
-<div class="first-coloum">
+<div class="first-column">
 <ul>
-<li><a href="main/privacy-policy.html">PRIVACY POLICY</a></li>
-<li><a href="main/terms-of-use.html">TERMS OF USE</a></li>
-<li><a href="my-profile/my-profile.html">MY PROFILE</a></li>
-<li><a href="main/contact-us.html">CONTACT US</a></li>
+<li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
+<li><?php echo anchor('news/main_news', 'LATEST NEWS') ?></li>
+<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('help/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 <div class="logo"><center><img src="<?php echo base_url() ?>assets/images/photos.jpg" alt="logo" /></center>
@@ -170,8 +179,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<div class="clear"></div>
-<p> Privacy Policy | Terms of Use | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
 </div>
 </div>
 </body>

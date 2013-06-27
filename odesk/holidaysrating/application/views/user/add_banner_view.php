@@ -9,6 +9,8 @@ echo form_label('Banner', 'userfile');
 echo form_upload('userfile');
 echo form_submit('', 'Submit');
 echo form_close();
-
+echo '<br/>';
+echo '<br/>';
+echo anchor('user/index', 'Back');
 ?>
 </div>

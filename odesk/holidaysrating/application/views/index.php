@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="If you are looking for travel information, want to share your holiday experience or find the best destinations.. Visit us on Holidaysrating.com and be our travelguide!"/>
-<meta name="keywords" content="Holiday, holidays, rating, vacation, destination, world, worldmap, review, travel, travelguides, travelguide, travelblog, blog, favorites, Holidaysrating, Holidaysrating.com "/>
+<meta name="description" content="Holidaysrating.com, the social travel community..."/>
+<meta name="keywords" content="Holiday, holidays, rating, vacation, destination, travel, travelguides, travelguide, travelblog, blog, Holidaysrating, Holidaysrating.com "/>
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
-<title>Holidaysrating.com, the social travel community...</title>
+<title>Holidaysrating</title>
 <!-- Holiday, Travel, rating -->
 
 
@@ -33,13 +33,13 @@
 <div class="logo"><img src="<?php echo base_url() ?>assets/images/logo.png" width="350" height="78" alt="logo" /></div>
 <div class="menu">
 <ul>
-<li><a href="index.html" class="active">HOME</a></li>
-<li><a href="my-profile/login.html">MY PROFILE</a></li>
-<li><a href="main/favorites.html">FAVORITES</a></li>
-<li><a href="main/worldmap.html">WORLDMAP</a></li>
-<li><a href="main/vote-now.html">VOTE NOW</a></li>
-<li><a href="main/video-dump.html">VIDEO DUMP</a></li>
-<li><a href="main/blog.html">BLOG</a></li>
+<li class="active"><?php echo anchor('home/index', 'HOME') ?></li>
+<li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
+<li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
+<li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
+<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
+<li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
+<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
 </ul>
 </div>
 </div>
@@ -99,18 +99,43 @@
 <!--<img src="images/slider.png" alt="slideshow" title="slideshow" />--></div>
 </div>
 
-<div id="content"><h1>Check out our favorites...</h1>
+<div id="content">
+<h1>Check our favorites...</h1>
 <div class="clear"></div>
 <div class="left-side">
 <div class="top"></div>
-<div class="middle"><h2>Member Login</h2>
-<form class="form">
-<input type="text" value="Username" />
-<input type="password"/>
-<div class="button">Login</div>
-<p>Not a member yet?  <a href="my-profile/register-here.html">Register here</a></p>
-</form>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
+<div class="middle">
+<div class="my_login">
+<?php if($this->ion_auth->logged_in()): ?>
+<h2>Status</h2>
+<br/>
+<?php if(isset($profile_info)): ?>
+<?php foreach($profile_info->result() as $value): ?>
+<?php echo img('./uploads/'.$value->avatar) ?>
+<?php endforeach ?>
+<?php endif ?>
+<br />
+<?php echo $this->ion_auth->user()->row()->first_name.' ' ?>
+<?php echo $this->ion_auth->user()->row()->last_name.' ' ?>
+<?php echo '<br>' ?>
+<?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
+<?php echo 'Member since&nbsp;: '.$joined_in ?>
+<?php echo '<br>' ?>
+<?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
+<?php echo 'Last logged in: '.$last_login ?>
+<?php echo '<br>' ?>
+<?php echo anchor('auth/logout', 'Logout') ?>
+<?php else: ?>
+<h2>Member Login</h2>
+<?php include APPPATH.'views/auth/my_login.php' ?>
+<br />
+<?php echo anchor('auth/forgot_password', 'Forgot Password') ?>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<?php echo anchor('auth/register', 'Register') ?>
+<?php endif ?>
+</div>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:12px" />
+
 <h2>Members online</h2>
 <p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
@@ -143,46 +168,36 @@
 <div class="center">
 <div class="top"></div>
 <div class="middle">
-<a href="html/list-favorites/festivals.html">
-<img src="<?php echo base_url() ?>assets/images/img-1.jpg" alt="Festivals" /></a>
-<a href="html/list-favorites/amazing-beaches.html">
-<img src="<?php echo base_url() ?>assets/images/img-2.jpg" alt="Amazing Beaches" /></a>
-<a href="html/list-favorites/cruises.html">
-<img src="<?php echo base_url() ?>assets/images/img-3.jpg" alt="Cruises" /></a>
-<a href="html/list-favorites/ancient-wonders.html">
-<img src="<?php echo base_url() ?>assets/images/img-4.jpg" alt="Ancient Wonders" /></a>
-<a href="html/list-favorites/diving.html">
-<img src="<?php echo base_url() ?>assets/images/img-5.jpg" alt="Diving" /></a>
-<a href="html/list-favorites/romance.html">
-<img src="<?php echo base_url() ?>assets/images/img-10.jpg" alt="Romantic cities" /></a>
-<a href="html/list-favorites/train-trips.html">
-<img src="<?php echo base_url() ?>assets/images/img-9.jpg" alt="Train-trips" /></a>
-<a href="html/list-favorites/ski-locations.html">
-<img src="<?php echo base_url() ?>assets/images/img-8.jpg" alt="ski-locations" /></a>
-<a href="html/list-favorites/road-trips.html">
-<img src="<?php echo base_url() ?>assets/images/img-7.jpg" alt="Road trips" /></a>
-<a href="html/list-favorites/wonderful-islands.html">
-<img src="<?php echo base_url() ?>assets/images/img-6.jpg" alt="Wonderful Islands" /></a>
+<?php echo anchor('list_favorites/festivals', img('assets/images/img-1.jpg')); ?>
+<?php echo anchor('list_favorites/amazing_beaches', img('assets/images/img-2.jpg')); ?>
+<?php echo anchor('list_favorites/cruises', img('assets/images/img-3.jpg')); ?>
+<?php echo anchor('list_favorites/ancient_wonders', img('assets/images/img-4.jpg')); ?>
+<?php echo anchor('list_favorites/diving', img('assets/images/img-5.jpg')); ?>
+<?php echo anchor('list_favorites/romantic_cities', img('assets/images/img-10.jpg')); ?>
+<?php echo anchor('list_favorites/train_trips', img('assets/images/img-9.jpg')); ?>
+<?php echo anchor('list_favorites/ski_locations', img('assets/images/img-8.jpg')); ?>
+<?php echo anchor('list_favorites/road_trips', img('assets/images/img-7.jpg')); ?>
+<?php echo anchor('list_favorites/magical_islands', img('assets/images/img-6.jpg')); ?>
 </div>
 <div class="bottom"></div>
 <div class="hot">
 <h1>This months BEST RATED</h1>
 <div class="tour">
-<img src="<?php echo base_url() ?>assets/images/b.jpg" alt="Great Barrier Reef" />
+<img src="<?php echo base_url() ?>assets/images/a.jpg" alt="Great Barrier Reef" />
 <h2>Cairns, Queensland</h2>
 <h3>Close to the great barrier reef</h3>
 </div>
 <div class="tour">
-<img src="<?php echo base_url() ?>assets/images/a.jpg" alt="Rafting" /> 
+<img src="<?php echo base_url() ?>assets/images/b.jpg" alt="Rafting" /> 
 <h2>Rafting</h2>
 <h3>Rafting at the Tully</h3></div>
 </div>
 <div class="clear"></div>
 <div class="latest-news">
-<h4>latest news</h4>
-<p>Travel alerts, make sure you know all the inns and outs! <a href="html/news/travel-alerts.html">read more</a></p>
+<h4>Travel news</h4>
+<p>Travel alerts, make sure you know all the inns and outs! <?php echo anchor('news/travel_alerts', 'Read more') ?></p>
 
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience! <a href="html/news/new-website.html">read more</a></p>
+<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience! <?php echo anchor('news/new_website', 'Read more') ?></p>
 </div>
 </div>
 
@@ -190,20 +205,26 @@
 <div class="right-side">
 <div class="top"></div>
 <div class="middle">
-<h2>Welcome to...</h2>
+<h2 style="margin-bottom:10px">Welcome to...</h2>
 <p>Holidaysrating is a new, fun and social website where you can search for 
 information, vote for your favorite destination or share your holiday 
 experience!</p>
-	<p>Become a free member and be our travelguide!</p>
+<p>Become a free member and be our travelguide! WE ARE STILL UNDER CONSTRUCTION.</p>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
 <h2>Like it..</h2>
 <div class="social">
 <!-- AddThis Button BEGIN -->
 <div class="addthis_toolbox addthis_default_style">
-<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-<a class="addthis_button_tweet"></a>
-<a class="addthis_button_pinterest_pinit"></a>
-<a class="addthis_counter addthis_pill_style"></a>
+<table style="margin-top:8px;">
+<tr>
+<td><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a></td>
+<td><a class="addthis_button_tweet"></a></td>
+</tr>
+<tr>
+<td><a class="addthis_button_pinterest_pinit"></a></td>
+<td><a class="addthis_counter addthis_pill_style"></a></td>
+</tr>
+</table>
 </div>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
@@ -234,39 +255,36 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="clear"></div>
 
 
-
-
-
-<div class="first-coloum">
+<div class="first-column">
 <ul>
-<li><a href="index.html">HOME</a></li>
-<li><a href="main/favorites.html">FAVORITES</a></li>
-<li><a href="main/news.html">LATEST NEWS</a></li>
-<li><a href="main/blog.html">BLOG</a></li>
+<li><?php echo anchor('home/index', 'HOME') ?></li>
+<li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
+<li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
+<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
 </ul>
 </div>
-<div class="first-coloum">
+<div class="first-column">
 <ul>
-<li><a href="html/regions/africa.html">AFRICA</a></li>
-<li><a href="html/regions/antartica.html">ANTARTICA</a></li>
-<li><a href="html/regions/asia.html">ASIA</a></li>
-<li><a href="html/regions/central-america-and-the-caribbean.html">CENTRAL AMERICA</a></li>
+<li><?php echo anchor('regions/africa', 'AFRICA') ?></li>
+<li><?php echo anchor('regions/asia', 'ASIA') ?></li>
+<li><?php echo anchor('regions/caribbean', 'CARIBBEAN') ?></li>
+<li><?php echo anchor('regions/central_america', 'CENTRAL AMERICA') ?></li>
 </ul>
 </div>
-<div class="first-coloum">
+<div class="first-column">
 <ul>
-<li><a href="html/regions/europe.html">EUROPE</a></li>
-<li><a href="html/regions/north-america.html">NORTH AMERICA</a></li>
-<li><a href="html/regions/oceania.html">OCEANIA</a></li>
-<li><a href="html/regions/south-america.html">SOUTH AMERICA</a></li>
+<li><?php echo anchor('regions/europe', 'EUROPE') ?></li>
+<li><?php echo anchor('regions/north_america', 'NORTH AMERICA') ?></li>
+<li><?php echo anchor('regions/oceania', 'OCEANIA') ?></li>
+<li><?php echo anchor('regions/south_america', 'SOUTH AMERICA') ?></li>
 </ul>
 </div>
-<div class="first-coloum">
+<div class="first-column">
 <ul>
-<li><a href="main/privacy-policy.html">PRIVACY POLICY</a></li>
-<li><a href="main/terms-of-use.html">TERMS OF USE</a></li>
-<li><a href="my-profile/my-profile.html">MY PROFILE</a></li>
-<li><a href="main/contact-us.html">CONTACT US</a></li>
+<li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
+<li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
+<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('help/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 <div class="logo"><center><img src="<?php echo base_url() ?>assets/images/photos.jpg" alt="logo" /></center>
@@ -274,8 +292,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<div class="clear"></div>
-<p> Privacy Policy | Terms of Use | © Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
 </div>
 </div>
 </body>

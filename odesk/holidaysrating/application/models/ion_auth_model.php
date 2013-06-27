@@ -2020,4 +2020,21 @@ class Ion_auth_model extends CI_Model
 			return inet_pton($ip_address);
 		}
 	}
+    
+    /* returns list of users who logged in not more than 30 mintues ago */
+    public function users_online()
+    {
+        $data = new DateTime();
+        $current_time_stamp = $data->format('U');
+        $q = $this->db->get('users');
+        $new_q = array();
+        
+        foreach($q->result() as $row)
+        {
+            if(($current_time_stamp - $row->last_login) < 900)
+                $new_q[] = $row;
+        }
+        
+        return $new_q;
+    }
 }

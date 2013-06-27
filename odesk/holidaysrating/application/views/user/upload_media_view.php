@@ -1,4 +1,4 @@
-<div class="profile_info_form">
+<div>
 <?php
 
 echo validation_errors();

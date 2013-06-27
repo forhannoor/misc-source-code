@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'session', 'form_validation', 'parser', 'ion_auth', 'image_lib');
+$autoload['libraries'] = array('database', 'session', 'form_validation', 'parser', 'ion_auth', 'image_lib', 'email', 'rb');
 
 
 /*
@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database', 'session', 'form_validation', 'parser
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('form', 'url', 'html');
+$autoload['helper'] = array('form', 'url', 'html', 'captcha');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array('Ion_auth_model', 'User_model', 'Video_model', 'Admin_model');
 
 
 /* End of file autoload.php */
