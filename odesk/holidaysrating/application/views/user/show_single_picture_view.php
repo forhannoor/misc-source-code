@@ -2,9 +2,10 @@
 <?php echo img('./uploads/media/'.$picture) ?>
 <br/>
 <hr />
-<div class="score"><p><?php echo $rating ?></p></div>
+<div class="score"><p><?php echo round($rating, 1) ?></p></div>
 <p class="pull_left">Current Rating</p>
 <p class="pull_right"><?php echo anchor('user/rate/'.$picture, 'Rate Now') ?></p>
+<p>Users voted: <?php echo $num_voter ?></p>
 <hr />
 <br/>
 <div class="comments">
@@ -17,7 +18,7 @@
 <?php $commenter = $this->User_model->get_username($comment->cid) ?>
 <?php foreach($commenter as $cmntr): ?>
 <p><?php echo $cmntr->username ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<?php echo anchor('user/send_message/'.$comment->cid, 'PM') ?>
+<?php echo anchor('user/send_message/'.$comment->cid, img(base_url().'assets/images/pm-icon.gif')) ?>
 </p>
 <?php endforeach ?>
 <p><?php echo $comment->time ?></p>
@@ -33,7 +34,9 @@
 <div class="pagination"><?php echo $this->pagination->create_links() ?></div>
 <br/>
 </div>
-<?php echo anchor('user/make_comment/'.$picture, 'Leave a Comment') ?>
+<div class="comment">
+<img src="<?php echo base_url() ?>assets/images/comments.png" alt="comment" /><?php echo anchor('user/make_comment/'.$picture, 'Leave a comment') ?>
+</div>
 <br/>
 <br/>
 <?php echo anchor('user/show_picture/all', 'Picture Gallery') ?>

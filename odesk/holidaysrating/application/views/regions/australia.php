@@ -8,7 +8,7 @@
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
 
-<title>Australia</title>
+<title>Australia | Holidaysrating.com</title>
 <link href="<?php echo base_url() ?>assets/css/region.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -23,9 +23,9 @@
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 </div>
@@ -44,14 +44,15 @@
 <area shape="poly" coords="614,401,600,385,594,370,597,363,620,369,633,367,644,370,639,387,633,397,627,394," href="<?php echo base_url() ?>index.php/australia_states/tasmania" alt="Tasmania" title="Tasmania"   />
 </map>
 </div>
-<div id="content"><h1>Australia</h1>
+<div id="content">
+<h1><?php echo $heading ?></h1>
 <div class="clear"></div>
 <div class="left-side">
 <div class="top"></div>
 <div class="middle">
 <div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
-<h2>Status</h2>
+<h2>Welcome</h2>
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
@@ -64,10 +65,16 @@
 <?php echo '<br>' ?>
 <?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
 <?php echo 'Member since&nbsp;: '.$joined_in ?>
-<?php echo '<br>' ?>
+<br />
 <?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
 <?php echo 'Last logged in: '.$last_login ?>
-<?php echo '<br>' ?>
+<?php $this->load->model('User_model') ?>
+<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<br/>
+<br/>
+<?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
+<br/>
+<br/>
 <?php echo anchor('auth/logout', 'Logout') ?>
 <?php else: ?>
 <h2>Member Login</h2>
@@ -78,11 +85,16 @@
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
+
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertisement Here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo $u_online->username ?></li>
+<?php endforeach ?>
+</ul>
 </div>
 <div class="bottom"></div>
 </div>
@@ -90,7 +102,19 @@
 <div class="center">
 <div class="hot">
 <h1>INTRODUCTION</h1>
+<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/australia.jpg" alt="Australia" width="100px" height="70px" /></div>
+<div class="intro">
 <p><strong>Australia</strong> text.</p>
+</div>
+
+<div class="options">
+<ul>
+<li><?php echo anchor('australia_cities/cities_australia', img('assets/images/buttonblue-cities-bg.png')); ?></li>
+<li><?php echo anchor('australia_national_parks/australia_nat_parks', img('assets/images/buttonblue-parks-bg.png')); ?></li>
+<li><?php echo anchor('help/external_links', img('assets/images/buttonblue-links-bg.png')); ?></li>
+</ul>
+<br />
+</div>
 
 <h1>STATES</h1>
 <p style="margin-bottom:20px;text-align:center">Click on the map or choose a state below:</p>
@@ -115,19 +139,15 @@
 
 </div>
 <div class="clear"></div>
-<div class="latest-news">
-</div>
-
 
 </div>
-
 
 <div class="right-side">
 <div class="top"></div>
 <div class="middle">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;<?php echo anchor('regions/oceania', 'Oceania') ?>&gt;Australia</span></p>
 
-<iframe width="180" height="100" src="http://www.youtube-nocookie.com/embed/6leHGHCKeSg" frameborder="0" allowfullscreen></iframe>
+<iframe width="180" height="100" src="http://www.youtube-nocookie.com/embed/6leHGHCKeSg?rel=0" frameborder="0" allowfullscreen></iframe>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
 <h2>Facts</h2>
 <ol>
@@ -147,7 +167,7 @@
 <td><a class="addthis_button_tweet"></a></td>
 </tr>
 <tr>
-<td><a class="addthis_button_pinterest_pinit"></a></td>
+<td><a class="addthis_button_google_plusone" g:plusone:size="medium"></a></td>
 <td><a class="addthis_counter addthis_pill_style"></a></td>
 </tr>
 </table>
@@ -194,7 +214,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
+<li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 </ul>
 </div>
 <div class="first-column">
@@ -218,7 +238,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
-<li><?php echo anchor('help/helpcenter', 'HELPCENTER') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 <div class="logo"><center>

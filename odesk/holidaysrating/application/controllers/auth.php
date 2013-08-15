@@ -96,7 +96,9 @@ class Auth extends CI_Controller {
 				'type' => 'password',
 			);
 
-			$this->load->view('auth/login', $this->data);
+            $this->data['main']='auth/login.php';
+            $this->data['heading'] = 'Login';
+            $this->load->view('template_view', $this->data);
 		}
 	}
 
@@ -158,8 +160,9 @@ class Auth extends CI_Controller {
 				'value' => $user->id,
 			);
 
-			//render
-			$this->load->view('auth/change_password', $this->data);
+            $this->data['main']='auth/change_password.php';
+            $this->data['heading'] = 'Change Password';
+            $this->load->view('template_view', $this->data);
 		}
 		else
 		{
@@ -195,7 +198,10 @@ class Auth extends CI_Controller {
 
 			//set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			$this->load->view('auth/forgot_password', $this->data);
+			//$this->load->view('auth/forgot_password', $this->data);
+            $this->data['main'] = 'auth/forgot_password.php';
+            $this->data['heading'] = 'Forgot Password';
+            $this->load->view('template_view', $this->data);
 		}
         
 		else
@@ -276,7 +282,9 @@ class Auth extends CI_Controller {
 				$this->data['code'] = $code;
 
 				//render
-				$this->load->view('auth/reset_password', $this->data);
+                $this->data['main'] = 'auth/reset_password.php';
+                $this->data['heading'] = 'Reset Password';
+                $this->load->view('template_view', $this->data);
 			}
 			else
 			{

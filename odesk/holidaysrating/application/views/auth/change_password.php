@@ -1,5 +1,3 @@
-<h1>Change Password</h1>
-
 <div id="infoMessage"><?php echo $message;?></div>
 
 <?php echo form_open("auth/change_password");?>
@@ -17,6 +15,7 @@
       </p>
       
       <?php echo form_input($user_id);?>
-      <p><?php echo form_submit('submit', 'Change');?></p>
+      <?php $submit_button = array('name' => 'submit', 'value' => 'Change', 'class' => 'btn-submit-green') ?>
+      <p><?php echo form_submit($submit_button) ?></p>
       
 <?php echo form_close();?>

@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="Lets say latin!"/>
+<meta name="description" content="United States of America"/>
 <meta name="keywords" content="United States, USA, US "/>
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
 
-<title>United States of America</title>
+<title>United States of America | Holidaysrating.com</title>
 <link href="<?php echo base_url() ?>assets/css/region.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -23,9 +23,9 @@
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 </div>
@@ -55,7 +55,7 @@
 <area shape="poly" coords="823,60,827,59,836,87,843,91,836,96,820,99,818,76,825,70," href="<?php echo base_url() ?>index.php/usa_states/new_hampshire" alt="New Hampshire" title="New Hampshire"   />
 <area shape="poly" coords="831,59,834,47,839,23,857,20,870,41,876,41,887,52,868,67,863,64,862,71,853,79,848,78,845,88,839,83," href="<?php echo base_url() ?>index.php/usa_states/maine" alt="Maine" title="Maine"   />
 <area shape="poly" coords="809,103,831,101,842,95,846,99,844,103,859,103,864,109,848,115,840,107,809,112," href="<?php echo base_url() ?>index.php/usa_states/massachusetts" alt="Massachusetts" title="Massachusetts"   />
-<area shape="poly" coords="835,110,839,108,844,115,836,120," href="<?php echo base_url() ?>index.php/usa_states/rhode_islands" alt="Rhode Island" title="Rhode Island"   />
+<area shape="poly" coords="835,110,839,108,844,115,836,120," href="<?php echo base_url() ?>index.php/usa_states/rhode_island" alt="Rhode Island" title="Rhode Island"   />
 <area shape="poly" coords="808,115,830,112,833,121,821,121,810,126," href="<?php echo base_url() ?>index.php/usa_states/connecticut" alt="Connecticut" title="Connecticut"   />
 <area shape="poly" coords="811,131,830,126,822,133,808,137," href="<?php echo base_url() ?>index.php/usa_states/new_york" alt="New York" title="New York"   />
 <area shape="poly" coords="791,128,806,131,803,137,808,142,810,150,802,159,789,152,798,145,789,138," href="<?php echo base_url() ?>index.php/usa_states/new_jersey" alt="New Jersey" title="New Jersey"   />
@@ -89,14 +89,14 @@
 </map>
 </div>
 <div id="content">
-	<h1>USA</h1>
+<h1><?php echo $heading ?></h1>
 <div class="clear"></div>
 <div class="left-side">
 <div class="top"></div>
 <div class="middle">
 <div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
-<h2>Status</h2>
+<h2>Welcome</h2>
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
@@ -109,10 +109,16 @@
 <?php echo '<br>' ?>
 <?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
 <?php echo 'Member since&nbsp;: '.$joined_in ?>
-<?php echo '<br>' ?>
+<br />
 <?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
 <?php echo 'Last logged in: '.$last_login ?>
-<?php echo '<br>' ?>
+<?php $this->load->model('User_model') ?>
+<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<br/>
+<br/>
+<?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
+<br/>
+<br/>
 <?php echo anchor('auth/logout', 'Logout') ?>
 <?php else: ?>
 <h2>Member Login</h2>
@@ -123,11 +129,16 @@
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
+
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertisement Here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo $u_online->username ?></li>
+<?php endforeach ?>
+</ul>
 </div>
 <div class="bottom"></div>
 </div>
@@ -135,8 +146,20 @@
 <div class="center">
 <div class="hot">
 <h1>INTRODUCTION</h1>
+<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/usa.jpg" alt="USA" width="100px" height="70px" /></div>
+<div class="intro">
 <p><strong>United States of America</strong> the country with endless highways cutting through bleak deserts, forests of skyscrapers towering over urban jungles and  acres of beaches dotted with surfboards and sun worshippers.
- It stretches from Lake Superiour on the Canadian border to the Gambling paradise in Las vegas. From the breathe taking islands of <?php echo anchor('usa_states/hawaii', 'Hawaii') ?> to the glaciers and snowy mountains in <?php echo anchor('usa_states/alaska', 'Alaska') ?>.</p>
+It stretches from Lake Superiour on the Canadian border to the Gambling paradise in Las vegas. From the breathe taking islands of <?php echo anchor('usa_states/hawaii', 'Hawaii') ?> to the glaciers and snowy mountains in <?php echo anchor('usa_states/alaska', 'Alaska') ?>.</p>
+</div>
+
+<div class="options">
+<ul>
+<li><?php echo anchor('usa_cities/cities_usa', img('assets/images/buttonblue-cities-bg.png')); ?></li>
+<li><?php echo anchor('usa_national_parks/usa_nat_parks', img('assets/images/buttonblue-parks-bg.png')); ?></li>
+<li><?php echo anchor('help/external_links', img('assets/images/buttonblue-links-bg.png')); ?></li>
+</ul>
+<br />
+</div>
 
 <h1>STATES</h1>
 <p style="margin-bottom:20px;text-align:center">Click on the map or choose a state below:</p>
@@ -219,18 +242,14 @@
 	</table>
 </div>
 <div class="clear"></div>
-<div class="latest-news">
-</div>
-
 
 </div>
-
 
 <div class="right-side">
 <div class="top"></div>
 <div class="middle">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;<?php echo anchor('regions/north-america', 'North America') ?>&gt;USA</span></p>
-<iframe width="180" height="100" src="http://www.youtube-nocookie.com/embed/5yRgiXh2fP4" frameborder="0" allowfullscreen></iframe>
+<iframe width="180" height="100" src="http://www.youtube-nocookie.com/embed/5yRgiXh2fP4?rel=0" frameborder="0" allowfullscreen></iframe>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
 <h2>Facts</h2>
 <ol>
@@ -250,7 +269,7 @@
 <td><a class="addthis_button_tweet"></a></td>
 </tr>
 <tr>
-<td><a class="addthis_button_pinterest_pinit"></a></td>
+<td><a class="addthis_button_google_plusone" g:plusone:size="medium"></a></td>
 <td><a class="addthis_counter addthis_pill_style"></a></td>
 </tr>
 </table>
@@ -293,7 +312,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
+<li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 </ul>
 </div>
 <div class="first-column">
@@ -317,7 +336,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
-<li><?php echo anchor('help/helpcenter', 'HELPCENTER') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 <div class="logo"><center><img src="<?php echo base_url() ?>assets/images/photos.jpg" alt="logo" /></center>

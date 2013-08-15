@@ -1,4 +1,4 @@
-<div>
+<div class="banner-form">
 <?php
 
 if(isset($errors))
@@ -7,10 +7,11 @@ if(isset($errors))
 echo form_open_multipart('user/add_banner');
 echo form_label('Banner', 'userfile');
 echo form_upload('userfile');
+echo '<br/>';
 echo form_submit('', 'Submit');
 echo form_close();
 echo '<br/>';
 echo '<br/>';
-echo anchor('user/index', 'Back');
+echo anchor('user/index', img(base_url().'assets/assets/back.png'));
 ?>
 </div>

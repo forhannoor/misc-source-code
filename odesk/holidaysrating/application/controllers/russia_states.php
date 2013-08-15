@@ -9,7 +9,7 @@ class russia_states extends CI_Controller
     public function adygeya()
     {
       	$data['main']='russia_states/adygeya.php';
-      	$data['heading']='Adygeya';
+      	$data['heading']='Adygeya (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -17,21 +17,21 @@ class russia_states extends CI_Controller
       	
       	$this->load->view('russia_states/adygeya', $data);
     }
-    public function altal()
+    public function altai()
     {
-      	$data['main']='russia_states/altal.php';
-      	$data['heading']='Altal';
+      	$data['main']='russia_states/altai.php';
+      	$data['heading']='Altai Krai';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/altal', $data);
+      	$this->load->view('russia_states/altai', $data);
     }
     public function amur()
     {
       	$data['main']='russia_states/amur.php';
-      	$data['heading']='Amur';
+      	$data['heading']='Amur Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -39,32 +39,21 @@ class russia_states extends CI_Controller
       	
       	$this->load->view('russia_states/amur', $data);
     }
-    public function arkhangels()
+    public function arkhangelsk()
     {
-      	$data['main']='russia_states/arkhangels.php';
-      	$data['heading']='Arkhangels';
+      	$data['main']='russia_states/arkhangelsk.php';
+      	$data['heading']='Arkhangelsk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/arkhangels', $data);
-    }
-    public function arkhangetsk()
-    {
-      	$data['main']='russia_states/arkhangetsk.php';
-      	$data['heading']='Arkhangetsk';
-      	$this->load->model('User_model');
-      	
-      	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
-      	
-      	$this->load->view('russia_states/arkhangetsk', $data);
+      	$this->load->view('russia_states/arkhangelsk', $data);
     }
     public function astrakhan()
     {
       	$data['main']='russia_states/astrakhan.php';
-      	$data['heading']='Astrakhan';
+      	$data['heading']='Astrakhan Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -75,7 +64,7 @@ class russia_states extends CI_Controller
     public function bashkortostan()
     {
       	$data['main']='russia_states/bashkortostan.php';
-      	$data['heading']='Bashkortostan';
+      	$data['heading']='Bashkortostan (Rep.)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -83,21 +72,21 @@ class russia_states extends CI_Controller
       	
       	$this->load->view('russia_states/bashkortostan', $data);
     }
-    public function belgoral()
+    public function belgorodskaya()
     {
-      	$data['main']='russia_states/belgoral.php';
-      	$data['heading']='Belgoral';
+      	$data['main']='russia_states/belgorodskaya.php';
+      	$data['heading']='Belgorodskaya Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/belgoral', $data);
+      	$this->load->view('russia_states/belgorodskaya', $data);
     }
     public function brayensk()
     {
       	$data['main']='russia_states/brayensk.php';
-      	$data['heading']='Brayensk';
+      	$data['heading']='Brayensk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -108,7 +97,7 @@ class russia_states extends CI_Controller
     public function buryatia()
     {
       	$data['main']='russia_states/buryatia.php';
-      	$data['heading']='Buryatia';
+      	$data['heading']='Buryatia (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -119,7 +108,7 @@ class russia_states extends CI_Controller
     public function chechnya()
     {
       	$data['main']='russia_states/chechnya.php';
-      	$data['heading']='Chechnya';
+      	$data['heading']='Chechnya (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -130,7 +119,7 @@ class russia_states extends CI_Controller
     public function chelyabinsk()
     {
       	$data['main']='russia_states/chelyabinsk.php';
-      	$data['heading']='Chelyabinsk';
+      	$data['heading']='Chelyabinsk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -141,7 +130,7 @@ class russia_states extends CI_Controller
     public function chukotka()
     {
       	$data['main']='russia_states/chukotka.php';
-      	$data['heading']='Chukotka';
+      	$data['heading']='Chukotka Auto. Okrug';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -152,7 +141,7 @@ class russia_states extends CI_Controller
     public function chuvashia()
     {
       	$data['main']='russia_states/chuvashia.php';
-      	$data['heading']='Chuvashia';
+      	$data['heading']='Chuvashia (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -174,7 +163,7 @@ class russia_states extends CI_Controller
     public function ingushetia()
     {
       	$data['main']='russia_states/ingushetia.php';
-      	$data['heading']='Ingushetia';
+      	$data['heading']='Ingushetia (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -185,7 +174,7 @@ class russia_states extends CI_Controller
     public function irkutsk()
     {
       	$data['main']='russia_states/irkutsk.php';
-      	$data['heading']='Irkutsk';
+      	$data['heading']='Irkutsk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -196,7 +185,7 @@ class russia_states extends CI_Controller
     public function ivanovo()
     {
       	$data['main']='russia_states/ivanovo.php';
-      	$data['heading']='Ivanovo';
+      	$data['heading']='Ivanovo Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -207,7 +196,7 @@ class russia_states extends CI_Controller
     public function kalingrad()
     {
       	$data['main']='russia_states/kalingrad.php';
-      	$data['heading']='Kalingrad';
+      	$data['heading']='Kalingrad Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -218,7 +207,7 @@ class russia_states extends CI_Controller
     public function kaluga()
     {
       	$data['main']='russia_states/kaluga.php';
-      	$data['heading']='Kaluga';
+      	$data['heading']='Kaluga Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -229,7 +218,7 @@ class russia_states extends CI_Controller
     public function kamchatka()
     {
       	$data['main']='russia_states/kamchatka.php';
-      	$data['heading']='Kamchatka';
+      	$data['heading']='Kamchatka Krai';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -240,7 +229,7 @@ class russia_states extends CI_Controller
     public function karachay_cherkessia()
     {
       	$data['main']='russia_states/karachay_cherkessia.php';
-      	$data['heading']='Karachay-Cherkessia';
+      	$data['heading']='Karachay-Cherkessia (Rep.)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -251,7 +240,7 @@ class russia_states extends CI_Controller
     public function karbodino_balkaria()
     {
       	$data['main']='russia_states/karbodino_balkaria.php';
-      	$data['heading']='Karbodino-Balkaria';
+      	$data['heading']='Karbodino-Balkaria (Rep.)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -262,7 +251,7 @@ class russia_states extends CI_Controller
     public function karelia()
     {
       	$data['main']='russia_states/karelia.php';
-      	$data['heading']='Karelia';
+      	$data['heading']='Karelia (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -270,10 +259,33 @@ class russia_states extends CI_Controller
       	
       	$this->load->view('russia_states/karelia', $data);
     }
+        public function kalmykia()
+    {
+      	$data['main']='russia_states/kalmykia.php';
+      	$data['heading']='Kalmykia (Republic)';
+      	$this->load->model('User_model');
+      	
+      	if($this->ion_auth->logged_in())
+      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+      	
+      	$this->load->view('russia_states/kalmykia', $data);
+    }
+    public function kostroma()
+    {
+      	$data['main']='russia_states/kostroma.php';
+      	$data['heading']='Kostroma Oblast';
+      	$this->load->model('User_model');
+      	
+      	if($this->ion_auth->logged_in())
+      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+      	
+      	$this->load->view('russia_states/kostroma', $data);
+    }
+
     public function kemerovo()
     {
       	$data['main']='russia_states/kemerovo.php';
-      	$data['heading']='Kemerovo';
+      	$data['heading']='Kemerovo Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -284,7 +296,7 @@ class russia_states extends CI_Controller
     public function khabarovsk()
     {
       	$data['main']='russia_states/khabarovsk.php';
-      	$data['heading']='Khabarovsk';
+      	$data['heading']='Khabarovsk Krai';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -295,7 +307,7 @@ class russia_states extends CI_Controller
     public function khakassia()
     {
       	$data['main']='russia_states/khakassia.php';
-      	$data['heading']='Khakassia';
+      	$data['heading']='Khakassia (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -303,32 +315,44 @@ class russia_states extends CI_Controller
       	
       	$this->load->view('russia_states/khakassia', $data);
     }
-    public function khenbe_menska()
+    public function khantia_mansia()
     {
-      	$data['main']='russia_states/khenbe_menska.php';
-      	$data['heading']='Khenbe Menska';
+      	$data['main']='russia_states/khantia_mansia.php';
+      	$data['heading']='Khantia Mansia Auto. Okrug';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/khenbe_menska', $data);
+      	$this->load->view('russia_states/khantia_mansia', $data);
     }
-    public function klinov()
+    public function kirov()
     {
-      	$data['main']='russia_states/klinov.php';
-      	$data['heading']='Klinov';
+      	$data['main']='russia_states/kirov.php';
+      	$data['heading']='Kirov Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/klinov', $data);
+      	$this->load->view('russia_states/kirov', $data);
     }
+        public function komi()
+    {
+      	$data['main']='russia_states/komi.php';
+      	$data['heading']='Komi (Republic)';
+      	$this->load->model('User_model');
+      	
+      	if($this->ion_auth->logged_in())
+      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+      	
+      	$this->load->view('russia_states/komi', $data);
+    }
+
     public function krasnodar()
     {
       	$data['main']='russia_states/krasnodar.php';
-      	$data['heading']='Krasnodar';
+      	$data['heading']='Krasnodar Krai';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -339,7 +363,7 @@ class russia_states extends CI_Controller
     public function krasnoyarsk()
     {
       	$data['main']='russia_states/krasnoyarsk.php';
-      	$data['heading']='Krasnoyarsk';
+      	$data['heading']='Krasnoyarsk Krai';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -350,7 +374,7 @@ class russia_states extends CI_Controller
     public function kurgan()
     {
       	$data['main']='russia_states/kurgan.php';
-      	$data['heading']='Kurgan';
+      	$data['heading']='Kurgan Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -361,7 +385,7 @@ class russia_states extends CI_Controller
     public function kursk()
     {
       	$data['main']='russia_states/kursk.php';
-      	$data['heading']='Kursk';
+      	$data['heading']='Kursk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -372,18 +396,18 @@ class russia_states extends CI_Controller
     public function leningrad()
     {
       	$data['main']='russia_states/leningrad.php';
-      	$data['heading']='Leningrad';
+      	$data['heading']='Leningrad Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/Leningrad', $data);
+      	$this->load->view('russia_states/leningrad', $data);
     }
     public function lipetsk()
     {
       	$data['main']='russia_states/lipetsk.php';
-      	$data['heading']='Lipetsk';
+      	$data['heading']='Lipetsk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -394,7 +418,7 @@ class russia_states extends CI_Controller
     public function magadan()
     {
       	$data['main']='russia_states/magadan.php';
-      	$data['heading']='Magadan';
+      	$data['heading']='Magadan Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -405,7 +429,7 @@ class russia_states extends CI_Controller
     public function mari_el()
     {
       	$data['main']='russia_states/mari_el.php';
-      	$data['heading']='Mari El';
+      	$data['heading']='Mari El (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -416,7 +440,7 @@ class russia_states extends CI_Controller
     public function mordovia()
     {
       	$data['main']='russia_states/mordovia.php';
-      	$data['heading']='Mordovia';
+      	$data['heading']='Mordovia (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -427,7 +451,7 @@ class russia_states extends CI_Controller
     public function moscow()
     {
       	$data['main']='russia_states/moscow.php';
-      	$data['heading']='Moscow';
+      	$data['heading']='Moscow Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -435,21 +459,33 @@ class russia_states extends CI_Controller
       	
       	$this->load->view('russia_states/moscow', $data);
     }
-    public function munmansk()
+    public function murmansk()
     {
-      	$data['main']='russia_states/munmansk.php';
-      	$data['heading']='Munmansk';
+      	$data['main']='russia_states/murmansk.php';
+      	$data['heading']='Murmansk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/munmansk', $data);
+      	$this->load->view('russia_states/murmansk', $data);
     }
+        public function nenetsia()
+    {
+      	$data['main']='russia_states/nenetsia.php';
+      	$data['heading']='Nenetsia Autonomous Okrug';
+      	$this->load->model('User_model');
+      	
+      	if($this->ion_auth->logged_in())
+      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+      	
+      	$this->load->view('russia_states/nenetsia', $data);
+    }
+
     public function nishny_novgorod()
     {
       	$data['main']='russia_states/nishny_novgorod.php';
-      	$data['heading']='Nishny-Novgorod';
+      	$data['heading']='Nishny-Novgorod Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -460,7 +496,7 @@ class russia_states extends CI_Controller
     public function north_ossetia_alania()
     {
       	$data['main']='russia_states/north_ossetia_alania.php';
-      	$data['heading']='North Ossetia-Alania';
+      	$data['heading']='North Ossetia-Alania (Rep.)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -471,7 +507,7 @@ class russia_states extends CI_Controller
     public function novgorod()
     {
       	$data['main']='russia_states/novgorod.php';
-      	$data['heading']='Novgorod';
+      	$data['heading']='Novgorod Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -482,7 +518,7 @@ class russia_states extends CI_Controller
     public function novosibirsk()
     {
       	$data['main']='russia_states/novosibirsk.php';
-      	$data['heading']='Novosibirsk';
+      	$data['heading']='Novosibirsk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -493,7 +529,7 @@ class russia_states extends CI_Controller
     public function omsk()
     {
       	$data['main']='russia_states/omsk.php';
-      	$data['heading']='Omsk';
+      	$data['heading']='Omsk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -504,7 +540,7 @@ class russia_states extends CI_Controller
     public function orenburg()
     {
       	$data['main']='russia_states/orenburg.php';
-      	$data['heading']='Orenburg';
+      	$data['heading']='Orenburg Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -515,7 +551,7 @@ class russia_states extends CI_Controller
     public function oryol()
     {
       	$data['main']='russia_states/oryol.php';
-      	$data['heading']='Oryol';
+      	$data['heading']='Oryol Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -526,7 +562,7 @@ class russia_states extends CI_Controller
     public function penza()
     {
       	$data['main']='russia_states/penza.php';
-      	$data['heading']='Penza';
+      	$data['heading']='Penza Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -537,7 +573,7 @@ class russia_states extends CI_Controller
     public function perm()
     {
       	$data['main']='russia_states/perm.php';
-      	$data['heading']='Perm';
+      	$data['heading']='Perm  Krai';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -548,7 +584,7 @@ class russia_states extends CI_Controller
     public function primorsky()
     {
       	$data['main']='russia_states/primorsky.php';
-      	$data['heading']='Primorsky';
+      	$data['heading']='Primorsky Krai';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -559,7 +595,7 @@ class russia_states extends CI_Controller
     public function pskorv()
     {
       	$data['main']='russia_states/pskorv.php';
-      	$data['heading']='Pskorv';
+      	$data['heading']='Pskorv Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -567,21 +603,21 @@ class russia_states extends CI_Controller
       	
       	$this->load->view('russia_states/pskorv', $data);
     }
-    public function republic_altal()
+    public function republic_altai()
     {
-      	$data['main']='russia_states/republic_altal.php';
-      	$data['heading']='Republic Altal';
+      	$data['main']='russia_states/republic_altai.php';
+      	$data['heading']='Altai (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/republic_altal', $data);
+      	$this->load->view('russia_states/republic_altai', $data);
     }
     public function rostov()
     {
       	$data['main']='russia_states/rostov.php';
-      	$data['heading']='Rostov';
+      	$data['heading']='Rostov Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -592,7 +628,7 @@ class russia_states extends CI_Controller
     public function ryazan()
     {
       	$data['main']='russia_states/ryazan.php';
-      	$data['heading']='Ryazan';
+      	$data['heading']='Ryazan Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -603,7 +639,7 @@ class russia_states extends CI_Controller
     public function sakha()
     {
       	$data['main']='russia_states/sakha.php';
-      	$data['heading']='Sakha';
+      	$data['heading']='Sakha (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -614,7 +650,7 @@ class russia_states extends CI_Controller
     public function sakhalin()
     {
       	$data['main']='russia_states/sakhalin.php';
-      	$data['heading']='Sakhalin';
+      	$data['heading']='Sakhalin Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -625,7 +661,7 @@ class russia_states extends CI_Controller
     public function samara()
     {
       	$data['main']='russia_states/samara.php';
-      	$data['heading']='Samara';
+      	$data['heading']='Samara Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -633,21 +669,21 @@ class russia_states extends CI_Controller
       	
       	$this->load->view('russia_states/samara', $data);
     }
-    public function samtov()
+    public function saratov()
     {
-      	$data['main']='russia_states/samtov.php';
-      	$data['heading']='Samtov';
+      	$data['main']='russia_states/saratov.php';
+      	$data['heading']='Saratov Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/samtov', $data);
+      	$this->load->view('russia_states/saratov', $data);
     }
     public function smolensk()
     {
       	$data['main']='russia_states/smolensk.php';
-      	$data['heading']='Smolensk';
+      	$data['heading']='Smolensk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -658,7 +694,7 @@ class russia_states extends CI_Controller
     public function stavropol()
     {
       	$data['main']='russia_states/stavropol.php';
-      	$data['heading']='Stavropol';
+      	$data['heading']='Stavropol Krai';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -669,7 +705,7 @@ class russia_states extends CI_Controller
     public function sverdlovsk()
     {
       	$data['main']='russia_states/sverdlovsk.php';
-      	$data['heading']='Sverdlovsk';
+      	$data['heading']='Sverdlovsk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -680,7 +716,7 @@ class russia_states extends CI_Controller
     public function tambov()
     {
       	$data['main']='russia_states/tambov.php';
-      	$data['heading']='Tambov';
+      	$data['heading']='Tambov Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -688,21 +724,21 @@ class russia_states extends CI_Controller
       	
       	$this->load->view('russia_states/tambov', $data);
     }
-    public function tartastan()
+    public function tatarstan()
     {
-      	$data['main']='russia_states/tartastan.php';
-      	$data['heading']='Tartastan';
+      	$data['main']='russia_states/tatarstan.php';
+      	$data['heading']='Tatarstan (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/tartastan', $data);
+      	$this->load->view('russia_states/tatarstan', $data);
     }
     public function tomsk()
     {
       	$data['main']='russia_states/tomsk.php';
-      	$data['heading']='Tomsk';
+      	$data['heading']='Tomsk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -713,7 +749,7 @@ class russia_states extends CI_Controller
     public function tula()
     {
       	$data['main']='russia_states/tula.php';
-      	$data['heading']='Tula';
+      	$data['heading']='Tula Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -724,7 +760,7 @@ class russia_states extends CI_Controller
     public function tuva()
     {
       	$data['main']='russia_states/tuva.php';
-      	$data['heading']='Tuva';
+      	$data['heading']='Tuva (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -735,7 +771,7 @@ class russia_states extends CI_Controller
     public function tver()
     {
       	$data['main']='russia_states/tver.php';
-      	$data['heading']='Tver';
+      	$data['heading']='Tver Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -743,21 +779,21 @@ class russia_states extends CI_Controller
       	
       	$this->load->view('russia_states/tver', $data);
     }
-    public function tyamen()
+    public function tyumen()
     {
-      	$data['main']='russia_states/tyamen.php';
-      	$data['heading']='Tyamen';
+      	$data['main']='russia_states/tyumen.php';
+      	$data['heading']='Tyumen Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/tyamen', $data);
+      	$this->load->view('russia_states/tyumen', $data);
     }
     public function udmurtia()
     {
       	$data['main']='russia_states/udmurtia.php';
-      	$data['heading']='Udmurtia';
+      	$data['heading']='Udmurtia (Republic)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -765,32 +801,32 @@ class russia_states extends CI_Controller
       	
       	$this->load->view('russia_states/udmurtia', $data);
     }
-    public function ulianovsk()
+    public function ulyanovsk()
     {
-      	$data['main']='russia_states/ulianovsk.php';
-      	$data['heading']='Ulianovsk';
+      	$data['main']='russia_states/ulyanovsk.php';
+      	$data['heading']='Ulyanovsk Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/ulianovsk', $data);
+      	$this->load->view('russia_states/ulyanovsk', $data);
     }
-    public function vladmi()
+    public function vladimir()
     {
-      	$data['main']='russia_states/vladmi.php';
-      	$data['heading']='Vladmi';
+      	$data['main']='russia_states/vladimir.php';
+      	$data['heading']='Vladimir Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/vladmi', $data);
+      	$this->load->view('russia_states/vladimir', $data);
     }
     public function volgograd()
     {
       	$data['main']='russia_states/volgograd.php';
-      	$data['heading']='Volgograd';
+      	$data['heading']='Volgograd Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -798,21 +834,21 @@ class russia_states extends CI_Controller
       	
       	$this->load->view('russia_states/volgograd', $data);
     }
-    public function vologcia()
+    public function vologda()
     {
-      	$data['main']='russia_states/vologcia.php';
-      	$data['heading']='Vologcia';
+      	$data['main']='russia_states/vologda.php';
+      	$data['heading']='Vologda Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('russia_states/vologcia', $data);
+      	$this->load->view('russia_states/vologda', $data);
     }
     public function voronezh()
     {
       	$data['main']='russia_states/voronezh.php';
-      	$data['heading']='Voronezh';
+      	$data['heading']='Voronezh Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -823,7 +859,7 @@ class russia_states extends CI_Controller
     public function yamalia()
     {
       	$data['main']='russia_states/yamalia.php';
-      	$data['heading']='Yamalia';
+      	$data['heading']='Yamalo-Nenets Autonomous Okrug';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -834,7 +870,7 @@ class russia_states extends CI_Controller
     public function yaroslavl()
     {
       	$data['main']='russia_states/yaroslavl.php';
-      	$data['heading']='Yaroslavl';
+      	$data['heading']='Yaroslavl Oblast';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
@@ -845,7 +881,7 @@ class russia_states extends CI_Controller
     public function zabaykalsk()
     {
       	$data['main']='russia_states/zabaykalsk.php';
-      	$data['heading']='Zabaykalsk';
+      	$data['heading']='Zabaykalsk Krai';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())

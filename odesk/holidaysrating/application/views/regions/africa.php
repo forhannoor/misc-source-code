@@ -3,12 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="description" content="Amazing Africa, see the big 5!"/>
-<meta name="keywords" content="africa"/>
+<meta name="keywords" content="Africa"/>
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta content="<?php echo base_url() ?>assets/images/thumbs/africa.jpg" property="og:image" />
 
-<title>Africa</title>
+<title>Africa | Holidaysrating.com </title>
 <link href="<?php echo base_url() ?>assets/css/region.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -23,9 +24,9 @@
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 </div>
@@ -34,6 +35,7 @@
 <div id="slider" >
 <center><img src="<?php echo base_url() ?>assets/images/regions/africa/africa.jpg" height="412" width="940" alt="Africa" title="Africa" usemap="#africa"/></center>
 <map name="africa">
+<area shape="poly" coords="754,339,761,332,769,340,761,347," href="<?php echo base_url() ?>index.php/africa_countries/mauritius" alt="Mauritius" title="Mauritius"   />
 <area shape="poly" coords="247, 51, 246, 57, 220, 58, 216, 72, 207, 73, 203, 82, 172, 83, 179, 74, 194, 64, 199, 55, 207, 52, 213, 48" href="<?php echo base_url() ?>index.php/africa_countries/western_sahara" alt="Western Sahara" title="Western Sahara"/>
 <area shape="poly" coords="246, 46, 225, 44, 242, 38, 243, 27, 249, 23, 274, 12, 282, 3, 288, 7, 310, 9, 309, 23, 289, 27, 272, 35, 251, 40" href="<?php echo base_url() ?>index.php/africa_countries/morocco" alt="Morocco" title="Morocco"/>
 <area shape="poly" coords="315, 9, 317, 26, 297, 29, 278, 40, 254, 43, 250, 50, 339, 94, 348, 100, 406, 77, 397, 72, 391, 62, 395, 56, 395, 46, 380, 19, 386, 12, 386, 3, 334, 3, 326, 6" href="<?php echo base_url() ?>index.php/africa_countries/algeria" alt="Algeria" title="Algeria"/>
@@ -86,16 +88,18 @@
 <area shape="poly" coords="419, 245, 428, 242, 451, 243, 461, 255, 477, 257, 480, 250, 497, 252, 500, 272, 516, 273, 516, 281, 501, 281, 500, 304, 496, 310, 469, 305, 432, 305, 423, 303, 413, 304, 423, 282, 428, 278, 429, 269" href="<?php echo base_url() ?>index.php/africa_countries/angola" alt="Angola" title="Angola"/>
 <area shape="rect" coords="672, 256, 712, 295" href="<?php echo base_url() ?>index.php/africa_countries/comoros" alt="Comoros" title="Comoros" />
 <area shape="poly" coords="739, 283, 742, 303, 734, 315, 704, 357, 693, 356, 687, 359, 680, 354, 680, 347, 678, 339, 688, 327, 688, 313, 693, 305, 709, 303" href="<?php echo base_url() ?>index.php/africa_countries/madagascar" alt="Madagascar" title="Madagascar" />
+<area shape="poly" coords="737,249,750,248,750,261,739,258," href="<?php echo base_url() ?>index.php/africa_countries/seychelles" alt="Seychelles" title="Seychelles"   />
 </map>
 </div>
-<div id="content"><h1>Africa</h1>
+<div id="content">
+<h1><?php echo $heading ?></h1>
 <div class="clear"></div>
 <div class="left-side">
 <div class="top"></div>
 <div class="middle">
 <div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
-<h2>Status</h2>
+<h2>Welcome</h2>
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
@@ -108,10 +112,16 @@
 <?php echo '<br>' ?>
 <?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
 <?php echo 'Member since&nbsp;: '.$joined_in ?>
-<?php echo '<br>' ?>
+<br />
 <?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
 <?php echo 'Last logged in: '.$last_login ?>
-<?php echo '<br>' ?>
+<?php $this->load->model('User_model') ?>
+<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<br/>
+<br/>
+<?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
+<br/>
+<br/>
 <?php echo anchor('auth/logout', 'Logout') ?>
 <?php else: ?>
 <h2>Member Login</h2>
@@ -122,11 +132,16 @@
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
+
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertisement Here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo $u_online->username ?></li>
+<?php endforeach ?>
+</ul>
 </div>
 <div class="bottom"></div>
 </div>
@@ -134,9 +149,21 @@
 <div class="center">
 <div class="hot">
 <h1>INTRODUCTION</h1>
+<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/africa.jpg" alt="Africa" width="100px" height="70px" /></div>
+<div class="intro">
 <p><strong>Africa</strong> stretches from the eastern great wildlife reserves; the Serengeti plains and the Rift Valley lake system to South Africa, home of 
-Kruger National Park. Follow the migration trails and see the big FIVE (lion, elephant, rhino, leopard and buffulo)! 
-Further north lie the countries of the Horn of Africa and the source of the longest river in the world, the Nile River, which flows northwards over 6690 kilometres to end in the Mediterranean Sea. </p>
+Kruger National Park.</p> <p>Follow the migration trails and see the big FIVE (lion, elephant, rhino, leopard and buffulo)! 
+Further north are the countries of the Horn of Africa and the source of the longest river in the world, the Nile River, which flows northwards over 6690 kilometres to end in the Mediterranean Sea. </p>
+</div>
+
+<div class="options">
+<ul>
+<li><?php echo anchor('africa_cities/cities_africa', img('assets/images/buttonblue-cities-bg.png')); ?></li>
+<li><?php echo anchor('africa_national_parks/africa_nat_parks', img('assets/images/buttonblue-parks-bg.png')); ?></li>
+<li><?php echo anchor('help/external_links', img('assets/images/buttonblue-links-bg.png')); ?></li>
+</ul>
+<br />
+</div>
 
 <h1>COUNTRIES</h1>
 <p style="margin-bottom:20px;text-align:center">Click on the map or choose a country below:</p>
@@ -144,110 +171,106 @@ Further north lie the countries of the Horn of Africa and the source of the long
 		<tr>
 			<td><?php echo anchor ('africa_countries/algeria', 'Algeria') ?></td>
 			<td><?php echo anchor ('africa_countries/gabon', 'Gabon') ?></td>
-			<td><?php echo anchor ('africa_countries/rwanda', 'Rwanda') ?></td>
+			<td><?php echo anchor ('africa_countries/nigeria', 'Nigeria') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/angola', 'Angola') ?></td>
 			<td><?php echo anchor ('africa_countries/gambia', 'Gambia') ?></td>
-			<td><?php echo anchor ('africa_countries/sao_tome_and_principe', 'São Tomé and Príncipe') ?></td>
+			<td><?php echo anchor ('africa_countries/rwanda', 'Rwanda') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/benin', 'Benin') ?></td>
 			<td><?php echo anchor ('africa_countries/ghana', 'Ghana') ?></td>
-			<td><?php echo anchor ('africa_countries/senegal', 'Senegal') ?></td>
+			<td><?php echo anchor ('africa_countries/sao_tome_and_principe', 'São Tomé and Príncipe') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/botswana', 'Botswana') ?></td>
 			<td><?php echo anchor ('africa_countries/guinea', 'Guinea') ?></td>
-			<td><?php echo anchor ('africa_countries/sierra_leone', 'Sierra Leone') ?></td>
+			<td><?php echo anchor ('africa_countries/senegal', 'Senegal') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/burkino_faso', 'Burkino Faso') ?></td>
 			<td><?php echo anchor ('africa_countries/guinea_bissau', 'Guinea Bissau') ?></td>
-			<td><?php echo anchor ('africa_countries/somalia', 'Somalia') ?></td>
+			<td><?php echo anchor ('africa_countries/seychelles', 'Seychelles') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/burundi', 'Burundi') ?></td>
 			<td><?php echo anchor ('africa_countries/kenya', 'Kenya') ?></td>
-			<td><?php echo anchor ('africa_countries/south_africa', 'South Africa') ?></td>
+			<td><?php echo anchor ('africa_countries/sierra_leone', 'Sierra Leone') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/cameroon', 'Cameroon') ?></td>
 			<td><?php echo anchor ('africa_countries/lesotho', 'Lesotho') ?></td>
-			<td><?php echo anchor ('africa_countries/south_sudan', 'South Sudan') ?></td>
+			<td><?php echo anchor ('africa_countries/somalia', 'Somalia') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/central_african_republic', 'Central African Republic') ?></td>
 			<td><?php echo anchor ('africa_countries/liberia', 'liberia') ?></td>
-			<td><?php echo anchor ('africa_countries/sudan', 'Sudan') ?></td>
+			<td><?php echo anchor ('africa_countries/south_africa', 'South Africa') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/chad', 'Chad') ?></td>
 			<td><?php echo anchor ('africa_countries/libya', 'libya') ?></td>
-			<td><?php echo anchor ('africa_countries/swaziland', 'Swaziland') ?></td>
+			<td><?php echo anchor ('africa_countries/south_sudan', 'South Sudan') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/comoros', 'Comoros') ?></td>
 			<td><?php echo anchor ('africa_countries/madagascar', 'Madagascar') ?></td>
-			<td><?php echo anchor ('africa_countries/tanzania', 'Tanzania') ?></td>
+			<td><?php echo anchor ('africa_countries/sudan', 'Sudan') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/congo', 'Congo') ?></td>
 			<td><?php echo anchor ('africa_countries/malawi', 'Malawi') ?></td>
-			<td><?php echo anchor ('africa_countries/togo', 'togo') ?></td>
+			<td><?php echo anchor ('africa_countries/swaziland', 'Swaziland') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/cote_d_ivore', 'Cote d Ivore') ?></td>
 			<td><?php echo anchor ('africa_countries/mali', 'Mali') ?></td>
-			<td><?php echo anchor ('africa_countries/tunisia', 'Tunisia') ?></td>
+			<td><?php echo anchor ('africa_countries/tanzania', 'Tanzania') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/democratic_republic_of_congo', 'Democratic Republic of Congo') ?></td>
 			<td><?php echo anchor ('africa_countries/mauritania', 'Mauritania') ?></td>
-			<td><?php echo anchor ('africa_countries/uganda', 'Uganda') ?></td>
+			<td><?php echo anchor ('africa_countries/togo', 'Togo') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/djibouti', 'Djibouti') ?></td>
-			<td><?php echo anchor ('africa_countries/morocco', 'Morocco') ?></td>
-			<td><?php echo anchor ('africa_countries/western_sahara', 'Western Sahara') ?></td>
+			<td><?php echo anchor ('africa_countries/mauritius', 'Mauritius') ?></td>
+			<td><?php echo anchor ('africa_countries/tunisia', 'Tunisia') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/egypt', 'Egypt') ?></td>
-			<td><?php echo anchor ('africa_countries/mozambique', 'Mozambique') ?></td>
-			<td><?php echo anchor ('africa_countries/zambia', 'Zambia') ?></td>
+			<td><?php echo anchor ('africa_countries/morocco', 'Morocco') ?></td>
+			<td><?php echo anchor ('africa_countries/uganda', 'Uganda') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/equatorial_guinea', 'Equatorial Guinea') ?></td>
-			<td><?php echo anchor ('africa_countries/namibia', 'Namibia') ?></td>
-			<td><?php echo anchor ('africa_countries/zimbabwe', 'Zimbabwe') ?></td>
+			<td><?php echo anchor ('africa_countries/mozambique', 'Mozambique') ?></td>
+			<td><?php echo anchor ('africa_countries/western_sahara', 'Western Sahara') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/eritrea', 'Eritrea') ?></td>
-			<td><?php echo anchor ('africa_countries/niger', 'Niger') ?></td>
-			<td>&nbsp;</td>
+			<td><?php echo anchor ('africa_countries/namibia', 'Namibia') ?></td>
+			<td><?php echo anchor ('africa_countries/zambia', 'Zambia') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor ('africa_countries/ethiopia', 'Ethiopia') ?></td>
-			<td><?php echo anchor ('africa_countries/nigeria', 'Nigeria') ?></td>
-			<td>&nbsp;</td>
+			<td><?php echo anchor ('africa_countries/niger', 'Niger') ?></td>
+			<td><?php echo anchor ('africa_countries/zimbabwe', 'Zimbabwe') ?></td>
 		</tr>
 	</table>
 
 
 </div>
 <div class="clear"></div>
-<div class="latest-news">
-</div>
-
 
 </div>
-
 
 <div class="right-side">
 <div class="top"></div>
 <div class="middle">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;Africa</span></p>
-<iframe width="180" height="100"  src="http://www.youtube-nocookie.com/embed/PdiD_LkEPC0" frameborder="0" allowfullscreen></iframe>	
+<iframe width="180" height="100"  src="http://www.youtube-nocookie.com/embed/PdiD_LkEPC0?rel=0" frameborder="0" allowfullscreen></iframe>	
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
 <h2>Facts</h2>
 <ol>
@@ -269,7 +292,7 @@ Further north lie the countries of the Horn of Africa and the source of the long
 <td><a class="addthis_button_tweet"></a></td>
 </tr>
 <tr>
-<td><a class="addthis_button_pinterest_pinit"></a></td>
+<td><a class="addthis_button_google_plusone" g:plusone:size="medium"></a></td>
 <td><a class="addthis_counter addthis_pill_style"></a></td>
 </tr>
 </table>
@@ -295,18 +318,9 @@ Further north lie the countries of the Horn of Africa and the source of the long
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* Africa */
-google_ad_slot = "2292984340";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-
+<!-- BEGIN AfricaGuide.com Affiliates -->
+<a href="http://www.africaguide.com/travel/aff/show_page.php?aid=671&grp=2&id=21" target="_blank"><img src="<?php echo base_url() ?>assets/images/africaguide.gif" alt="Visit The Africa Guide for Tours & Safaris"></a>
+<!-- END AfricaGuide.com Affiliates -->
 </div>
 <div class="clear"></div>
 <div class="first-column">
@@ -314,12 +328,12 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
+<li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 </ul>
 </div>
 <div class="first-column">
 <ul>
-<li><?php echo anchor('regions/africa', 'AFRICA') ?></li>
+<li class="active"><?php echo anchor('regions/africa', 'AFRICA') ?></li>
 <li><?php echo anchor('regions/asia', 'ASIA') ?></li>
 <li><?php echo anchor('regions/caribbean', 'CARIBBEAN') ?></li>
 <li><?php echo anchor('regions/central_america', 'CENTRAL AMERICA') ?></li>
@@ -338,7 +352,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
-<li><?php echo anchor('help/helpcenter', 'HELPCENTER') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 <div class="logo"><center><img src="<?php echo base_url() ?>assets/images/photos.jpg" alt="logo" /></center>

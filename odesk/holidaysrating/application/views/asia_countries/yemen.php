@@ -24,13 +24,13 @@
 	<img src="<?php echo base_url() ?>assets/images/logo.png" width="350" height="78" alt="logo" /></div>
 <div class="menu">
 <ul>
-<li><a href="../../../index.html">HOME</a></li>
-<li><a href="../../../my-profile/login.html">MY PROFILE</a></li>
-<li><a href="../../../main/favorites.html">FAVORITES</a></li>
-<li><a href="../../../main/worldmap.html">WORLDMAP</a></li>
-<li><a href="../../../main/vote-now.html">VOTE NOW</a></li>
-<li><a href="../../../main/video-dump.html">VIDEO DUMP</a></li>
-<li><a href="../../../main/blog.html">BLOG</a></li>
+<li><?php echo anchor('home/index', 'HOME') ?></li>
+<li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
+<li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
+<li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
+<li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
+<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 </div>
@@ -91,13 +91,14 @@
 </div>
 
 <div id="content">
-	<h1>Yemen</h1>
+<h1><?php echo $heading ?></h1>
 <div class="clear"></div>
 <div class="left-side">
 <div class="top"></div>
 <div class="middle">
+<div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
-<h2>Status</h2>
+<h2>Welcome</h2>
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
@@ -110,19 +111,28 @@
 <?php echo '<br>' ?>
 <?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
 <?php echo 'Member since&nbsp;: '.$joined_in ?>
-<?php echo '<br>' ?>
+<br />
 <?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
 <?php echo 'Last logged in: '.$last_login ?>
-<?php echo '<br>' ?>
+<?php $this->load->model('User_model') ?>
+<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<br/>
+<br/>
+<?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
+<br/>
+<br/>
 <?php echo anchor('auth/logout', 'Logout') ?>
 <?php else: ?>
-<?php //echo anchor('auth/login', 'Login') ?>
+<h2>Member Login</h2>
 <?php include APPPATH.'views/auth/my_login.php' ?>
-<br/>
+<br />
 <?php echo anchor('auth/forgot_password', 'Forgot Password') ?>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
+</div>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
+
 <h2>Members online</h2>
 <p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
@@ -149,13 +159,17 @@
 <div class="top"></div>
 
 <div class="middle">
-<p style="font-size:xx-small">You are here&gt;<a href="../../../main/worldmap.html">Worldmap</a>&gt; <a href="../../regions/asia.html">Asia</a>&gt;Yemen</p>
+<p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;<?php echo anchor('regions/asia', 'Asia') ?>&gt; Yemen</span></p>
 <iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=yemen&amp;aq=&amp;sll=14.058324,108.277199&amp;sspn=27.542622,53.569336&amp;ie=UTF8&amp;hq=&amp;hnear=Yemen&amp;t=m&amp;ll=15.792254,47.614746&amp;spn=2.537005,3.823242&amp;z=6&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=yemen&amp;aq=&amp;sll=14.058324,108.277199&amp;sspn=27.542622,53.569336&amp;ie=UTF8&amp;hq=&amp;hnear=Yemen&amp;t=m&amp;ll=15.792254,47.614746&amp;spn=2.537005,3.823242&amp;z=6" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-<h2>Adventures</h2>
-<p>Adventure</p>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
+	
+<h2>Cities</h2>
+<ul>
+<li><?php echo anchor('home/index', 'Home') ?></li>
+</ul>
 
 
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 <h2>Like it..</h2>
 <div class="social">
 <!-- AddThis Button BEGIN -->
@@ -166,7 +180,7 @@
 <td><a class="addthis_button_tweet"></a></td>
 </tr>
 <tr>
-<td><a class="addthis_button_pinterest_pinit"></a></td>
+<td><a class="addthis_button_google_plusone" g:plusone:size="medium"></a></td>
 <td><a class="addthis_counter addthis_pill_style"></a></td>
 </tr>
 </table>
@@ -176,8 +190,11 @@
 </div>
 
 <div class="clear"></div>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>External Links</h2>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
+<h2>TOP Adventures</h2>
+<ul>
+<li><?php echo anchor('home/index', 'Home') ?></li>
+</ul>
 </div>
 <div class="bottom"></div>
 
@@ -186,14 +203,26 @@
 <div class="clear"></div>
 <div id="footer">
 
-<div class="google"></div>
+<div class="google">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-0797455318364345";
+/* AsiaCountries */
+google_ad_slot = "6132487545";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
 <div class="clear"></div>
 <div class="first-column">
 <ul>
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
+<li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 </ul>
 </div>
 <div class="first-column">
@@ -215,9 +244,9 @@
 <div class="first-column">
 <ul>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
-<li><?php echo anchor('news/main_news', 'LATEST NEWS') ?></li>
+<li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
-<li><?php echo anchor('help/helpcenter', 'HELPCENTER') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 <div class="logo"><center><img src="<?php echo base_url() ?>assets/images/photos.jpg" alt="logo" /></center>

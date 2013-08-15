@@ -37,6 +37,6 @@ echo form_reset('', 'Reset');
 echo form_close();
 echo '<br/>';
 echo '<br/>';
-echo anchor('user/index', 'Back');
+echo anchor('user/index', img(base_url().'assets/assets/back.png'));
 ?>
 </div>

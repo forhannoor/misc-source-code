@@ -19,6 +19,14 @@ class Video_model extends CI_Model
         return $this->db->get('videos');
     }
     
+    public function get_videos_latest()
+    {
+        $sql = "SELECT * FROM videos ORDER BY uploaded_at DESC LIMIT 5";
+        $rows = R::getAll($sql);
+        $videos = R::convertToBeans('videos', $rows);
+        return $videos;
+    }
+    
     public function upload_video()
     {
         $uploaded_data=$this->upload->data();
@@ -26,6 +34,7 @@ class Video_model extends CI_Model
         $data = array(
             'name' => $uploaded_data['file_name'],
             'orig_name' => $uploaded_data['orig_name'],
+            'title' => $this->input->post('title'),
             'region' => $this->input->post('region'),
             'uploader' => $this->input->post('uploader')
         );

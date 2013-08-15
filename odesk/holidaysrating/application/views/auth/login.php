@@ -1,17 +1,16 @@
-<h1>Login</h1>
-<p>Please login with your email/username and password below.</p>
-	
 <div id="infoMessage"><?php echo $message;?></div>
 
 <?php echo form_open("auth/login");?>
   	
   <p>
-    <label for="identity">Email/Username:</label>
+    <label for="identity">Email:</label>
+    <br />
     <?php echo form_input($identity);?>
   </p>
 
   <p>
     <label for="password">Password:</label>
+    <br />
     <?php echo form_input($password);?>
   </p>
 
@@ -24,5 +23,5 @@
   <p><?php echo form_submit('submit', 'Login');?></p>
     
 <?php echo form_close();?>
-
+<br />
 <p><a href="forgot_password">Forgot your password?</a></p>

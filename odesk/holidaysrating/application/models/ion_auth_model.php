@@ -2031,10 +2031,17 @@ class Ion_auth_model extends CI_Model
         
         foreach($q->result() as $row)
         {
-            if(($current_time_stamp - $row->last_login) < 900)
+            if(($current_time_stamp - $row->last_login) < 1800)
                 $new_q[] = $row;
         }
         
         return $new_q;
+    }
+    
+    /* get first name */
+    public function get_user_information($id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->get('users');
     }
 }

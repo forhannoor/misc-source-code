@@ -33,16 +33,16 @@ class regions extends CI_Controller
     	//$this->load->view('template', $data);
     }
 
-    public function antartica()
+    public function antarctica()
     {
-    	$data['main']='regions/antartica.php';
-    	$data['heading']='Antartica';
+    	$data['main']='regions/antarctica.php';
+    	$data['heading']='Antarctica';
     	$this->load->model('User_model');
     	
     	if($this->ion_auth->logged_in())
 			$data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
     	
-    	$this->load->view('regions/antartica', $data);
+    	$this->load->view('regions/antarctica', $data);
     	//$this->load->view('template', $data);
     }
     public function asia()

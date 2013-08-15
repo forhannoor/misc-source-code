@@ -204,6 +204,18 @@ class asia_countries extends CI_Controller
       	
       	$this->load->view('asia_countries/malaysia', $data);
     }
+    public function maldives()
+    {
+      	$data['main']='asia_countries/maldives.php';
+      	$data['heading']='Maldives';
+      	$this->load->model('User_model');
+      	
+      	if($this->ion_auth->logged_in())
+      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+      	
+      	$this->load->view('asia_countries/maldives', $data);
+    }
+
     public function mongolia()
     {
       	$data['main']='asia_countries/mongolia.php';
@@ -259,16 +271,16 @@ class asia_countries extends CI_Controller
       	
       	$this->load->view('asia_countries/pakistan', $data);
     }
-    public function phillipines()
+    public function philippines()
     {
-      	$data['main']='asia_countries/phillipines.php';
-      	$data['heading']='Phillipines';
+      	$data['main']='asia_countries/philippines.php';
+      	$data['heading']='Philippines';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('asia_countries/phillipines', $data);
+      	$this->load->view('asia_countries/philippines', $data);
     }
     public function qatar()
     {
@@ -358,6 +370,18 @@ class asia_countries extends CI_Controller
       	
       	$this->load->view('asia_countries/thailand', $data);
     }
+        public function turkey()
+    {
+      	$data['main']='asia_countries/turkey.php';
+      	$data['heading']='Turkey';
+      	$this->load->model('User_model');
+      	
+      	if($this->ion_auth->logged_in())
+      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+      	
+      	$this->load->view('asia_countries/turkey', $data);
+    }
+
     public function turkmenistan()
     {
       	$data['main']='asia_countries/turkmenistan.php';

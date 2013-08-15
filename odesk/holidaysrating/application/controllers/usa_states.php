@@ -369,6 +369,17 @@ class usa_states extends CI_Controller
       	
       	$this->load->view('usa_states/north_carolina', $data);
     }
+    public function north_dakota()
+    {
+      	$data['main']='usa_states/north_dakota.php';
+      	$data['heading']='North Dakota ';
+      	$this->load->model('User_model');
+      	
+      	if($this->ion_auth->logged_in())
+      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+      	
+      	$this->load->view('usa_states/north_dakota', $data);
+    }
     public function ohio()
     {
       	$data['main']='usa_states/ohio.php';
@@ -512,7 +523,7 @@ class usa_states extends CI_Controller
       	
       	$this->load->view('usa_states/washington', $data);
     }
-    public function west_viginia()
+    public function west_virginia()
     {
       	$data['main']='usa_states/west_virginia.php';
       	$data['heading']='West Virginia';

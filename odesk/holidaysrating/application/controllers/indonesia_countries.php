@@ -75,7 +75,7 @@ class indonesia_countries extends CI_Controller
     public function new_guinea()
     {
       	$data['main']='indonesia_countries/new_guinea.php';
-      	$data['heading']='New Guinea';
+      	$data['heading']='New Guinea (West Papua)';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())

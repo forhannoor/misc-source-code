@@ -127,16 +127,16 @@ class caribbean_countries extends CI_Controller
       	
       	$this->load->view('caribbean_countries/curacao', $data);
     }
-    public function domenica()
+    public function dominica()
     {
-      	$data['main']='caribbean_countries/domenica.php';
+      	$data['main']='caribbean_countries/dominica.php';
       	$data['heading']='Domenica';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('caribbean_countries/domenica', $data);
+      	$this->load->view('caribbean_countries/dominica', $data);
     }
     public function dominican_republic()
     {
@@ -170,6 +170,17 @@ class caribbean_countries extends CI_Controller
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
       	$this->load->view('caribbean_countries/grenadines', $data);
+    }
+        public function guadeloupe()
+    {
+      	$data['main']='caribbean_countries/guadeloupe.php';
+      	$data['heading']='Guadeloupe';
+      	$this->load->model('User_model');
+      	
+      	if($this->ion_auth->logged_in())
+      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+      	
+      	$this->load->view('caribbean_countries/guadeloupe', $data);
     }
     public function haiti()
     {
@@ -295,7 +306,7 @@ class caribbean_countries extends CI_Controller
     public function sint_maarten()
     {
       	$data['main']='caribbean_countries/sint_maarten.php';
-      	$data['heading']='Sint Maarten';
+      	$data['heading']='Sint Maarten/ Saint Martin';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())

@@ -1,18 +1,3 @@
-<style type="text/css">
-	/*body { background-color: #fdfdfd; padding: 0 20px; color:#000; font: 13px/18px monospace; width: 800px;}
-	a { color: #360; }
-	h3 { padding-top: 20px; } */
-</style>
-<?php foreach($video->result() as $v): ?>
-<?php $file_name = $v->name ?>
-<?php $temp = explode('.', $file_name) ?>
-<?php $extension = $temp[1] ?>
-<?php $region = $v->region ?>
-<?php endforeach ?>
-<video id="player_a" class="projekktor" poster="media/intro.png" title="this is Projekktor" width="auto" height="385" controls>
-    <source src="../../../uploads/media/videos/<?php echo $file_name ?>" type="video/<?php echo $extension ?>" />
-</video>
-
 <script type="text/javascript">
 $(document).ready(function() {
     projekktor(
@@ -24,6 +9,7 @@ $(document).ready(function() {
     );
 });
 </script>
+
 <br />
 <h2>Comments</h2>
 <br />
@@ -36,7 +22,7 @@ $(document).ready(function() {
 <?php $commenter = $this->User_model->get_username($comment->cid) ?>
 <?php foreach($commenter as $cmntr): ?>
 <p><?php echo $cmntr->username ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<?php echo anchor('user/send_message/'.$comment->cid, 'PM') ?>
+<?php echo anchor('user/send_message/'.$comment->cid, img(base_url().'assets/images/pm-icon.gif')) ?>
 </p>
 <?php endforeach ?>
 <p><?php echo $comment->time ?></p>

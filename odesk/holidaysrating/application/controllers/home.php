@@ -6,7 +6,7 @@ class Home extends CI_Controller
     {
         $data['main']='home.php';
         $data['heading']='Check out our favorites...';
-		$this->load->model('User_model');
+        $data['videos'] = $this->Video_model->get_videos_latest();
 		
         if($this->ion_auth->logged_in())
 			$data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
@@ -20,7 +20,7 @@ class Home extends CI_Controller
         /* allowed file types */
         $config['allowed_types']='gif|png|jpg|pdf|doc|rtf|txt';
         /* allowed file size in kilobyte */
-        $config['max_size']=2000;
+        $config['max_size']=8000;
         $config['encrypt_name']=FALSE;
         $this->load->library('upload', $config);
         
@@ -57,15 +57,34 @@ class Home extends CI_Controller
                 if($fpath != '')
                     unlink($fpath);
                     
-                $data['main']='thank_you_view.php';
+                $data['main']='thank_you.php';
                 $data['heading'] = 'Message Sent';
-                $this->load->view('template', $data);
+                //$this->load->view('template', $data);
+                $this->load->view('template_view', $data);
             }
             
             /* wrong captcha, redirect to same page */
             else
             {
-                redirect('home/contact_us', 'refresh');
+                //redirect('home/contact_us', 'refresh');
+                
+                $generated_captcha = $this->generateRandStr(5);
+                $this->session->set_userdata('captcha', $generated_captcha);
+                $captcha = array(
+    			'word'			=> $generated_captcha,
+    			'img_path'		=> './captcha/',
+    			'img_url' 		=> base_url().'captcha/',
+    			'font_path'		=> './fonts/impact.ttf',
+    			'img_width'		=> '300',
+    			'img_height' 	=> '50',
+    			'expiration'	=> '3600'
+                );
+    
+        		$img = create_captcha($captcha);
+        		$data['image'] = $img['image'];
+                $data['main'] = 'contact_us.php';
+                $data['heading'] = 'Contact Us';
+                $this->load->view('template_view', $data);
             } 
         }
         
@@ -85,9 +104,11 @@ class Home extends CI_Controller
 
     		$img = create_captcha($captcha);
     		$data['image'] = $img['image'];
-            $data['main'] = 'contact_us_view.php';
+            $data['main'] = 'contact_us.php';
             $data['heading'] = 'Contact Us';
-            $this->load->view('template', $data);
+            $data['profile_info']=
+            $this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $this->load->view('template_view', $data);
         }       
     }
     
@@ -116,5 +137,16 @@ class Home extends CI_Controller
 		} 
 
 		return $randstr; 
+    }
+    
+    public function countrylist()
+    {
+        $data['countries'] = $this->Country_model->get_countries($this->uri->segment(3));
+        $this->load->view('countrylist', $data);
+    }
+    
+    public function search()
+    {
+        $country = $this->input->post('country');   // search key       
     }
 }

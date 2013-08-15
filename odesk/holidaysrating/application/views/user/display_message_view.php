@@ -17,10 +17,10 @@
 <br/><br/>
 <?php foreach($message->result() as $m): ?>
 <?php if($m->from != $this->ion_auth->user()->row()->id): ?>
-<?php echo anchor('user/send_message/'.$m->from, 'Reply') ?>
+<?php echo anchor('user/send_message/'.$m->from, img(base_url().'assets/assets/reply.png')) ?>
 <?php endif ?>
 <?php endforeach ?>
 <br/><br/>
-<?php echo anchor('user/inbox', 'Inbox') ?>
+<?php echo anchor('user/inbox', img(base_url().'assets/assets/inbox.png')) ?>
 <br/><br/>
-<?php echo anchor('user/sent', 'Sent Messages') ?>
+<?php echo anchor('user/sent', img(base_url().'assets/assets/sent.png')) ?>

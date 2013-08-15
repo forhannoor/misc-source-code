@@ -72,16 +72,16 @@ class europe_countries extends CI_Controller
       	
       	$this->load->view('europe_countries/belgium', $data);
     }
-    public function bosnia_herzegovinia()
+    public function bosnia_herzegovina()
     {
-      	$data['main']='europe_countries/bosnia_herzegovinia.php';
-      	$data['heading']='Bosnia Herzegovinia';
+      	$data['main']='europe_countries/bosnia_herzegovina.php';
+      	$data['heading']='Bosnia Herzegovina';
       	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
       	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
       	
-      	$this->load->view('europe_countries/bosnia_herzegovinia', $data);
+      	$this->load->view('europe_countries/bosnia_herzegovina', $data);
     }
     public function bulgaria()
     {

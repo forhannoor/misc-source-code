@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('Ion_auth_model', 'User_model', 'Video_model', 'Admin_model');
+$autoload['model'] = array('Ion_auth_model', 'User_model', 'Video_model', 'Admin_model', 'Country_model');
 
 
 /* End of file autoload.php */

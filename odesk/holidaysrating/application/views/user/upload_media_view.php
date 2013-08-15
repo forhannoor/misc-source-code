@@ -1,24 +1,24 @@
-<div>
-<?php
+<div class="profile_info_form">
+<?php echo validation_errors() ?>
 
-echo validation_errors();
-echo '<br/>';
-echo form_open_multipart('user/upload_media');
-echo form_label('Category', 'category');
-echo '&nbsp;&nbsp;';
-$categories=array('image' => 'Image', 'video' => 'Video');
-echo form_dropdown('category', $categories);
+<?php echo form_open_multipart('user/upload_media') ?>
 
-$media_upload=array('name' => 'userfile');
-echo '<br/>';
-echo form_upload($media_upload);
+<?php echo form_hidden('category', 'image') ?>
 
-if(isset($errors))
-    print_r($errors);
-    
-echo '<br/>';
-echo form_submit('', 'Submit');
-echo form_close();
+<?php $media_upload=array('name' => 'userfile') ?>
 
-?>
+<?php echo form_upload($media_upload) ?>
+
+<?php if(isset($errors)): ?>
+<?php print_r($errors) ?>
+<?php endif ?>
+
+<br />    
+
+<?php echo form_submit('', 'Submit') ?>
+<?php echo form_close() ?>
+
+<?php echo anchor('topmenu/videodump', 'Upload Video') ?>
+<br /><br />
+<?php echo anchor('user/index', img(base_url().'assets/assets/back.png')) ?>
 </div>

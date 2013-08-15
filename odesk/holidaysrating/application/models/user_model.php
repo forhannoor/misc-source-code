@@ -164,6 +164,15 @@ class User_model extends CI_Model
         return '..';
     }
     
+    /* count number of voters for a given picture or video or location */
+    public function count_voter($pid)
+    {
+    	$this->db->select('rating');
+        $this->db->where('name', $pid);
+        $this->db->from('ratings');
+        return $this->db->count_all_results();
+    }
+    
     /* gets avatar of specific user */
     public function get_avatar($user_id)
     {

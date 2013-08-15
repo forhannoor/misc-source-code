@@ -7,9 +7,10 @@
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta content="<?php echo base_url() ?>assets/images/blacklogo.jpg" property="og:image" />
 
-<title>Travel News</title>
-<link href="<?php echo base_url() ?>assets/css/holidayOthers.css" rel="stylesheet" type="text/css" />
+<title>Travel News | Holidaysrating.com</title>
+<link href="<?php echo base_url() ?>assets/css/holiday.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 </head>
 
@@ -23,9 +24,9 @@
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
-<li><?php echo anchor('topmenu/vote-now', 'VOTE NOW') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/main-blog', 'BLOG') ?></li>
+<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 </div>
@@ -48,14 +49,15 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 
 
-<div id="content"><h1>Travel News</h1>
+<div id="content">
+<h1><?php echo $heading ?></h1>
 <div class="clear"></div>
 <div class="left-side">
 <div class="top"></div>
 <div class="middle">
 <div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
-<h2>Status</h2>
+<h2>Welcome</h2>
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
@@ -68,10 +70,16 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <?php echo '<br>' ?>
 <?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
 <?php echo 'Member since&nbsp;: '.$joined_in ?>
-<?php echo '<br>' ?>
+<br />
 <?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
 <?php echo 'Last logged in: '.$last_login ?>
-<?php echo '<br>' ?>
+<?php $this->load->model('User_model') ?>
+<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<br/>
+<br/>
+<?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
+<br/>
+<br/>
 <?php echo anchor('auth/logout', 'Logout') ?>
 <?php else: ?>
 <h2>Member Login</h2>
@@ -82,11 +90,16 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
+
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertisement Here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo $u_online->username ?></li>
+<?php endforeach ?>
+</ul>
 </div>
 <div class="bottom"></div>
 </div>
@@ -104,7 +117,7 @@ Travel alerts, make sure you know all the inns and outs! <?php echo anchor('news
 </li>
 <li>
 <h3 style="border-bottom:thin #E2E2E2 solid">20 Januari 2013</h3>
-<p><img src="<?php echo base_url() ?>assets/images/sandlogo-small.jpg" alt="holidaysrating" />
+<p><img src="<?php echo base_url() ?>assets/images/sand.jpg" alt="holidaysrating" />
 Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience! <?php echo anchor('news/travel_alerts', 'read more') ?></p>
 </li>
 </ul>
@@ -133,7 +146,7 @@ Holidaysrating is a new, fun and social website where you can search for informa
 <td><a class="addthis_button_tweet"></a></td>
 </tr>
 <tr>
-<td><a class="addthis_button_pinterest_pinit"></a></td>
+<td><a class="addthis_button_google_plusone" g:plusone:size="medium"></a></td>
 <td><a class="addthis_counter addthis_pill_style"></a></td>
 </tr>
 </table>
@@ -169,7 +182,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
+<li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 </ul>
 </div>
 <div class="first-column">
@@ -191,9 +204,9 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="first-column">
 <ul>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
-<li class="active"><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
+<li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
-<li><?php echo anchor('help/helpcenter', 'HELPCENTER') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 <div class="logo"><center><img src="<?php echo base_url() ?>assets/images/logo-graffiti.jpg" alt="logo" /></center>

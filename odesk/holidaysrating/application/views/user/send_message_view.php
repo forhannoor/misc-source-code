@@ -1,3 +1,4 @@
+<div class="banner-form">
 <?php echo validation_errors() ?>
 <?php $this->load->model('User_model') ?>
 <?php $to = $this->User_model->get_username($this->uri->segment(3)) ?>
@@ -23,8 +24,10 @@
 <br/>
 <?php echo form_label('Content', 'content') ?>
 <br/>
-<?php echo form_input('content') ?>
+<?php echo form_textarea('content') ?>
+<br/>
 <br/>
 <?php echo form_submit('', 'Send') ?>
 &nbsp;&nbsp;
 <?php echo form_close() ?>
+</div>

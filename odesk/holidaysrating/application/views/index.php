@@ -2,13 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="Holidaysrating.com, the social travel community..."/>
-<meta name="keywords" content="Holiday, holidays, rating, vacation, destination, travel, travelguides, travelguide, travelblog, blog, Holidaysrating, Holidaysrating.com "/>
+<meta name="keywords" content="Rating, Vacation, Destination, Travel, Holidaysrating, Holidaysrating.com, Holiday, Traveling, Review, Tour "/>
+<meta name="description" content="If you are looking for travel information, want to share your holiday experience or find the best destinations.. Be our travelguide!" />
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
-<title>Holidaysrating</title>
-<!-- Holiday, Travel, rating -->
+<meta name="language" content="English" />
+<meta content="Holidaysrating.com | The social travel community" property="og:title" />
+<meta content="http://www.holidaysrating.com" property="og:url" />
+<meta content="website" property="og:type" />
+<meta content="<?php echo base_url() ?>assets/images/sandlogo.jpg" property="og:image" />
+
+<title>Holidaysrating.com | The social travel community</title>
+<!-- Holiday, Travel, Rating -->
 
 
 <link href="<?php echo base_url() ?>assets/css/holiday.css" rel="stylesheet" type="text/css" />
@@ -30,16 +36,16 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <div id="top-head">
 <div class="main">
-<div class="logo"><img src="<?php echo base_url() ?>assets/images/logo.png" width="350" height="78" alt="logo" /></div>
+<div class="logo"><img src="<?php echo base_url() ?>assets/images/logo.png" width="350" height="78" alt="Holidaysrating" /></div>
 <div class="menu">
 <ul>
 <li class="active"><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('help/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 </div>
@@ -50,7 +56,7 @@
  	<div class="container">
         <div class="wt-rotator">
             <div class="screen">
-                <noscript><img src="<?php echo base_url() ?>assets/images/triworks_abstract17.jpg"/></noscript>
+                <noscript><img src="<?php echo base_url() ?>assets/images/triworks_abstract17.jpg" alt="Travel" /></noscript>
             </div>
             <div class="c-panel">
                 <div class="buttons">
@@ -61,34 +67,34 @@
                 <div class="thumbnails">
                     <ul>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/1.jpg" title="Daintree National Park"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract17.jpg"/></a>
+                            <a href="<?php echo base_url() ?>assets/images/1.jpg" title="Daintree National Park"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract17.jpg" alt="holidaysrating"/></a>
                             <a href="#" target="_blank"></a>                        
                             <div style="left:5px; top:94px; width:336px; height:0;"> 
-                            	<h1>Daintree National Park</h1>
-                            	The world's oldest tropical rainforest located close to Cairns, Queensland in Australia. Where reef meets rainforest! 
+                            	<h2>Holidaysrating; Travel to Daintree National Park in Australia. Ready for the perfect vacation?</h2>
+                            	Travel to the world's oldest tropical rainforest located close to Cairns, Queensland in Australia. Populair destination! Where reef meets rainforest! 
                             	Tell us your travel story...</div>
                         </li>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/2.jpg" title="Egypt"><img src="<?php echo base_url() ?>assets/images/thumbs/sf.jpg"/></a>
+                            <a href="<?php echo base_url() ?>assets/images/2.jpg" title="Egypt"><img src="<?php echo base_url() ?>assets/images/thumbs/sf.jpg" alt="holidaysrating"/></a>
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:336px; height:0; color:#000; background-color:#FFF"> 
-                                <h1 style="color:#0CF">Pyramids of Egypt</h1>
-                                Visit the ancient wonders of the world. All over the world are these hidden jewels. Every single one with his own story! Just like you...</div>                                                  	
+                                <h2 style="color:#0CF">Book now your Holiday to Pyramids of Egypt on Holidaysrating.com</h2>
+                                Visit the ancient wonders of the world. All over the world are these hidden jewels. Every single one with his own story! Just like you... Holiday!</div>                                                  	
                         </li>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/3.jpg" title="Tankuban Perahu"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract26.jpg"/></a>   
+                            <a href="<?php echo base_url() ?>assets/images/3.jpg" title="Tankuban Perahu"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract26.jpg" alt="holidaysrating"/></a>   
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:336px; height:0; color:#000; background-color:#FFF">
-                            	<h1 style="color:#0CF">Tankuban Perahu</h1>
+                            	<h2 style="color:#0CF">Holidaysrating; Travel to Tankuban Perahu, Indonesia, Popular rating! Nice vacation...Holidaysrating.com</h2>
                                 Visit this dormant vulcano, 25 km north of the city Bandung in West-Java, Indonesia.
-                                Find more information about the world's most beautiful destinations...</div>                                                          	                   
+                                Find more information about the world's most beautiful destinations... take a tour and review here!</div>                                                          	                   
                         </li>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/4.jpg" title="Saint Martin"><img src="<?php echo base_url() ?>assets/images/thumbs/tokyo.jpg"/></a>                  
+                            <a href="<?php echo base_url() ?>assets/images/4.jpg" title="Saint Martin"><img src="<?php echo base_url() ?>assets/images/thumbs/tokyo.jpg" alt="holidaysrating"/></a>                  
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:350px; height:0;"> 
-                                <h1>Saint Martin</h1>
-                                Explore the stunning beaches of the Caribbean. What is your favorite travel experience? Be our guide and upload your travel pictures and videos...</div>                                          	                          
+                                <h2>Travel to Destination; Saint Martin in the Caribbean. An very beauttiful island, Holidaysrating recommandation!</h2>
+                                Explore the destination with stunning beaches of the Caribbean. What is your favorite travel experience? Be our guide and upload your travel pictures and videos...</div>                                          	                          
                         </li>     
                     </ul>
                 </div>     
@@ -100,14 +106,14 @@
 </div>
 
 <div id="content">
-<h1>Check our favorites...</h1>
+<h1><?php echo $heading ?></h1>
 <div class="clear"></div>
 <div class="left-side">
 <div class="top"></div>
 <div class="middle">
 <div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
-<h2>Status</h2>
+<h2>Welcome</h2>
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
@@ -120,10 +126,16 @@
 <?php echo '<br>' ?>
 <?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
 <?php echo 'Member since&nbsp;: '.$joined_in ?>
-<?php echo '<br>' ?>
+<br />
 <?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
 <?php echo 'Last logged in: '.$last_login ?>
-<?php echo '<br>' ?>
+<?php $this->load->model('User_model') ?>
+<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<br/>
+<br/>
+<?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
+<br/>
+<br/>
 <?php echo anchor('auth/logout', 'Logout') ?>
 <?php else: ?>
 <h2>Member Login</h2>
@@ -134,14 +146,11 @@
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:12px" />
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
 
-<h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
 <form name="Search">
 <h2>Search</h2>
-<select name="Region"><option value="">-- Choose region --</option>
+<select name="Region"><option value="" style="text-align:center">-- Choose region --</option>
 
 <option value="Africa">Africa</option>
 <option value="Asia">Asia</option>
@@ -154,13 +163,18 @@
 </select>
 <br />
 
-<select name="Country" ><option value="">-- Choose country --</option>
+<select name="Country" ><option value="" style="text-align:center">-- Choose country --</option>
 <option value="html/countries/africa/algeria.html">Algeria</option>
  
 </select>
 <br />
 <div class="button">Go</div>
 </form>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
+
+<h2>Members online</h2>
+<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+
 </div>
 <div class="bottom"></div>
 </div>
@@ -168,29 +182,29 @@
 <div class="center">
 <div class="top"></div>
 <div class="middle">
-<?php echo anchor('list_favorites/festivals', img('assets/images/img-1.jpg')); ?>
-<?php echo anchor('list_favorites/amazing_beaches', img('assets/images/img-2.jpg')); ?>
-<?php echo anchor('list_favorites/cruises', img('assets/images/img-3.jpg')); ?>
-<?php echo anchor('list_favorites/ancient_wonders', img('assets/images/img-4.jpg')); ?>
-<?php echo anchor('list_favorites/diving', img('assets/images/img-5.jpg')); ?>
-<?php echo anchor('list_favorites/romantic_cities', img('assets/images/img-10.jpg')); ?>
-<?php echo anchor('list_favorites/train_trips', img('assets/images/img-9.jpg')); ?>
-<?php echo anchor('list_favorites/ski_locations', img('assets/images/img-8.jpg')); ?>
-<?php echo anchor('list_favorites/road_trips', img('assets/images/img-7.jpg')); ?>
-<?php echo anchor('list_favorites/magical_islands', img('assets/images/img-6.jpg')); ?>
+<?php echo anchor('favorites/festivals', img('assets/images/img-1.jpg')); ?>
+<?php echo anchor('favorites/amazing_beaches', img('assets/images/img-2.jpg')); ?>
+<?php echo anchor('favorites/cruises', img('assets/images/img-3.jpg')); ?>
+<?php echo anchor('favorites/ancient_wonders', img('assets/images/img-4.jpg')); ?>
+<?php echo anchor('favorites/diving', img('assets/images/img-5.jpg')); ?>
+<?php echo anchor('favorites/romantic_cities', img('assets/images/img-10.jpg')); ?>
+<?php echo anchor('favorites/train_trips', img('assets/images/img-9.jpg')); ?>
+<?php echo anchor('favorites/ski_locations', img('assets/images/img-8.jpg')); ?>
+<?php echo anchor('favorites/road_trips', img('assets/images/img-7.jpg')); ?>
+<?php echo anchor('favorites/magical_islands', img('assets/images/img-6.jpg')); ?>
 </div>
 <div class="bottom"></div>
 <div class="hot">
 <h1>This months BEST RATED</h1>
 <div class="tour">
-<img src="<?php echo base_url() ?>assets/images/a.jpg" alt="Great Barrier Reef" />
-<h2>Cairns, Queensland</h2>
-<h3>Close to the great barrier reef</h3>
+<?php echo anchor('australia_states/queensland', img('assets/images/a.jpg')); ?>
+<h2>Rafting</h2>
+<h3>Rafting at the Tully</h3>
 </div>
 <div class="tour">
-<img src="<?php echo base_url() ?>assets/images/b.jpg" alt="Rafting" /> 
-<h2>Rafting</h2>
-<h3>Rafting at the Tully</h3></div>
+<?php echo anchor('australia_states/queensland', img('assets/images/b.jpg')); ?>
+<h2>Cairns, Queensland</h2>
+<h3>Close to the great barrier reef</h3></div>
 </div>
 <div class="clear"></div>
 <div class="latest-news">
@@ -205,12 +219,14 @@
 <div class="right-side">
 <div class="top"></div>
 <div class="middle">
-<h2 style="margin-bottom:10px">Welcome to...</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for 
-information, vote for your favorite destination or share your holiday 
-experience!</p>
-<p>Become a free member and be our travelguide! WE ARE STILL UNDER CONSTRUCTION.</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
+<h2 style="margin-bottom:10px">Travel with us...</h2>
+<p>Become a FREE member... Make new travel buddies, find information of all destinations and vote for your favorite, upload your movies for everyone to watch or share your favorite travel story... You are our travelguide!</p>
+<div class="social">
+<ul>
+<li class="buttonlink" style="margin:10px 0 10px 30px"><?php echo anchor('auth/register', img('assets/assets/register.png')); ?></li>
+</ul>
+</div>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" />
 <h2>Like it..</h2>
 <div class="social">
 <!-- AddThis Button BEGIN -->
@@ -221,7 +237,7 @@ experience!</p>
 <td><a class="addthis_button_tweet"></a></td>
 </tr>
 <tr>
-<td><a class="addthis_button_pinterest_pinit"></a></td>
+<td><a class="addthis_button_google_plusone" g:plusone:size="medium"></a></td>
 <td><a class="addthis_counter addthis_pill_style"></a></td>
 </tr>
 </table>
@@ -230,8 +246,8 @@ experience!</p>
 <!-- AddThis Button END -->
 </div>
 <div class="clear"></div>
-<div class="fb-activity" data-site="http://www.holidaysrating.com" data-width="185" data-height="245" data-header="true" data-recommendations="true"></div></div>
-
+<div class="fb-activity" data-site="http://www.holidaysrating.com" data-app-id="187439388064490" data-width="185" data-height="245" data-header="true" data-recommendations="true"></div>
+</div>
 <div class="bottom"></div>
 </div>
 <div class="clear"></div>
@@ -257,10 +273,10 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 <div class="first-column">
 <ul>
-<li><?php echo anchor('home/index', 'HOME') ?></li>
+<li class="active"><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
+<li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 </ul>
 </div>
 <div class="first-column">
@@ -284,10 +300,10 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
-<li><?php echo anchor('help/helpcenter', 'HELPCENTER') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
-<div class="logo"><center><img src="<?php echo base_url() ?>assets/images/photos.jpg" alt="logo" /></center>
+<div class="logo"><center><img src="<?php echo base_url() ?>assets/images/photos.jpg" alt="holidaysrating.com" /></center>
 <div class="slogin">You are our <span>travelguide!</span>
 </div>
 </div>

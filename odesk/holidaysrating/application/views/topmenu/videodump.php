@@ -11,7 +11,7 @@
 
 <title>Videodump | Holidaysrating.com</title>
 
-<link href="<?php echo base_url() ?>assets/css/holidayOthers.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url() ?>assets/css/holiday.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 </head>
 
@@ -57,7 +57,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="middle">
 <div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
-<h2>Status</h2>
+<h2>Welcome</h2>
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
@@ -67,22 +67,24 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <br />
 <?php echo $this->ion_auth->user()->row()->first_name.' ' ?>
 <?php echo $this->ion_auth->user()->row()->last_name.' ' ?>
-<br/>
+<?php echo '<br>' ?>
 <?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
 <?php echo 'Member since&nbsp;: '.$joined_in ?>
-<br/>
+<br />
 <?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
 <?php echo 'Last logged in: '.$last_login ?>
-
+<?php $this->load->model('User_model') ?>
 <?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
 <br/>
 <br/>
 <?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
-<br/><br/>
+<br/>
+<br/>
 <?php echo anchor('auth/logout', 'Logout') ?>
 <?php else: ?>
 <h2>Member Login</h2>
 <?php include APPPATH.'views/auth/my_login.php' ?>
+<br />
 <?php echo anchor('auth/forgot_password', 'Forgot Password') ?>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <?php echo anchor('auth/register', 'Register') ?>
@@ -98,18 +100,22 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo $u_online->username ?></li>
 <?php endforeach ?>
 </ul>
-
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertisement Here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
 </div>
 <div class="bottom"></div>
 </div>
 
 <div class="center">
 <div class="selectVideo">
+
+<?php echo $this->session->flashdata('msg') ?>
+
 <h1>latest videos</h1>
-<p>Three or Four videos in a row</p>
+<div class="middle">
+    <?php foreach($videos as $video): ?>
+    <?php $thumbnail = array('src' => 'assets/images/thumbnail.jpg', 'title' => $video->orig_name) ?>
+    <?php echo anchor('topmenu/video/'.$video->name, img($thumbnail)) ?>
+    <?php endforeach ?>
+</div>
 <br/>
 <p style="text-align:center"><strong>Choose a region:</strong></p>
 <ul>

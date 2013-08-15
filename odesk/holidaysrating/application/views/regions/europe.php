@@ -3,12 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="description" content="Wonderful Europe"/>
-<meta name="keywords" content="europe"/>
+<meta name="keywords" content="Europe"/>
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta content="<?php echo base_url() ?>assets/images/thumbs/europe.jpg" property="og:image" />
 
-<title>Europe</title>
+<title>Europe | Holidaysrating.com</title>
 <link href="<?php echo base_url() ?>assets/css/region.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -23,9 +24,9 @@
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 </div>
@@ -60,7 +61,7 @@
 <area shape="poly" coords="307, 147, 309, 111, 363, 91, 406, 50, 395, 46, 477, 12, 510, 15, 503, 22, 485, 22, 477, 37, 452, 32, 443, 35, 443, 44, 427, 43, 421, 47, 395, 86, 395, 92, 385, 92, 375, 97, 377, 124, 378, 135, 372, 136, 370, 144, 359, 142, 328, 154" href="<?php echo base_url() ?>index.php/europe_countries/norway" alt="Norway" title="Norway"   />
 <area shape="poly" coords="444, 39, 465, 46, 474, 69, 466, 70, 457, 81, 459, 87, 455, 95, 433, 103, 427, 111, 425, 129, 444, 137, 422, 152, 423, 174, 399, 176, 395, 185, 380, 185, 380, 171, 368, 149, 373, 136, 380, 136, 383, 122, 378, 115, 378, 101, 386, 93, 397, 91, 397, 87, 394, 84, 413, 60, 424, 50, 441, 44" href="<?php echo base_url() ?>index.php/europe_countries/sweden" alt="Sweden" title="Sweden"   />
 <area shape="poly" coords="449, 36, 453, 34, 459, 38, 467, 39, 478, 40, 484, 33, 485, 24, 493, 23, 507, 28, 502, 34, 507, 42, 518, 46, 516, 54, 527, 66, 526, 74, 536, 83, 536, 89, 549, 95, 533, 122, 485, 135, 467, 126, 462, 102, 487, 79, 492, 79, 491, 72, 479, 68, 477, 60, 470, 47" href="<?php echo base_url() ?>index.php/europe_countries/finland" alt="Finland" title="Finland"   />
-<area shape="poly" coords="416, 294, 459, 294, 464, 309, 455, 313, 453, 319, 424, 305" href="<?php echo base_url() ?>index.php/europe_countries/bosnia_herzegovinia" alt="Bosnia Herzegovina" title="Bosnia & Herzegovinia"   />
+<area shape="poly" coords="416, 294, 459, 294, 464, 309, 455, 313, 453, 319, 424, 305" href="<?php echo base_url() ?>index.php/europe_countries/bosnia_herzegovina" alt="Bosnia Herzegovina" title="Bosnia & Herzegovina"   />
 <area shape="poly" coords="452, 247, 468, 248, 488, 247, 499, 249, 494, 256, 478, 254, 471, 259, 462, 259, 453, 260, 451, 264, 437, 264, 432, 260, 411, 258, 403, 260, 391, 257, 402, 255, 405, 253, 421, 256, 434, 254" href="<?php echo base_url() ?>index.php/europe_countries/slovakia" alt="Slovakia" title="Slovakia"   />
 <area shape="poly" coords="433, 265, 454, 266, 462, 260, 469, 262, 477, 257, 495, 257, 505, 260, 497, 264, 487, 278, 455, 284, 440, 284, 425, 278, 425, 270" href="<?php echo base_url() ?>index.php/europe_countries/hungary" alt="Hungary" title="Hungary"   />
 <area shape="poly" coords="461, 285, 476, 282, 482, 290, 491, 292, 491, 297, 508, 299, 509, 308, 515, 312, 510, 320, 497, 321, 489, 325, 475, 319, 468, 324, 458, 321, 468, 307, 467, 296" href="<?php echo base_url() ?>index.php/europe_countries/serbia" alt="Serbia" title="Serbia"   />
@@ -85,14 +86,14 @@
 </map>
 </div>
 <div id="content">
-	<h1>Europe</h1>
+<h1><?php echo $heading ?></h1>
 <div class="clear"></div>
 <div class="left-side">
 <div class="top"></div>
 <div class="middle">
 <div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
-<h2>Status</h2>
+<h2>Welcome</h2>
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
@@ -105,10 +106,16 @@
 <?php echo '<br>' ?>
 <?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
 <?php echo 'Member since&nbsp;: '.$joined_in ?>
-<?php echo '<br>' ?>
+<br />
 <?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
 <?php echo 'Last logged in: '.$last_login ?>
-<?php echo '<br>' ?>
+<?php $this->load->model('User_model') ?>
+<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<br/>
+<br/>
+<?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
+<br/>
+<br/>
 <?php echo anchor('auth/logout', 'Logout') ?>
 <?php else: ?>
 <h2>Member Login</h2>
@@ -119,11 +126,16 @@
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
+
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertisement Here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo $u_online->username ?></li>
+<?php endforeach ?>
+</ul>
 </div>
 <div class="bottom"></div>
 </div>
@@ -131,8 +143,22 @@
 <div class="center">
 <div class="hot">
 <h1>INTRODUCTION</h1>
+<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/europe.jpg" alt="Europe" width="100px" height="70px" /></div>
+<div class="intro">
 <p><strong>Europe</strong> is the world's most visited continent. It stretches from the vulcanic ground in Iceland to the wonderous eiffeltower in Paris, the cold winters in Moskou to the romantic gondola rides in Venice. Europe has a wide range of natural and manmade attractions, a generally excellent transport network and numerous of cities.</p>
+
+<div class="options">
+<ul>
+<li><?php echo anchor('europe_cities/cities_europe', img('assets/images/buttonblue-cities-bg.png')); ?></li>
+<li><?php echo anchor('europe_national_parks/europe_nat_parks', img('assets/images/buttonblue-parks-bg.png')); ?></li>
+<li><?php echo anchor('help/external_links', img('assets/images/buttonblue-links-bg.png')); ?></li>
+</ul>
+<br />
+</div>
+
 <h1>COUNTRIES</h1>
+</div>
+
 <p style="margin-bottom:20px;text-align:center">Click on the map or choose a country below:</p>
 	<table style="width: 100%">
 		<tr>
@@ -166,7 +192,7 @@
 			<td><?php echo anchor('europe_countries/slovakia', 'Slovakia') ?></td>
 		</tr>
 		<tr>
-			<td><?php echo anchor('europe_countries/bosnia_herzegovinia', 'Bosnia - Herzegovinia') ?></td>
+			<td><?php echo anchor('europe_countries/bosnia_herzegovina', 'Bosnia - Herzegovina') ?></td>
 			<td><?php echo anchor('europe_countries/italy', 'Italy') ?></td>
 			<td><?php echo anchor('europe_countries/slovenia', 'Slovenia') ?></td>
 		</tr>
@@ -210,18 +236,14 @@
 
 </div>
 <div class="clear"></div>
-<div class="latest-news">
-</div>
-
 
 </div>
-
 
 <div class="right-side">
 <div class="top"></div>
 <div class="middle">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;Europe</span></p>
-<iframe width="180" height="100" src="http://www.youtube-nocookie.com/embed/5KD3RnSGDTY" frameborder="0" allowfullscreen></iframe>
+<iframe width="180" height="100" src="http://www.youtube-nocookie.com/embed/5KD3RnSGDTY?rel=0" frameborder="0" allowfullscreen></iframe>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
 <h2>Facts</h2>
 <ol>
@@ -240,7 +262,7 @@
 <td><a class="addthis_button_tweet"></a></td>
 </tr>
 <tr>
-<td><a class="addthis_button_pinterest_pinit"></a></td>
+<td><a class="addthis_button_google_plusone" g:plusone:size="medium"></a></td>
 <td><a class="addthis_counter addthis_pill_style"></a></td>
 </tr>
 </table>
@@ -285,7 +307,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
+<li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 </ul>
 </div>
 <div class="first-column">
@@ -298,7 +320,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 <div class="first-column">
 <ul>
-<li><?php echo anchor('regions/europe', 'EUROPE') ?></li>
+<li class="active"><?php echo anchor('regions/europe', 'EUROPE') ?></li>
 <li><?php echo anchor('regions/north_america', 'NORTH AMERICA') ?></li>
 <li><?php echo anchor('regions/oceania', 'OCEANIA') ?></li>
 <li><?php echo anchor('regions/south_america', 'SOUTH AMERICA') ?></li>
@@ -309,7 +331,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
-<li><?php echo anchor('help/helpcenter', 'HELPCENTER') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 <div class="logo"><center><img src="<?php echo base_url() ?>assets/images/photos.jpg" alt="logo" /></center>

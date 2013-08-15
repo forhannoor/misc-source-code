@@ -1,4 +1,4 @@
-<div>
+<div class="banner-form">
 <?php
 
 if(isset($errors))
@@ -11,6 +11,6 @@ echo form_submit('', 'Submit');
 echo form_close();
 echo '<br/>';
 echo '<br/>';
-echo anchor('user/index', 'Back');
+echo anchor('user/index', img(base_url().'assets/assets/back.png'));
 ?>
 </div>

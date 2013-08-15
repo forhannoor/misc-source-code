@@ -161,6 +161,17 @@ class oceania_countries extends CI_Controller
       	
       	$this->load->view('oceania_countries/tonga', $data);
     }
+        public function tuvalu()
+    {
+      	$data['main']='oceania_countries/tuvalu.php';
+      	$data['heading']='Tuvalu';
+      	$this->load->model('User_model');
+      	
+      	if($this->ion_auth->logged_in())
+      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+      	
+      	$this->load->view('oceania_countries/tuvalu', $data);
+    }
     public function vanuatu()
     {
       	$data['main']='oceania_countries/vanuatu.php';

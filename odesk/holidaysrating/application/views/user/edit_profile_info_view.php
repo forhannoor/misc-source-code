@@ -14,12 +14,12 @@ echo '<br/>';
 $privacy_options=array(0 => 'Private', 1 => 'Public');
 echo form_dropdown('privacy', $privacy_options);
 echo '<br/>';
-echo form_label('Country', 'country');
+echo form_label('Country I live in', 'country');
 echo '<br/>';
 foreach($profile_info->result() as $value)
 echo form_input('country', $value->country);
 echo '<br/>';
-echo form_label('Destination', 'destination');
+echo form_label('My favorite destination is', 'destination');
 echo '<br/>';
 foreach($profile_info->result() as $value)
 echo form_input('destination', $value->favorite_destination);
@@ -40,6 +40,6 @@ echo form_reset('', 'Reset');
 echo form_close();
 echo '<br/>';
 echo '<br/>';
-echo anchor('user/index', 'Back');
+echo anchor('user/index', img(base_url().'assets/assets/back.png'));
 ?>
 </div>

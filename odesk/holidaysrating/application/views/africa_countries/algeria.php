@@ -7,6 +7,8 @@
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta name="language" content="English" />
+<meta content="<?php echo base_url() ?>assets/images/flags/africa/algeria.gif" property="og:image" />
 
 <title>Algeria</title>
 <link href="<?php echo base_url() ?>assets/css/country.css" rel="stylesheet" type="text/css" />
@@ -28,9 +30,9 @@
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 </div>
@@ -49,6 +51,7 @@
                      
                     <div class="next-btn"></div>               
                 </div>
+                <!--
                 <div class="thumbnails">
                     <ul>
                         <li>
@@ -80,7 +83,7 @@
                                 Camels in the Algeria desert.</div>                                          	                          
                         </li>     
                     </ul>
-                </div>     
+                </div>   -->   
             </div>
         </div>	
   	</div>    
@@ -89,13 +92,14 @@
 </div>
 
 <div id="content">
-	<h1>Algeria</h1>
+<h1><?php echo $heading ?></h1>
 <div class="clear"></div>
 <div class="left-side">
 <div class="top"></div>
 <div class="middle">
+<div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
-<h2>Status</h2>
+<h2>Welcome</h2>
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
@@ -108,24 +112,40 @@
 <?php echo '<br>' ?>
 <?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
 <?php echo 'Member since&nbsp;: '.$joined_in ?>
-<?php echo '<br>' ?>
+<br />
 <?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
 <?php echo 'Last logged in: '.$last_login ?>
-<?php echo '<br>' ?>
+<?php $this->load->model('User_model') ?>
+<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<br/>
+<br/>
+<?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
+<br/>
+<br/>
 <?php echo anchor('auth/logout', 'Logout') ?>
 <?php else: ?>
-<?php //echo anchor('auth/login', 'Login') ?>
+<h2>Member Login</h2>
 <?php include APPPATH.'views/auth/my_login.php' ?>
-<br/>
+<br />
 <?php echo anchor('auth/forgot_password', 'Forgot Password') ?>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
+</div>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
+
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertise here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
+<?php endforeach ?>
+</ul>
+
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:8px" />
+<h2>Holidaysrating</h2>
+<p>Send your banner and we add it to our site! You can be our travelguide! <?php echo anchor('home/contact_us', 'Click here') ?> to send..</p>
 </div>
 
 <div class="bottom"></div>
@@ -134,11 +154,30 @@
 <div class="center">
 <div class="hot">
 <h1>Introduction</h1>
-</div>
-<div class="clear"></div>
-<div class="latest-news">
+
+<div class="flag" style="float:left">
+<img src="<?php echo base_url() ?>assets/images/flags/africa/algeria.jpg" alt="Algeria" />
+<br />
+<h5><?php echo $this->session->flashdata('msg') ?></h5>
 </div>
 
+
+
+
+
+<!-- Currency Converter --> 
+<div style="width:100px; background-color:#F8FCF7;border:2px solid #888;text-align:center;margin:0px;padding:0px;float:right"> 
+<div style="background-color:#AAA055;border-bottom:1px solid #888;width:100%;margin:0px;padding:0px;align:center;text-align:center;">
+<a class="VSlabel" style="font-size:10px!important; line-height:16px!important;font-family: arial;text-decoration:none;color:#0F1105;margin-bottom:6px;" href="http://fx-rate.net/"><b>Currency Calculator</b></a></div> <script type="text/javascript" src="http://www.fx-rate.net/converter.php?layout=verticals&amount=1000&tcolor=0F1105&default_pair=USD/DZD"> </script>
+</div> 
+<!-- End of Currency --> 
+
+</div>
+
+<div class="clear"></div>
+<div class="comment">
+<img src="<?php echo base_url() ?>assets/images/comments.png" alt="comment" style="margin-left:300px" /><?php echo anchor('user/make_comment/algeria', 'Leave a comment') ?>
+</div>
 
 </div>
 
@@ -148,6 +187,12 @@
 
 <div class="middle">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;<?php echo anchor('regions/africa', 'Africa') ?>&gt; Algeria</span></p>
+
+<div class="rating">
+<div class="score"><p><?php echo round($rating, 1) ?></p></div>
+<?php echo anchor('user/rate/algeria', img('assets/assets/rate-now.png')); ?>
+</div>
+
 <iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=algeria&amp;aq=&amp;sll=-11.22151,17.885742&amp;sspn=27.837493,53.569336&amp;ie=UTF8&amp;hq=&amp;hnear=Algeria&amp;t=m&amp;ll=28.149503,1.757813&amp;spn=9.292101,15.292969&amp;z=4&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=algeria&amp;aq=&amp;sll=-11.22151,17.885742&amp;sspn=27.837493,53.569336&amp;ie=UTF8&amp;hq=&amp;hnear=Algeria&amp;t=m&amp;ll=28.149503,1.757813&amp;spn=9.292101,15.292969&amp;z=4" style="color:#0000FF;text-align:left">View Larger Map</a></small>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 	
@@ -168,7 +213,7 @@
 <td><a class="addthis_button_tweet"></a></td>
 </tr>
 <tr>
-<td><a class="addthis_button_pinterest_pinit"></a></td>
+<td><a class="addthis_button_google_plusone" g:plusone:size="medium"></a></td>
 <td><a class="addthis_counter addthis_pill_style"></a></td>
 </tr>
 </table>
@@ -209,7 +254,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
+<li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 </ul>
 </div>
 <div class="first-column">
@@ -233,7 +278,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
-<li><?php echo anchor('help/helpcenter', 'HELPCENTER') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 <div class="logo"><center><img src="<?php echo base_url() ?>assets/images/photos.jpg" alt="logo" /></center>

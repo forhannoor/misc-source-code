@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="If you are looking for travel information, want to share your holiday experience or find the best destinations.. Visit us on Holidaysrating.com and be our travelguide!"/>
-<meta name="keywords" content="Holiday, holidays, rating, vacation, destination, world, worldmap, review, travel, travelguides, travelguide, travelblog, blog, favorites, Holidaysrating, Holidaysrating.com "/>
+<meta name="description" content="Edit your profile, send messages and upload travel media."/>
+<meta name="keywords" content="My Profile, Profile"/>
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
-<title>Holidaysrating.com, the social travel community...</title>
-<!-- Holiday, Travel, rating -->
 
+<title>Holidaysrating.com | The social travel community...</title>
+<!-- Holiday, Travel, Rating -->
 
 <link href="<?php echo base_url() ?>assets/css/user.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
@@ -23,19 +23,7 @@
 </head>
 
 <body>
-<style>
-    .profile-items{
-        margin-left: 20px;
-    }
-    
-    .profile-items li a:hover{
-        text-decoration: none;
-    }
-    
-    .profile-items li{
-        margin-bottom: 10px;
-    }
-</style>
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -53,9 +41,9 @@
 <li class="active"><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 </div>
@@ -79,14 +67,13 @@
 <div class="top"></div>
 <div class="middle">
 <?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
-<ul class="profile-items">
-    <li><?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?></li>
-    <li><?php echo anchor('user/sent', "Sent Messages") ?></li>
-    <li><?php echo anchor('user/upload_media', 'Upload Picture/Video') ?></li>
-    <li><?php echo anchor('user/index', 'Change Password') ?></li>
-    <li><?php echo anchor('user/index', 'Subscribe to Newsletter') ?></li>
-    <li><?php echo anchor('user/index', 'Explore the World') ?></li>
-    <li><?php echo anchor('auth/logout', 'Logout') ?></li>
+<ul class="items">
+    <li><?php echo anchor('user/inbox', img('assets/assets/inbox.png')); ?></li>
+    <li><?php echo anchor('user/sent', img('assets/assets/sent.png')); ?></li>
+    <li><?php echo anchor('user/upload_media', img('assets/assets/upload.png')); ?></li>
+    <li><?php echo anchor('user/index', img('assets/assets/password.png')); ?></li>
+    <li><?php echo anchor('topmenu/worldmap', img('assets/assets/explore.png')); ?></li>
+    <li><?php echo anchor('auth/logout', img('assets/assets/logout.png')); ?></li>
 </ul>
 <br />
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border"/>
@@ -95,7 +82,7 @@
 <ul class="profile-items">
 <?php $users_online = $this->Ion_auth_model->users_online() ?>
 <?php foreach($users_online as $u_online): ?>
-<li><?php echo $u_online->username ?></li>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
 <?php endforeach ?>
 </ul>
 </div>
@@ -108,14 +95,11 @@
 <div class="right-side">
 <div class="top"></div>
 <div class="middle">
-<h2>Video's</h2>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Pictures</h2>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
 <h2>Friends</h2>
-<p>The friend request button should be in the page the profile visotors 
-visit.</p>
-<p>Your Profile is Public/Friends</p>
+<p><?php echo anchor('user/inbox', "You have $new_message_counter new messages.") ?></p>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
+<h2>Send in your favorite picture</h2>
+<p>Do you like to see your favorite picture on this website? We will post your favorite destination picture as our location banner! You are our travelguide...</p>
 <div class="clear"></div>
 </div>
 
@@ -145,14 +129,14 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="first-column">
 <ul>
 <li><?php echo anchor('home/index', 'HOME') ?></li>
-<li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
+<li class="active"><?php echo anchor('user/index', 'MY PROFILE') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/vote_now', 'VOTE NOW') ?></li>
+<li><?php echo anchor('regions/africa', 'AFRICA') ?></li>
 </ul>
 </div>
 <div class="first-column">
 <ul>
-<li><?php echo anchor('regions/africa', 'AFRICA') ?></li>
+<li><?php echo anchor('regions/antartica', 'ANTARTICA') ?></li>
 <li><?php echo anchor('regions/asia', 'ASIA') ?></li>
 <li><?php echo anchor('regions/caribbean', 'CARIBBEAN') ?></li>
 <li><?php echo anchor('regions/central_america', 'CENTRAL AMERICA') ?></li>
@@ -169,9 +153,9 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="first-column">
 <ul>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
-<li><?php echo anchor('news/main_news', 'LATEST NEWS') ?></li>
+<li><?php echo anchor('topmenu/external_links', 'EXTERNAL LINKS') ?></li>
+<li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
 <li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
-<li><?php echo anchor('help/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 <div class="logo"><center><img src="<?php echo base_url() ?>assets/images/photos.jpg" alt="logo" /></center>
