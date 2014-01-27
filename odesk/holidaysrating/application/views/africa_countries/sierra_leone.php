@@ -7,8 +7,10 @@
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta name="language" content="English" />
+<meta content="<?php echo base_url() ?>assets/images/flags/africa/sierra-leone.gif" property="og:image" />
 
-<title>Sierra Leone</title>
+<title>Sierra Leone | Africa</title>
 <link href="<?php echo base_url() ?>assets/css/country.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
@@ -136,13 +138,14 @@
 <ul class="profile-items">
 <?php $users_online = $this->Ion_auth_model->users_online() ?>
 <?php foreach($users_online as $u_online): ?>
-<li><?php echo $u_online->username ?></li>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
 <?php endforeach ?>
 </ul>
 
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertise here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+
+<?php $this->load->view($left_sidebar) ?>
+
 </div>
 
 <div class="bottom"></div>
@@ -151,11 +154,23 @@
 <div class="center">
 <div class="hot">
 <h1>Introduction</h1>
-</div>
-<div class="clear"></div>
-<div class="latest-news">
+<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/africa/sierra-leone.jpg" alt="Sierra Leone" />
+<br />
+<h5><?php echo $this->session->flashdata('msg') ?></h5>
 </div>
 
+
+
+
+
+
+
+</div>
+
+<div class="clear"></div>
+<div class="comment">
+<img src="<?php echo base_url() ?>assets/images/comments.png" alt="comment" style="margin-left:300px" /><?php echo anchor('user/make_comment/sierra_leone', 'Leave a comment') ?>
+</div>
 
 </div>
 
@@ -164,15 +179,39 @@
 <div class="top"></div>
 
 <div class="middle">
-<p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;<?php echo anchor('regions/africa', 'Africa') ?>&gt; Sierra Leone</span></p>
-<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Sierra+Leone&amp;aq=&amp;sll=14.497401,-14.452362&amp;sspn=6.931024,13.392334&amp;ie=UTF8&amp;hq=&amp;hnear=Sierra+Leone&amp;t=m&amp;ll=8.54843,-11.777344&amp;spn=1.303686,1.911621&amp;z=7&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Sierra+Leone&amp;aq=&amp;sll=14.497401,-14.452362&amp;sspn=6.931024,13.392334&amp;ie=UTF8&amp;hq=&amp;hnear=Sierra+Leone&amp;t=m&amp;ll=8.54843,-11.777344&amp;spn=1.303686,1.911621&amp;z=7" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+<p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt; <?php echo anchor('regions/africa', 'Africa') ?>&gt;Sierra Leone</span></p>
+
+<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Sierra+Leone&amp;aq=&amp;sll=14.497401,-14.452362&amp;sspn=6.931024,13.392334&amp;ie=UTF8&amp;hq=&amp;hnear=Sierra+Leone&amp;t=m&amp;ll=8.54843,-11.777344&amp;spn=1.303686,1.911621&amp;z=7&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Sierra+Leone&amp;aq=&amp;sll=14.497401,-14.452362&amp;sspn=6.931024,13.392334&amp;ie=UTF8&amp;hq=&amp;hnear=Sierra+Leone&amp;t=m&amp;ll=8.54843,-11.777344&amp;spn=1.303686,1.911621&amp;z=7" target="_blank" style="color:#5F6A6F;text-align:left">View Larger Map</a></small>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 	
+<div class="key-facts">	
+<h2>Key Facts</h2>
+<ul>
+<li><strong>Capital city:</strong></li>
+<li>     </li>
+
+<li><strong>Size:</strong></li>
+<li> km2</li>
+<li> sq mi</li>
+
+<li><strong>Water:</strong></li>
+<li>%</li>
+
+<li><strong>Languages:</strong></li>
+<li>   </li>
+
+<li><strong>Time zone:</strong></li>
+<li>    </li>
+
+<li><strong>Calling code:</strong></li>
+<li>    </li>
+</ul>
+</div>
+
 <h2>Cities</h2>
 <ul>
 <li><?php echo anchor('home/index', 'Home') ?></li>
 </ul>
-
 
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 <h2>Like it..</h2>
@@ -190,15 +229,15 @@
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
 
 <div class="clear"></div>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
-<h2>TOP Adventures</h2>
+<h2>Explore Sierra Leone</h2>
 <ul>
-<li><?php echo anchor('home/index', 'Home') ?></li>
+<li>Coming soon</li>
 </ul>
 </div>
 <div class="bottom"></div>
@@ -209,16 +248,14 @@
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* Africa Countries */
-google_ad_slot = "6225375940";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- AfricaCountries -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="6225375940"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>

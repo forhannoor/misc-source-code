@@ -3,14 +3,14 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta name="description" content="Burundi"/>
-<meta name="keywords" content="Burundi"/>
+<meta name="keywords" content="Burundi, Burundi Travel"/>
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta name="language" content="English" />
+<meta content="<?php echo base_url() ?>assets/images/flags/africa/burundi.gif" property="og:image" />
 
-<title>Burundi</title>
-<link href="<?php echo base_url() ?>assets/css/country.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
+<title>Burundi | Africa</title>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.easing.1.3.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.wt-rotator.min.js"></script>    
@@ -21,15 +21,15 @@
 <div id="top-head">
 <div class="main">
 <div class="logo">
-	<img src="<?php echo base_url() ?>images/logo.png" width="350" height="78" alt="logo" /></div>
+	<img src="<?php echo base_url() ?>assets/images/logo.png" width="350" height="78" alt="logo" /></div>
 <div class="menu">
 <ul>
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
-<li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('blog/blog_index', 'BLOG') ?></li>
+<li><?php echo anchor('news/news_index', 'TRAVELNEWS') ?></li>
 <li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
@@ -55,15 +55,15 @@
                             <a href="<?php echo base_url() ?>assets/images/countries/africa/burundi/work.jpg" title="Burundi"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract17.jpg"/></a>
                             <a href="#" target="_blank"></a>                        
                             <div style="left:5px; top:94px; width:336px; height:0;"> 
-                            	<h1>Work in Burundi</h1>
-                            	Locals at work in Burundi.</div>
+                            	<h1>Travel to Burundi in Africa</h1>
+                            	Discover the country. Locals at work in Burundi.</div>
                         </li>
                         <li>
                             <a href="<?php echo base_url() ?>assets/images/countries/africa/burundi/house.jpg" title="Burundi house"><img src="<?php echo base_url() ?>assets/images/thumbs/sf.jpg"/></a>
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:336px; height:0; color:#000; background-color:#FFF"> 
-                                <h1 style="color:#0CF">Burundi house</h1>
-                                House in Burundi.</div>                                                  	
+                                <h1 style="color:#0CF">Explore Burundi</h1>
+                                Walk to this smal village in Burundi, Africa.</div>                                                  	
                         </li>
                         <li>
                             <a href="<?php echo base_url() ?>assets/images/countries/africa/burundi/burundi.jpg" title="Waterfall"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract26.jpg"/></a>   
@@ -77,7 +77,7 @@
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:350px; height:0;"> 
                                 <h1>Gitaga dancing</h1>
-                                Experience Gitaga dancing in Burundi.</div>                                          	                          
+                                Experience Gitaga dancing in Burundi. It is just an amazing dance...</div>                                          	                          
                         </li>     
                     </ul>
                 </div>     
@@ -100,20 +100,18 @@
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
-<?php echo img('./uploads/'.$value->avatar) ?>
+<p class="avatar"><?php echo anchor('user/index', img('./uploads/'.$value->avatar)) ?></p>
 <?php endforeach ?>
+<?php else: ?>
+<p class="avatar"><?php echo anchor('user/index', img('assets/assets/avatar.jpg')) ?></p>
 <?php endif ?>
 <br />
-<?php echo $this->ion_auth->user()->row()->first_name.' ' ?>
-<?php echo $this->ion_auth->user()->row()->last_name.' ' ?>
-<?php echo '<br>' ?>
-<?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
-<?php echo 'Member since&nbsp;: '.$joined_in ?>
-<br />
-<?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
-<?php echo 'Last logged in: '.$last_login ?>
-<?php $this->load->model('User_model') ?>
-<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<?php echo $this->session->userdata('username') ?>
+<br/>
+<?php echo 'Member since&nbsp;: ' . date("d-m-Y" , $this->session->userdata('created_on')) ?>
+<br/>
+<?php echo 'Last logged in: ' . date("d-m-Y" , $this->session->userdata('old_last_login')) ?>
+<?php $new_message_counter = $this->User_model->count_new($this->session->userdata('user_id')) ?>
 <br/>
 <br/>
 <?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
@@ -129,20 +127,20 @@
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
-
+<img src="<?php echo base_url('assets/images/border.png') ?>" alt="Holiday" style="margin-top:12px" />
 <h2>Members online</h2>
 <br/>
 <ul class="profile-items">
 <?php $users_online = $this->Ion_auth_model->users_online() ?>
 <?php foreach($users_online as $u_online): ?>
-<li><?php echo $u_online->username ?></li>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
 <?php endforeach ?>
 </ul>
 
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertise here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:8px" />
+
+<?php $this->load->view($left_sidebar) ?>
+
 </div>
 
 <div class="bottom"></div>
@@ -151,12 +149,49 @@
 <div class="center">
 <div class="hot">
 <h1>Introduction</h1>
-<p>text</p>
+<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/africa/burundi.jpg" alt="Burundi" />
+<p style="float:right;width:75%"><strong>Burundi</strong> is a landlocked country in Eastern <?php echo anchor('regions/africa', 'Africa') ?> and has a size of 27,830 square kilometres. <?php echo anchor('africa_cities/bujumbura', 'Bujumbura') ?> is the capital, largest and main port of the country. The official language of Burundi is French, however Kirundi is commonly spoken.</p>
 </div>
-<div class="clear"></div>
-<div class="latest-news">
+<div class="travel-alerts">
+<p 	style="color:#FFA928">Holidaysrating advise you to exercise a high degree of caution in Burundi. There is a threat against terrorism, street crime and a long running cholera epidemic, which has caused several fatalities. Therefore we advise you to reconsider your need to travel. <a style="color:#808080" href="http://www.holidaysrating.com/index.php/news/travel_alerts">See also Travel Alerts</a></p>
 </div>
 
+<div class="country-menu">
+<ul>
+<li><?php echo anchor('africa_before_you_go/burundi_before', img('assets/images/countries/menu/before-you-go.png')); ?></li>
+<li><?php echo anchor('africa_entry/burundi_entry', img('assets/images/countries/menu/entry.png')); ?></li>
+<li><?php echo anchor('africa_adventures/burundi_index', img('assets/images/countries/menu/adventures.png')); ?></li>
+<li><?php echo anchor('africa_must_see/burundi_see', img('assets/images/countries/menu/must-see.png')); ?></li>
+</ul>
+<ul>
+<li><?php echo anchor('africa_getting_around/burundi_around', img('assets/images/countries/menu/getting-around.png')); ?></li>
+<li><?php echo anchor('africa_health/burundi_health', img('assets/images/countries/menu/health.png')); ?></li>
+<li><?php echo anchor('africa_local_food/burundi_food', img('assets/images/countries/menu/food.png')); ?></li>
+<li><?php echo anchor('africa_public_holidays/burundi_holidays', img('assets/images/countries/menu/holidays.png')); ?></li>
+</ul>
+</div>
+
+<h1>Climate</h1>
+<p>Burundi has a tropical highland climate, temperatures varies considerably from one region to another, as a result of altitude differences. The countries has some nice tempertures, around 20-23°C. In the higher mountains it is more cooler, around 16°C.<br />
+Rain is irregular, falling most heavily in the Northwest. Dry seasons vary in length, and there are sometimes long periods of drought. However, four seasons can be distinguished: the long dry season  from June to August, the short wet season from September to November, the short dry season from December to January, and the long wet season from February and which continues to May.</p>
+
+<h1>Flora and Fauna</h1>
+<p>Most of the country is savanna grassland. There is little forest left; Burundi is one of the most eroded and deforested countries in whole Africa. Of the remaining trees, the most common are eucalyptus, acacia, fig, and oil palms.
+Wildlife was abundant before the country became agricultural. Still found are the elephant, hippopotamus, crocodile, wild boar, lion, antelope, and flying lemur, as well as such game birds as guinea fowl, partridge, duck, geese, quail, and snipe. <?php echo anchor('africa_national_parks/burundi_parks', '(visit National Parks)') ?></p>
+
+<!-- Currency Converter script - fx-rate.net --> 
+<div style="width:474px; background-color:white;border:2px solid #888;text-align:center;margin-top:10px;padding:0px"> 
+<div style="background-color:#AEAF61 ;border-bottom:1px solid #888;width:100%;margin:0px;padding:0px;align:center;text-align:center;">
+<a title="Burundi Franc Converter" class="HS1label" style="font-size:12px!important; line-height:16px!important;font-family: arial;text-decoration:none;color:#132105;margin-bottom:6px;" target="_blank" href="http://fx-rate.net/BIF/"><b>Burundi Franc Converter</b></a>
+</div> <script type="text/javascript" src="http://fx-rate.net/converter.php?size=short&layout=horizontal&currency=BIF"></script></div> 
+<!-- End of Currency Converter script --> 
+
+</div>
+
+<div class="clear"></div>
+<div class="comment">
+<img src="<?php echo base_url() ?>assets/images/comments.png" alt="comment" style="margin-left:300px" /><?php echo anchor('user/make_comment/burundi', 'Leave a comment') ?>
+</div>
 
 </div>
 
@@ -165,15 +200,40 @@
 <div class="top"></div>
 
 <div class="middle">
-<p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;<?php echo anchor('regions/africa', 'Africa') ?>&gt; Burkino Faso</span></p>
-<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=angola&amp;aq=&amp;sll=-27.40739,153.002859&amp;sspn=1.589717,3.348083&amp;ie=UTF8&amp;hq=&amp;hnear=Angola&amp;t=m&amp;ll=-11.264612,17.929688&amp;spn=10.33023,15.292969&amp;z=4&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=angola&amp;aq=&amp;sll=-27.40739,153.002859&amp;sspn=1.589717,3.348083&amp;ie=UTF8&amp;hq=&amp;hnear=Angola&amp;t=m&amp;ll=-11.264612,17.929688&amp;spn=10.33023,15.292969&amp;z=4" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+<p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt; <?php echo anchor('regions/africa', 'Africa') ?>&gt;Burundi</span></p>
+
+<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?gl=au&amp;ie=UTF8&amp;t=m&amp;ll=-3.370856,29.926758&amp;spn=1.31605,1.922607&amp;z=7&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?gl=au&amp;ie=UTF8&amp;t=m&amp;ll=-3.370856,29.926758&amp;spn=1.31605,1.922607&amp;z=7&amp;source=embed" target="_blank" style="color:#5F6A6F;text-align:left">View Larger Map</a></small>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 	
+<div class="key-facts">	
+<h2>Key Facts</h2>
+<ul>
+<li><strong>Capital city:</strong></li>
+<li><?php echo anchor('africa_cities/bujumbura', 'Bujumbura') ?></li>
+
+<li><strong>Size:</strong></li>
+<li>27,830 km²</li>
+<li>10,745 sq mi</li>
+
+<li><strong>Water:</strong></li>
+<li>7.8%</li>
+
+<li><strong>Highest point:</strong></li>
+<li><img src="<?php echo base_url() ?>assets/assets/mountain.png" style="margin-right:5px" alt="mountain"/>Mount Heha</li>
+<li>2,684 metres (8,806 ft)</li>
+
+<li><strong>Time zone:</strong></li>
+<li><img src="<?php echo base_url() ?>assets/assets/clock.png" style="margin-right:5px" alt="clock"/><?php echo anchor('time/utc', 'UTC') ?> +2 <?php echo anchor('time/cat', '(CAT)') ?></li>
+
+<li><strong>Calling code:</strong></li>
+<li><img src="<?php echo base_url() ?>assets/assets/phone.png" style="margin-right:5px" alt="phone"/>+257</li>
+</ul>
+</div>
+
 <h2>Cities</h2>
 <ul>
-<li><?php echo anchor('home/index', 'Home') ?></li>
+<li><?php echo anchor('africa_cities/gitega', 'Gitega') ?></li>
 </ul>
-
 
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 <h2>Like it..</h2>
@@ -191,16 +251,30 @@
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
 
 <div class="clear"></div>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
-<h2>TOP Adventures</h2>
+
+<div class="google-right">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- AfricaCountriesRight -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:180px;height:150px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="9874022741"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<h2>Explore Burundi</h2>
 <ul>
-<li><?php echo anchor('home/index', 'Home') ?></li>
+<li>Coming soon</li>
 </ul>
+
 </div>
 <div class="bottom"></div>
 </div>
@@ -209,16 +283,14 @@
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* Africa Countries */
-google_ad_slot = "6225375940";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- AfricaCountries -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="6225375940"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>
@@ -249,8 +321,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="first-column">
 <ul>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
-<li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
-<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('news/news_index', 'TRAVEL NEWS') ?></li>
+<li><?php echo anchor('blog/blog_index', 'BLOG') ?></li>
 <li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
@@ -259,8 +331,10 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | <?php echo anchor('home/contact_us', 'Contact Us') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
+<link href="<?php echo base_url() ?>assets/css/country.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 </body>
 </html>

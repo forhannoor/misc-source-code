@@ -11,12 +11,15 @@ $(document).ready(function()
 </script>
 <div>
 <?php echo validation_errors() ?>
-
+<br />
 <?php if(isset($errors)): ?>
 <?php echo $errors ?>
 <?php endif ?>
 
 <?php echo form_open_multipart('topmenu/dump_video') ?>
+<?php if(isset($allowed_types)): ?>
+<p>Allowed formats: <?php print_r($allowed_types) ?></p>
+<?php endif ?>
 <?php echo form_upload('userfile') ?>
 <br /><br />
 <?php $regions = array(
@@ -40,10 +43,16 @@ $(document).ready(function()
 <br />
 <?php echo form_input('title') ?>
 <br />
-<?php echo form_hidden('uploader', $this->ion_auth->user()->row()->id) ?>
+<?php echo form_hidden('uploader', $this->session->userdata('user_id')) ?>
 <br />
 <?php echo form_submit(array('value' => 'Upload', 'class' => 'btn-submit-green')) ?>
 <?php echo form_close() ?>
 </div>
 <br /><br />
 <div id="loader"><?php echo img('assets/assets/loader.gif') ?></div>
+
+<style type="text/css">
+#loader{
+    text-align: center;
+}
+</style>

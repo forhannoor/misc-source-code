@@ -7,9 +7,10 @@
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta name="language" content="English" />
+<meta content="<?php echo base_url() ?>assets/images/flags/usa.gif" property="og:image" />
 
-<title>United States of America | Holidaysrating.com</title>
-<link href="<?php echo base_url() ?>assets/css/region.css" rel="stylesheet" type="text/css" />
+<title>United States of America | Holidaysrating</title>
 </head>
 
 <body>
@@ -21,10 +22,10 @@
 <ul>
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
-<li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('blog/blog_index', 'BLOG') ?></li>
+<li><?php echo anchor('news/news_index', 'TRAVELNEWS') ?></li>
 <li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
@@ -81,7 +82,7 @@
 <area shape="poly" coords="701,218,742,214,793,206,810,220,794,232,780,235,772,241,772,249,761,249,740,237,724,238,717,235,696,235,678,241,662,243,682,231,694,225," href="<?php echo base_url() ?>index.php/usa_states/north_carolina" alt="North Carolina" title="North Carolina"   />
 <area shape="poly" coords="540,311,549,293,546,287,547,279,545,271,560,253,593,251,591,299,595,318,584,319,578,323,574,316,574,311," href="<?php echo base_url() ?>index.php/usa_states/mississippi" alt="Mississippi" title="Mississippi"   />
 <area shape="poly" coords="598,250,637,247,650,286,653,305,611,308,612,321,601,319,595,297," href="<?php echo base_url() ?>index.php/usa_states/alabama" alt="Alabama" title="Alabama"   />
-<area shape="poly" coords="641,248,675,244,675,249,724,284,720,305,711,302,709,309,659,313,655,297,658,284,650,276," href="<?php echo base_url() ?>index.php/usa_states/georgia" alt="Georgia" title="Georgia"   />
+<area shape="poly" coords="641,248,675,244,675,249,724,284,720,305,711,302,709,309,659,313,655,297,658,284,650,276," href="<?php echo base_url() ?>index.php/usa_states/georgia_us" alt="Georgia" title="Georgia"   />
 <area shape="poly" coords="682,246,697,239,717,238,719,242,739,241,757,250,753,256,752,263,729,281,716,267,699,255," href="<?php echo base_url() ?>index.php/usa_states/south_carolina" alt="South Carolina" title="South Carolina"   />
 <area shape="poly" coords="615,312,655,308,660,313,711,312,716,306,721,306,733,332,745,336,743,345,758,360,760,380,748,386,743,377,733,377,729,367,723,368,712,354,711,331,697,328,682,319,672,320,662,325,654,326,642,318,631,318,616,320," href="<?php echo base_url() ?>index.php/usa_states/florida" alt="Florida" title="Florida"   />
 <area shape="poly" coords="215,340,283,340,332,377,332,408,217,407," href="<?php echo base_url() ?>index.php/usa_states/hawaii" alt="Hawaii" title="Hawaii"   />
@@ -100,20 +101,18 @@
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
-<?php echo img('./uploads/'.$value->avatar) ?>
+<p class="avatar"><?php echo anchor('user/index', img('./uploads/'.$value->avatar)) ?></p>
 <?php endforeach ?>
+<?php else: ?>
+<p class="avatar"><?php echo anchor('user/index', img('assets/assets/avatar.jpg')) ?></p>
 <?php endif ?>
 <br />
-<?php echo $this->ion_auth->user()->row()->first_name.' ' ?>
-<?php echo $this->ion_auth->user()->row()->last_name.' ' ?>
-<?php echo '<br>' ?>
-<?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
-<?php echo 'Member since&nbsp;: '.$joined_in ?>
-<br />
-<?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
-<?php echo 'Last logged in: '.$last_login ?>
-<?php $this->load->model('User_model') ?>
-<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<?php echo $this->session->userdata('username') ?>
+<br/>
+<?php echo 'Member since&nbsp;: ' . date("d-m-Y" , $this->session->userdata('created_on')) ?>
+<br/>
+<?php echo 'Last logged in: ' . date("d-m-Y" , $this->session->userdata('old_last_login')) ?>
+<?php $new_message_counter = $this->User_model->count_new($this->session->userdata('user_id')) ?>
 <br/>
 <br/>
 <?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
@@ -129,14 +128,13 @@
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
-
+<img src="<?php echo base_url('assets/images/border.png') ?>" alt="Holiday" style="margin-top:12px" />
 <h2>Members online</h2>
 <br/>
 <ul class="profile-items">
 <?php $users_online = $this->Ion_auth_model->users_online() ?>
 <?php foreach($users_online as $u_online): ?>
-<li><?php echo $u_online->username ?></li>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
 <?php endforeach ?>
 </ul>
 </div>
@@ -148,14 +146,15 @@
 <h1>INTRODUCTION</h1>
 <div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/usa.jpg" alt="USA" width="100px" height="70px" /></div>
 <div class="intro">
-<p><strong>United States of America</strong> the country with endless highways cutting through bleak deserts, forests of skyscrapers towering over urban jungles and  acres of beaches dotted with surfboards and sun worshippers.
-It stretches from Lake Superiour on the Canadian border to the Gambling paradise in Las vegas. From the breathe taking islands of <?php echo anchor('usa_states/hawaii', 'Hawaii') ?> to the glaciers and snowy mountains in <?php echo anchor('usa_states/alaska', 'Alaska') ?>.</p>
+<p><strong>United States of America</strong> stretches from Lake Superiour on the Canadian border to the Gambling paradise in Las vegas. From the breathe taking islands of <?php echo anchor('usa_states/hawaii', 'Hawaii') ?> to the glaciers and snowy mountains in <?php echo anchor('usa_states/alaska', 'Alaska') ?>.<br /><br />
+Discover the country with endless highways cutting through bleak deserts, forests of skyscrapers towering over urban jungles and  acres of beaches dotted with surfboards and sun worshippers. 
+This country has a total size of 9,826,675 square kilometers. The main language spoken in the U.S.A.is English (American English) and secondly Spanish. There are also plenty of Native American languages spoken.</p>
 </div>
 
 <div class="options">
 <ul>
-<li><?php echo anchor('usa_cities/cities_usa', img('assets/images/buttonblue-cities-bg.png')); ?></li>
-<li><?php echo anchor('usa_national_parks/usa_nat_parks', img('assets/images/buttonblue-parks-bg.png')); ?></li>
+<li><?php echo anchor('usa_cities/usa_index', img('assets/images/buttonblue-cities-bg.png')); ?></li>
+<li><?php echo anchor('http://www.holidaysrating.com/index.php/topmenu/videodump/north_america', img('assets/images/buttonblue-videos-bg.png')); ?></li>
 <li><?php echo anchor('help/external_links', img('assets/images/buttonblue-links-bg.png')); ?></li>
 </ul>
 <br />
@@ -185,7 +184,7 @@ It stretches from Lake Superiour on the Canadian border to the Gambling paradise
 			<td><?php echo anchor('usa_states/illinois', 'Illinois') ?></td>
 			<td><?php echo anchor('usa_states/minnesota', 'Minnesota') ?></td>
 			<td><?php echo anchor('usa_states/north_carolina', 'North Carolina') ?></td>
-			<td><?php echo anchor('usa_states/taxes', 'Texas') ?></td>
+			<td><?php echo anchor('usa_states/texas', 'Texas') ?></td>
 
 		</tr>
 		<tr>
@@ -248,9 +247,34 @@ It stretches from Lake Superiour on the Canadian border to the Gambling paradise
 <div class="right-side">
 <div class="top"></div>
 <div class="middle">
-<p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;<?php echo anchor('regions/north-america', 'North America') ?>&gt;USA</span></p>
+<p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;<?php echo anchor('regions/north_america', 'North America') ?>&gt;USA</span></p>
 <iframe width="180" height="100" src="http://www.youtube-nocookie.com/embed/5yRgiXh2fP4?rel=0" frameborder="0" allowfullscreen></iframe>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
+
+<div class="key-facts">	
+<h2>Key Facts</h2>
+<ul>
+<li><strong>Capital city:</strong></li>
+<li>Washington D.C.</li>
+
+<li><strong>Size:</strong></li>
+<li>9,826,675 km2</li>
+<li>3,794,101 sq mi</li>
+
+<li><strong>Water:</strong></li>
+<li>6.76%</li>
+
+<li><strong>Languages:</strong></li>
+<li>English (American)</li>
+
+<li><strong>Time zone:</strong></li>
+<li>UTC−4 to −10</li>
+
+<li><strong>Calling code:</strong></li>
+<li>+1</li>
+</ul>
+</div>
+
 <h2>Facts</h2>
 <ol>
 <li>Major beach destinations are <?php echo anchor('usa_states/florida', 'Florida') ?> and <?php echo anchor('usa_states/california', 'California') ?> but <?php echo anchor('usa_states/alaska', 'Alaska') ?> has got more coastline than the other 49 states.</li>
@@ -274,16 +298,17 @@ It stretches from Lake Superiour on the Canadian border to the Gambling paradise
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
+
+<div class="clear"></div>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 <h2>Cities</h2>
 <ul>
-<li>New York</li>
-<li>Chicago</li>
+<li>New York City, <?php echo anchor('usa_states/new_york', 'New York') ?></li>
+<li>Chicago, <?php echo anchor('usa_states/illinois', 'Illinois') ?></li>
 </ul>
-<div class="clear"></div>
 </div>
 
 <div class="bottom"></div>
@@ -294,16 +319,14 @@ It stretches from Lake Superiour on the Canadian border to the Gambling paradise
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* USA */
-google_ad_slot = "4748642746";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- USA -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="4748642746"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>
@@ -334,8 +357,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="first-column">
 <ul>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
-<li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
-<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('news/news_index', 'TRAVEL NEWS') ?></li>
+<li><?php echo anchor('blog/blog_index', 'BLOG') ?></li>
 <li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
@@ -344,8 +367,9 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | <?php echo anchor('home/contact_us', 'Contact Us') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
+<link href="<?php echo base_url() ?>assets/css/region.css" rel="stylesheet" type="text/css" />
 </body>
 </html>

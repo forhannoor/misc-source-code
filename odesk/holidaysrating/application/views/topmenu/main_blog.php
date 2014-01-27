@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-language" content="en-us" />
 <meta name="description" content="Visit our blog! Read stories from guest writers - what is their favorite destination?"/>
 <meta name="keywords" content="travelblog, blog"/>
 <meta name="author" content="Raymond"/>
@@ -11,7 +12,6 @@
 
 <title>Blog | Holidaysrating.com</title>
 <link href="<?php echo base_url() ?>assets/css/holiday.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 </head>
 
 <body>
@@ -33,16 +33,14 @@
 </div>
 <div id="banner">
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* MainBlogTop */
-google_ad_slot = "9116306745";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- MainBlogTop -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="9116306745"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 
@@ -58,23 +56,20 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
 <h2>Welcome</h2>
-<br/>
 <?php if(isset($profile_info)): ?>
-<?php foreach($profile_info->result() as $value): ?>
-<?php echo img('./uploads/'.$value->avatar) ?>
-<?php endforeach ?>
+<p class="avatar"><?php echo anchor('user/index', img('./uploads/'.$profile_info->avatar)) ?></p>
+<?php else: ?>
+<p class="avatar"><?php echo anchor('user/index', img('assets/assets/avatar.jpg')) ?></p>
 <?php endif ?>
 <br />
-<?php echo $this->ion_auth->user()->row()->first_name.' ' ?>
-<?php echo $this->ion_auth->user()->row()->last_name.' ' ?>
-<?php echo '<br>' ?>
-<?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
-<?php echo 'Member since&nbsp;: '.$joined_in ?>
+<?php echo $this->session->userdata('username') ?>
 <br />
-<?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
-<?php echo 'Last logged in: '.$last_login ?>
-<?php $this->load->model('User_model') ?>
-<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<?php echo 'Member since&nbsp;: ' . date("d-m-Y" , $this->session->userdata('created_on')) ?>
+<br />
+<?php echo 'Last logged in: ' . date("d-m-Y" , $this->session->userdata('old_last_login')) ?>
+<?php $CI = & get_instance() ?>
+<?php $CI->load->model('Message_model') ?>
+<?php $new_message_counter = $CI->Message_model->count_new($this->session->userdata('user_id')) ?>
 <br/>
 <br/>
 <?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
@@ -83,10 +78,10 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <?php echo anchor('auth/logout', 'Logout') ?>
 <?php else: ?>
 <h2>Member Login</h2>
-<?php include APPPATH.'views/auth/my_login.php' ?>
+<?php $this->load->view('auth/my_login') ?>
 <br />
 <?php echo anchor('auth/forgot_password', 'Forgot Password') ?>
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
@@ -97,7 +92,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <ul class="profile-items">
 <?php $users_online = $this->Ion_auth_model->users_online() ?>
 <?php foreach($users_online as $u_online): ?>
-<li><?php echo $u_online->username ?></li>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
 <?php endforeach ?>
 </ul>
 </div>
@@ -106,17 +101,25 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 
 <div class="center">
+
+<?php if($this->session->flashdata('msg')): ?>
+<h2 class="alert"><?php echo $this->session->flashdata('msg') ?></h2>
+<?php  endif?>
+
 <div class="hot">
 <p>Don't know where to go this year? Looking for information or just curious? Read the story of our travelguides. Below you can find the various stories.</p>
 <br />
-<p style="margin-bottom:8px;color:#ed1f28">Follow Raymond in Dominica, Caribbean -  <font color="black">NEW</font> <br /><?php echo anchor('blog/raymond', 'Click here') ?></p>
-<p style="margin-bottom:8px;color:#ed1f28">Explore Queensland with Danielle - <font color="black">NEW</font> <br /><?php echo anchor('blog/raymond', 'Click here') ?></p>
-<img src="<?php echo base_url() ?>assets/images/palm.JPG" alt="palm" style="margin-top:10px" />
-</div>
-<div class="clear"></div>
-<div class="latest-news">
+<div class="stamp">
+<p style="margin:15px 0 8px 0;color:#ed1f28">Follow Raymond in Dominica, Caribbean <br /><?php echo anchor('blog/raymond', 'Click here') ?></p>
+<p style="margin-bottom:8px;color:#ed1f28">Josh knows his way in beautiful Israel <br /><?php echo anchor('blog/josh', 'Click here') ?></p>
+<p style="margin-bottom:8px;color:#ed1f28">Explore Australia with Angie - <font color="black">NEW</font> <br /><?php echo anchor('blog/angie', 'Click here') ?></p>
+<p style="margin-bottom:8px;color:#ed1f28">Java, Bali, Lombok and the Gili's - <font color="black">NEW</font> <br /><?php echo anchor('blog/java_bali_lombok', 'Click here') ?></p>
 </div>
 
+<center><img src="<?php echo base_url() ?>assets/images/footer-bg.jpg" alt="Holidaysrating" style="margin-top:3px;margin-bottom:15px" /></center>
+<iframe width="472" height="210"  src="http://www.youtube-nocookie.com/embed/4G25o60_WY4" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="clear"></div>
 </div>
 
 
@@ -124,7 +127,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="top"></div>
 <div class="middle">
 <p><span>You are here&gt;<?php echo anchor('home/index', 'Home') ?>&gt;Blog</span></p>
-<h2 style="margin-bottom:7px">Submit your story</h2>
+
+<h2 style="margin-bottom:6px">Submit your story</h2>
 <p>What is your favorite destination? Want to become our travelguide? Click on the button below to submit your story.</p>
 <div class="buttonlink"><center><?php echo anchor('home/contact_us', img('assets/assets/story.png')); ?></center></div>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
@@ -143,11 +147,24 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
 
 <div class="clear"></div>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
+
+<div class="google-right">
+<script async src="file:///pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- BlogRight -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:180px;height:150px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="5869298745"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
 
 </div>
 <div class="bottom"></div>
@@ -156,16 +173,14 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* MainBlogBottom */
-google_ad_slot = "4546506340";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- MainBlogTop -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="9116306745"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>
@@ -207,7 +222,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
 </body>

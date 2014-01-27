@@ -7,8 +7,10 @@
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta name="language" content="English" />
+<meta content="<?php echo base_url() ?>assets/images/flags/caribbean/cayman-islands.gif" property="og:image" />
 
-<title>Cayman Islands</title>
+<title>Cayman Islands | Caribbean</title>
 <link href="<?php echo base_url() ?>assets/css/country.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
@@ -132,10 +134,18 @@
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
 
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertise here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
+<?php endforeach ?>
+</ul>
+
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:8px" />
+
+<?php $this->load->view($left_sidebar) ?>
+
 </div>
 
 <div class="bottom-island"></div>
@@ -144,9 +154,39 @@
 <div class="center">
 <div class="hot">
 <h1>Introduction</h1>
+<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/caribbean/cayman-islands.jpg" alt="Cayman Islands" />
+<p style="float:right;width:75%">The <strong>Cayman Islands</strong> is a group of three islands in the Western part of the Caribbean. It has a size of 264 square kilometres. </p>
+<br />
+<h5><?php echo $this->session->flashdata('msg') ?></h5>
 </div>
+<p>Grand Cayman, Cayman Brac and Little Cayman.</p>
+
+<h1>Climate</h1>
+<p>Climate</p>
+
+<!-- Currency Converter script - fx-rate.net --> 
+<div style="width:474px; background-color:white;border:2px solid #888;text-align:center;margin-top:10px;padding:0px"> 
+<div style="background-color:#FEE89D ;border-bottom:1px solid #888;width:100%;margin:0px;padding:0px;align:center;text-align:center;">
+<a title="Cayman Islands Dollar Converter" class="HS1label" style="font-size:12px!important; line-height:16px!important;font-family: arial;text-decoration:none;color:#132105;margin-bottom:6px;" target="_blank" href="http://fx-rate.net/KYD/"><b>Cayman Islands Dollar Converter</b></a>
+</div> <script type="text/javascript" src="http://fx-rate.net/converter.php?size=short&layout=horizontal&currency=KYD"></script></div> 
+<!-- End of Currency Converter script --> 
+
+<h1>Flora and Fauna</h1>
+<p>Aruba.</p>
+
+<h1>Things to do</h1>
+<p>Coming soon</p>
+
+
+
+
+
+
+</div>
+
 <div class="clear"></div>
-<div class="latest-news">
+<div class="comment">
+<img src="<?php echo base_url() ?>assets/images/comments.png" alt="comment" style="margin-left:300px" /><?php echo anchor('user/make_comment/cayman_islands', 'Leave a comment') ?>
 </div>
 
 
@@ -158,14 +198,38 @@
 
 <div class="middle-island">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt; <?php echo anchor('regions/central_america', 'Central America') ?>&gt;<?php echo anchor('regions/caribbean', 'Caribbean') ?>&gt; Cayman islands</span></p>
-<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Cayman+Islands&amp;aq=0&amp;oq=cayman&amp;sll=-32.010396,135.119128&amp;sspn=89.847983,214.277344&amp;ie=UTF8&amp;hq=&amp;hnear=Cayman+Islands&amp;t=m&amp;ll=19.248922,-81.188965&amp;spn=2.489142,3.823242&amp;z=6&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Cayman+Islands&amp;aq=0&amp;oq=cayman&amp;sll=-32.010396,135.119128&amp;sspn=89.847983,214.277344&amp;ie=UTF8&amp;hq=&amp;hnear=Cayman+Islands&amp;t=m&amp;ll=19.248922,-81.188965&amp;spn=2.489142,3.823242&amp;z=6" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+
+<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Cayman+Islands&amp;aq=0&amp;oq=cayman&amp;sll=-32.010396,135.119128&amp;sspn=89.847983,214.277344&amp;ie=UTF8&amp;hq=&amp;hnear=Cayman+Islands&amp;t=m&amp;ll=19.248922,-81.188965&amp;spn=2.489142,3.823242&amp;z=6&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Cayman+Islands&amp;aq=0&amp;oq=cayman&amp;sll=-32.010396,135.119128&amp;sspn=89.847983,214.277344&amp;ie=UTF8&amp;hq=&amp;hnear=Cayman+Islands&amp;t=m&amp;ll=19.248922,-81.188965&amp;spn=2.489142,3.823242&amp;z=6" target="_blank" style="color:#5F6A6F;text-align:left">View Larger Map</a></small>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 	
+<div class="key-facts">	
+<h2>Key Facts</h2>
+<ul>
+<li><strong>Capital city:</strong></li>
+<li>     </li>
+
+<li><strong>Size:</strong></li>
+<li> km2</li>
+<li> sq mi</li>
+
+<li><strong>Water:</strong></li>
+<li>%</li>
+
+<li><strong>Languages:</strong></li>
+<li>   </li>
+
+<li><strong>Time zone:</strong></li>
+<li>    </li>
+
+<li><strong>Calling code:</strong></li>
+<li>    </li>
+</ul>
+</div>
+
 <h2>Cities</h2>
 <ul>
 <li><?php echo anchor('home/index', 'Home') ?></li>
 </ul>
-
 
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 <h2>Like it..</h2>
@@ -183,15 +247,15 @@
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
 
 <div class="clear"></div>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
-<h2>TOP Adventures</h2>
+<h2>Explore Cayman Islands</h2>
 <ul>
-<li><?php echo anchor('home/index', 'Home') ?></li>
+<li>Coming soon</li>
 </ul>
 </div>
 <div class="bottom-island"></div>
@@ -202,18 +266,15 @@
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* CaribbeanCountries */
-google_ad_slot = "4584715548";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- CaribbeanCountries -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="4584715548"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-
 </div>
 <div class="clear"></div>
 <div class="first-column">
@@ -253,7 +314,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
 </body>

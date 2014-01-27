@@ -9,7 +9,7 @@
 <meta name="revisit-after" content="1 days"/>
 <meta content="<?php echo base_url() ?>assets/images/sandlogo.jpg" property="og:image" />
 
-<title>City trips | Holidaysrating.com</title>
+<title>City trips | Holidaysrating</title>
 <link href="<?php echo base_url() ?>assets/css/holiday.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
@@ -137,7 +137,7 @@
 <ul class="profile-items">
 <?php $users_online = $this->Ion_auth_model->users_online() ?>
 <?php foreach($users_online as $u_online): ?>
-<li><?php echo $u_online->username ?></li>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
 <?php endforeach ?>
 </ul>
 </div>
@@ -176,8 +176,9 @@
 <div class="middle-favorites">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt; <?php echo anchor('topmenu/favorites', 'Favorites') ?>&gt;Amazing beaches</span></p>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Video..</h2>
-<p>Holidaysrating is a brand new website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+
+<?php $this->load->view($right_bar_fav) ?>
+
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
 <h2>Links</h2>
 
@@ -197,7 +198,7 @@
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
 
@@ -212,16 +213,14 @@
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* Favorites */
-google_ad_slot = "1313838340";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Favorites -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="1313838340"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>
@@ -260,7 +259,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="logo"><center><img src="<?php echo base_url() ?>assets/images/globe-slogin.jpg" alt="logo" /></center>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 
 </body>

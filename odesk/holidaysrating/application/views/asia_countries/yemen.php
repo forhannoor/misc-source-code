@@ -7,8 +7,10 @@
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta name="language" content="English" />
+<meta content="<?php echo base_url() ?>assets/images/flags/asia/yemen.gif" property="og:image" />
 
-<title>Yemen</title>
+<title>Yemen | Asia</title>
 <link href="<?php echo base_url() ?>assets/css/country.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
@@ -52,34 +54,32 @@
                 <div class="thumbnails">
                     <ul>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/1.jpg" title="Daintree National Park"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract17.jpg"/></a>
+                            <a href="<?php echo base_url() ?>assets/images/countries/asia/yemen/dragoons-blood-tree.jpg" title="Yemen"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract17.jpg"/></a>
                             <a href="#" target="_blank"></a>                        
                             <div style="left:5px; top:94px; width:336px; height:0;"> 
-                            	<h1>Daintree National Park</h1>
-                            	The world's oldest tropical rainforest located close to Cairns, Queensland in Australia. Where reef meets rainforest! 
-                            	Tell us your travel story...</div>
+                            	<h1>Halongbay in Yemen</h1>
+                            	Travel to Yemen and have the trip of your life.</div>
                         </li>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/2.jpg" title="Egypt"><img src="<?php echo base_url() ?>assets/images/thumbs/sf.jpg"/></a>
+                            <a href="<?php echo base_url() ?>assets/images/countries/asia/yemen/socotra.jpg" title="Yemen"><img src="<?php echo base_url() ?>assets/images/thumbs/sf.jpg"/></a>
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:336px; height:0; color:#000; background-color:#FFF"> 
-                                <h1 style="color:#0CF">Pyramids of Egypt</h1>
-                                Visit the ancient wonders of the world. All over the world are these hidden jewels. Every single one with his own story! Just like you...</div>                                                  	
+                                <h1 style="color:#0CF">Scienic landscapes in Yemen</h1>
+                                Holidaysrating recommand; Yemen. The beautiful views and scienic landscapes!</div>                                                  	
                         </li>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/3.jpg" title="Tankuban Perahu"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract26.jpg"/></a>   
+                            <a href="<?php echo base_url() ?>assets/images/countries/asia/yemen/fold-city.jpg" title="Yemen"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract26.jpg"/></a>   
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:336px; height:0; color:#000; background-color:#FFF">
-                            	<h1 style="color:#0CF">Tankuban Perahu</h1>
-                                Visit this dormant vulcano, 25 km north of the city Bandung in West-Java, Indonesia.
-                                Find more information about the world's most beautiful destinations...</div>                                                          	                   
+                            	<h1 style="color:#0CF">Yemen</h1>
+                                Yemen.</div>                                                          	                   
                         </li>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/4.jpg" title="Saint Martin"><img src="<?php echo base_url() ?>assets/images/thumbs/tokyo.jpg"/></a>                  
+                            <a href="<?php echo base_url() ?>assets/images/countries/asia/yemen/palace.jpg" title="SYemen"><img src="<?php echo base_url() ?>assets/images/thumbs/tokyo.jpg"/></a>                  
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:350px; height:0;"> 
-                                <h1>Saint Martin</h1>
-                                Explore the stunning beaches of the Caribbean. What is your favorite travel experience? Be our guide and upload your travel pictures and videos...</div>                                          	                          
+                                <h1>The palace in Yemen</h1>
+                                Yemen.</div>                                          	                          
                         </li>     
                     </ul>
                 </div>     
@@ -134,10 +134,18 @@
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
 
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertise here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
+<?php endforeach ?>
+</ul>
+
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:8px" />
+
+<?php $this->load->view($left_sidebar) ?>
+
 </div>
 
 <div class="bottom"></div>
@@ -146,11 +154,46 @@
 <div class="center">
 <div class="hot">
 <h1>Introduction</h1>
-</div>
-<div class="clear"></div>
-<div class="latest-news">
+
+<div class="flag" style="float:left">
+<img src="<?php echo base_url() ?>assets/images/flags/africa/yemen.jpg" alt="Yemen" />
+<p style="float:right;width:75%"><strong>Yemen</strong> is a country in the <?php echo anchor('regions/middle_east', 'Middle East') ?>, with a size of ... square kilometres. The official language is ....</p>
+<br />
+<h5><?php echo $this->session->flashdata('msg') ?></h5>
 </div>
 
+<div class="travel-alerts">
+<p 	style="color:#FFA928">Holidaysrating advise you to exercise a high degree of caution in Yemen. There have been reports of violent incidents against foreigners. Therefore we advise you to reconsider your need to travel because of the high risk of civil unrest and criminal violence. <a style="color:#808080" href="http://www.holidaysrating.com/index.php/news/travel_alerts">See also Travel Alerts</a></p>
+</div>
+
+<h1>Climate</h1>
+<p>Climate</p>
+
+<!-- Currency Converter script - fx-rate.net --> 
+<div style="width:474px; background-color:white;border:2px solid #888;text-align:center;margin-top:10px;padding:0px"> 
+<div style="background-color:#AEAF61 ;border-bottom:1px solid #888;width:100%;margin:0px;padding:0px;align:center;text-align:center;">
+<a title="Yemeni Rial Converter" class="HS1label" style="font-size:12px!important; line-height:16px!important;font-family: arial;text-decoration:none;color:#132105;margin-bottom:6px;" target="_blank" href="http://fx-rate.net/YER/"><b>Yemeni Rial Converter</b></a>
+</div> <script type="text/javascript" src="http://fx-rate.net/converter.php?size=short&layout=horizontal&currency=YER"></script></div> 
+<!-- End of Currency Converter script --> 
+
+<h1>Flora and Fauna</h1>
+<p>•Jabal Bura valley forest is the only National Park in Yemen.</p>
+
+<h1>Things to do</h1>
+<p>Coming soon</p>
+
+
+
+
+
+
+
+</div>
+
+<div class="clear"></div>
+<div class="comment">
+<img src="<?php echo base_url() ?>assets/images/comments.png" alt="comment" style="margin-left:300px" /><?php echo anchor('user/make_comment/yemen', 'Leave a comment') ?>
+</div>
 
 </div>
 
@@ -160,14 +203,38 @@
 
 <div class="middle">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;<?php echo anchor('regions/asia', 'Asia') ?>&gt; Yemen</span></p>
-<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=yemen&amp;aq=&amp;sll=14.058324,108.277199&amp;sspn=27.542622,53.569336&amp;ie=UTF8&amp;hq=&amp;hnear=Yemen&amp;t=m&amp;ll=15.792254,47.614746&amp;spn=2.537005,3.823242&amp;z=6&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=yemen&amp;aq=&amp;sll=14.058324,108.277199&amp;sspn=27.542622,53.569336&amp;ie=UTF8&amp;hq=&amp;hnear=Yemen&amp;t=m&amp;ll=15.792254,47.614746&amp;spn=2.537005,3.823242&amp;z=6" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+
+<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=yemen&amp;aq=&amp;sll=14.058324,108.277199&amp;sspn=27.542622,53.569336&amp;ie=UTF8&amp;hq=&amp;hnear=Yemen&amp;t=m&amp;ll=15.792254,47.614746&amp;spn=2.537005,3.823242&amp;z=6&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=yemen&amp;aq=&amp;sll=14.058324,108.277199&amp;sspn=27.542622,53.569336&amp;ie=UTF8&amp;hq=&amp;hnear=Yemen&amp;t=m&amp;ll=15.792254,47.614746&amp;spn=2.537005,3.823242&amp;z=6" target="_blank" style="color:#5F6A6F;text-align:left">View Larger Map</a></small>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 	
+<div class="key-facts">	
+<h2>Key Facts</h2>
+<ul>
+<li><strong>Capital city:</strong></li>
+<li>     </li>
+
+<li><strong>Size:</strong></li>
+<li> km2</li>
+<li> sq mi</li>
+
+<li><strong>Water:</strong></li>
+<li>%</li>
+
+<li><strong>Languages:</strong></li>
+<li>   </li>
+
+<li><strong>Time zone:</strong></li>
+<li>    </li>
+
+<li><strong>Calling code:</strong></li>
+<li>    </li>
+</ul>
+</div>
+
 <h2>Cities</h2>
 <ul>
 <li><?php echo anchor('home/index', 'Home') ?></li>
 </ul>
-
 
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 <h2>Like it..</h2>
@@ -185,15 +252,15 @@
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
 
 <div class="clear"></div>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
-<h2>TOP Adventures</h2>
+<h2>Explore Yemen</h2>
 <ul>
-<li><?php echo anchor('home/index', 'Home') ?></li>
+<li>Coming soon</li>
 </ul>
 </div>
 <div class="bottom"></div>
@@ -204,16 +271,14 @@
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* AsiaCountries */
-google_ad_slot = "6132487545";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- AsiaCountries -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="6132487545"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>
@@ -254,7 +319,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
 </body>

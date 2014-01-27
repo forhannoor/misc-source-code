@@ -7,8 +7,10 @@
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta name="language" content="English" />
+<meta content="<?php echo base_url() ?>assets/images/flags/oceania/french-polynesia.gif" property="og:image" />
 
-<title>French Polynesia</title>
+<title>French Polynesia | Oceania</title>
 <link href="<?php echo base_url() ?>assets/css/country.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
@@ -18,7 +20,7 @@
 </head>
 
 <body>
-<div id="top-head">
+<div id="top-head-island">
 <div class="main">
 <div class="logo">
 	<img src="<?php echo base_url() ?>assets/images/logo.png" width="350" height="78" alt="logo" /></div>
@@ -36,7 +38,7 @@
 </div>
 </div>
 
-<div id="slider">
+<div id="slider-island">
 <div class="slideshow"><div class="panel">
  	<div class="container">
         <div class="wt-rotator">
@@ -92,8 +94,8 @@
 <h1><?php echo $heading ?></h1>
 <div class="clear"></div>
 <div class="left-side">
-<div class="top"></div>
-<div class="middle">
+<div class="top-island"></div>
+<div class="middle-island">
 <div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
 <h2>Welcome</h2>
@@ -132,40 +134,102 @@
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
 
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertise here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
+<?php endforeach ?>
+</ul>
+
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:8px" />
+
+<?php $this->load->view($left_sidebar) ?>
+
 </div>
 
-<div class="bottom"></div>
+<div class="bottom-island"></div>
 </div>
 
 <div class="center">
 <div class="hot">
 <h1>Introduction</h1>
+<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/oceania/french-polynesia.jpg" alt="French Polynesia" />
+<p style="float:right;width:75%"><strong>French Polynesia</strong> multiple groups of islands in the Pacific Ocean. It has a size of 4,167 square kilometres.</p>
+<br />
+<h5><?php echo $this->session->flashdata('msg') ?></h5>
 </div>
-<div class="clear"></div>
-<div class="latest-news">
+<p>Tourist info.</p>
+
+<h1>Climate</h1>
+<p>Climate</p>
+
+<!-- Currency Converter script - fx-rate.net --> 
+<div style="width:474px; background-color:white;border:2px solid #888;text-align:center;margin-top:10px;padding:0px"> 
+<div style="background-color:#FEE89D;border-bottom:1px solid #888;width:100%;margin:0px;padding:0px;align:center;text-align:center;">
+<a title="CFP Franc Converter" class="HS1label" style="font-size:12px!important; line-height:16px!important;font-family: arial;text-decoration:none;color:#132105;margin-bottom:6px;" target="_blank" href="http://fx-rate.net/XPF/"><b>CFP Franc Converter</b></a>
+</div> <script type="text/javascript" src="http://fx-rate.net/converter.php?size=short&layout=horizontal&currency=XPF"></script></div> 
+<!-- End of Currency Converter script --> 
+
+<h1>Flora and Fauna</h1>
+<p>French Polynesia.</p>
+
+<h1>Things to do</h1>
+<p>Coming soon</p>
+
+
+
+
+
+
+
 </div>
 
+<div class="clear"></div>
+<div class="comment">
+<img src="<?php echo base_url() ?>assets/images/comments.png" alt="comment" style="margin-left:300px" /><?php echo anchor('user/make_comment/french_polynesia', 'Leave a comment') ?>
+</div>
 
 </div>
 
 
 <div class="right-side">
-<div class="top"></div>
+<div class="top-island"></div>
 
-<div class="middle">
+<div class="middle-island">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt; <?php echo anchor('regions/oceania', 'Oceania') ?>&gt; French Polynesia</span></p>
-<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=french+polynesia&amp;aq=&amp;sll=-17.713371,178.065032&amp;sspn=6.73613,9.700928&amp;g=fiji&amp;ie=UTF8&amp;hq=&amp;hnear=French+Polynesia&amp;t=m&amp;ll=-17.680662,-149.403076&amp;spn=0.62804,0.955811&amp;z=8&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=french+polynesia&amp;aq=&amp;sll=-17.713371,178.065032&amp;sspn=6.73613,9.700928&amp;g=fiji&amp;ie=UTF8&amp;hq=&amp;hnear=French+Polynesia&amp;t=m&amp;ll=-17.680662,-149.403076&amp;spn=0.62804,0.955811&amp;z=8" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+
+<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=french+polynesia&amp;aq=&amp;sll=-17.713371,178.065032&amp;sspn=6.73613,9.700928&amp;g=fiji&amp;ie=UTF8&amp;hq=&amp;hnear=French+Polynesia&amp;t=m&amp;ll=-17.680662,-149.403076&amp;spn=0.62804,0.955811&amp;z=8&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=french+polynesia&amp;aq=&amp;sll=-17.713371,178.065032&amp;sspn=6.73613,9.700928&amp;g=fiji&amp;ie=UTF8&amp;hq=&amp;hnear=French+Polynesia&amp;t=m&amp;ll=-17.680662,-149.403076&amp;spn=0.62804,0.955811&amp;z=8" target="_blank" style="color:#5F6A6F;text-align:left">View Larger Map</a></small>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 	
+<div class="key-facts">	
+<h2>Key Facts</h2>
+<ul>
+<li><strong>Capital city:</strong></li>
+<li>     </li>
+
+<li><strong>Size:</strong></li>
+<li> km2</li>
+<li> sq mi</li>
+
+<li><strong>Water:</strong></li>
+<li>%</li>
+
+<li><strong>Languages:</strong></li>
+<li>   </li>
+
+<li><strong>Time zone:</strong></li>
+<li>    </li>
+
+<li><strong>Calling code:</strong></li>
+<li>    </li>
+</ul>
+</div>
+
 <h2>Cities</h2>
 <ul>
 <li><?php echo anchor('home/index', 'Home') ?></li>
 </ul>
-
 
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 <h2>Like it..</h2>
@@ -183,18 +247,18 @@
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
 
 <div class="clear"></div>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
-<h2>TOP Adventures</h2>
+<h2>Explore French Polynesia</h2>
 <ul>
-<li><?php echo anchor('home/index', 'Home') ?></li>
+<li>Coming soon</li>
 </ul>
 </div>
-<div class="bottom"></div>
+<div class="bottom-island"></div>
 
 </div>
 
@@ -202,16 +266,14 @@
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* OceaniaCountries */
-google_ad_slot = "1515974747";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- OceaniaCountries -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="1515974747"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>
@@ -252,7 +314,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
 </body>

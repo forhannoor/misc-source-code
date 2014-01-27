@@ -7,8 +7,10 @@
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta name="language" content="English" />
+<meta content="<?php echo base_url() ?>assets/images/flags/asia/vietnam.gif" property="og:image" />
 
-<title>Vietnam</title>
+<title>Vietnam | Asia</title>
 <link href="<?php echo base_url() ?>assets/css/country.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
@@ -59,21 +61,21 @@
                             	Travel to vietnam and have the trip of your life.</div>
                         </li>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/images/countries/asia/vietnam/landscape.jpg" title="landscape"><img src="<?php echo base_url() ?>assets/images/thumbs/sf.jpg"/></a>
+                            <a href="<?php echo base_url() ?>assets/images/countries/asia/vietnam/landscape.jpg" title="landscape"><img src="<?php echo base_url() ?>assets/images/thumbs/sf.jpg"/></a>
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:336px; height:0; color:#000; background-color:#FFF"> 
                                 <h1 style="color:#0CF">Scienic landscapes in Vietnam</h1>
                                 Holidaysrating recommand; Vietnam. The beautiful views and scienic landscapes!</div>                                                  	
                         </li>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/images/countries/asia/vietnam/forbidden-city-vietnam.jpg" title="Forbidden City"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract26.jpg"/></a>   
+                            <a href="<?php echo base_url() ?>assets/images/countries/asia/vietnam/forbidden-city-vietnam.jpg" title="Forbidden City"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract26.jpg"/></a>   
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:336px; height:0; color:#000; background-color:#FFF">
                             	<h1 style="color:#0CF">Forbidden City  in Vietnam</h1>
                                 The forbidden city in Vietnam, Asia.</div>                                                          	                   
                         </li>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/images/countries/asia/vietnam/sapa-vietnam.jpg" title="Sa-pa"><img src="<?php echo base_url() ?>assets/images/thumbs/tokyo.jpg"/></a>                  
+                            <a href="<?php echo base_url() ?>assets/images/countries/asia/vietnam/sapa-vietnam.jpg" title="Sa-pa"><img src="<?php echo base_url() ?>assets/images/thumbs/tokyo.jpg"/></a>                  
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:350px; height:0;"> 
                                 <h1>The ricefields in Sa Pa Vietnam</h1>
@@ -132,10 +134,18 @@
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
 
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertise here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
+<?php endforeach ?>
+</ul>
+
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:8px" />
+
+<?php $this->load->view($left_sidebar) ?>
+
 </div>
 
 <div class="bottom"></div>
@@ -144,11 +154,44 @@
 <div class="center">
 <div class="hot">
 <h1>Introduction</h1>
+
+<div class="flag" style="float:left">
+<img src="<?php echo base_url() ?>assets/images/flags/africa/vietnam.jpg" alt="Vietnam" />
+<p style="float:right;width:75%"><strong>Vietnam</strong> is a country in Asia, with a size of ... square kilometres. The official language is ....</p>
+<br />
+<h5><?php echo $this->session->flashdata('msg') ?></h5>
 </div>
-<div class="clear"></div>
-<div class="latest-news">
+<p>Tourist info.</p>
+
+<h1>Climate</h1>
+<p>Climate</p>
+
+<!-- Currency Converter script - fx-rate.net --> 
+<div style="width:474px; background-color:white;border:2px solid #888;text-align:center;margin-top:10px;padding:0px"> 
+<div style="background-color:#AEAF61 ;border-bottom:1px solid #888;width:100%;margin:0px;padding:0px;align:center;text-align:center;">
+<a title=" Vietnamese Dong Converter" class="HS1label" style="font-size:12px!important; line-height:16px!important;font-family: arial;text-decoration:none;color:#132105;margin-bottom:6px;" target="_blank" href="http://fx-rate.net/VND/"><b> Vietnamese Dong Converter</b></a>
+</div> <script type="text/javascript" src="http://fx-rate.net/converter.php?size=short&layout=horizontal&currency=VND"></script></div> 
+<!-- End of Currency Converter script --> 
+
+<h1>Flora and Fauna</h1>
+<p>Vietnam has got around 30 National Parks: Ba Be National Park, Bai Tu Long National Park, Hoang Lien National Park, Tam Dao National Park, Xuan Son National Park, Ba Vi National Park, Cat Ba National Park, Xuan Thuy National Park, Cuc Phuong National Park, Ben En National Park, Pu Mat National Park, Vu Quang National Park, Phong Nha – Ke Bang National Park, Bach Ma National Park, Nui Chua National Park, 
+Bidoup Nui Ba National Park, Phuoc binh National Park, Chu Mom Ray National Park, Chu Yang Sin National Park, Kon Ka Kinh National Park, Yok Don National Park, Lo Go-Xa Mat National Park, Tram Chim National Park, Mui Ca Mau National Park, U Minh Ha National Park, U Minh Thuong National Park, Phu Quoc National Park and Con Dao National Park.</p>
+
+<h1>Things to do</h1>
+<p>Coming soon</p>
+
+
+
+
+
+
+
 </div>
 
+<div class="clear"></div>
+<div class="comment">
+<img src="<?php echo base_url() ?>assets/images/comments.png" alt="comment" style="margin-left:300px" /><?php echo anchor('user/make_comment/vietnam', 'Leave a comment') ?>
+</div>
 
 </div>
 
@@ -158,14 +201,38 @@
 
 <div class="middle">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;<?php echo anchor('regions/asia', 'Asia') ?>&gt; Vietnam</span></p>
-<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=vietnam&amp;aq=&amp;sll=41.377491,64.585262&amp;sspn=10.746464,26.784668&amp;ie=UTF8&amp;hq=&amp;hnear=Vietnam&amp;t=m&amp;ll=14.051331,108.28125&amp;spn=5.114057,7.646484&amp;z=5&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=vietnam&amp;aq=&amp;sll=41.377491,64.585262&amp;sspn=10.746464,26.784668&amp;ie=UTF8&amp;hq=&amp;hnear=Vietnam&amp;t=m&amp;ll=14.051331,108.28125&amp;spn=5.114057,7.646484&amp;z=5" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+
+<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=vietnam&amp;aq=&amp;sll=41.377491,64.585262&amp;sspn=10.746464,26.784668&amp;ie=UTF8&amp;hq=&amp;hnear=Vietnam&amp;t=m&amp;ll=14.051331,108.28125&amp;spn=5.114057,7.646484&amp;z=5&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=vietnam&amp;aq=&amp;sll=41.377491,64.585262&amp;sspn=10.746464,26.784668&amp;ie=UTF8&amp;hq=&amp;hnear=Vietnam&amp;t=m&amp;ll=14.051331,108.28125&amp;spn=5.114057,7.646484&amp;z=5" target="_blank" style="color:#5F6A6F;text-align:left">View Larger Map</a></small>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 	
+<div class="key-facts">	
+<h2>Key Facts</h2>
+<ul>
+<li><strong>Capital city:</strong></li>
+<li>     </li>
+
+<li><strong>Size:</strong></li>
+<li> km2</li>
+<li> sq mi</li>
+
+<li><strong>Water:</strong></li>
+<li>%</li>
+
+<li><strong>Languages:</strong></li>
+<li>   </li>
+
+<li><strong>Time zone:</strong></li>
+<li>    </li>
+
+<li><strong>Calling code:</strong></li>
+<li>    </li>
+</ul>
+</div>
+
 <h2>Cities</h2>
 <ul>
 <li><?php echo anchor('home/index', 'Home') ?></li>
 </ul>
-
 
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 <h2>Like it..</h2>
@@ -183,14 +250,14 @@
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
 
 <div class="clear"></div>
-<h2>TOP Adventures</h2>
+<h2>Explore Vietnam</h2>
 <ul>
-<li><?php echo anchor('home/index', 'Home') ?></li>
+<li>Coming soon</li>
 </ul>
 </div>
 <div class="bottom"></div>
@@ -201,16 +268,14 @@
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* AsiaCountries */
-google_ad_slot = "6132487545";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- AsiaCountries -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="6132487545"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>
@@ -251,7 +316,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
 </body>

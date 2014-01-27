@@ -7,8 +7,10 @@
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta name="language" content="English" />
+<meta content="<?php echo base_url() ?>assets/images/flags/africa/chad.gif" property="og:image" />
 
-<title>Rwanda</title>
+<title>Rwanda | Africa</title>
 <link href="<?php echo base_url() ?>assets/css/country.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
@@ -136,13 +138,14 @@
 <ul class="profile-items">
 <?php $users_online = $this->Ion_auth_model->users_online() ?>
 <?php foreach($users_online as $u_online): ?>
-<li><?php echo $u_online->username ?></li>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
 <?php endforeach ?>
 </ul>
 
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertise here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+
+<?php $this->load->view($left_sidebar) ?>
+
 </div>
 
 <div class="bottom"></div>
@@ -151,11 +154,41 @@
 <div class="center">
 <div class="hot">
 <h1>Introduction</h1>
+<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/africa/rwanda.jpg" alt="Rwanda" />
+<p style="float:right;width:75%"><strong>Mauritius</strong> is a island in...., with a size of ... square kilometres. The official language is ....</p>
+<br />
+<h5><?php echo $this->session->flashdata('msg') ?></h5>
 </div>
-<div class="clear"></div>
-<div class="latest-news">
+<p>Touristinfo</p>
+
+<h1>Climate</h1>
+<p>Climate</p>
+
+<!-- Currency Converter script - fx-rate.net --> 
+<div style="width:474px; background-color:white;border:2px solid #888;text-align:center;margin-top:10px;padding:0px"> 
+<div style="background-color:#AEAF61 ;border-bottom:1px solid #888;width:100%;margin:0px;padding:0px;align:center;text-align:center;">
+<a title="Rwanda Franc Converter" class="HS1label" style="font-size:12px!important; line-height:16px!important;font-family: arial;text-decoration:none;color:#132105;margin-bottom:6px;" target="_blank" href="http://fx-rate.net/RWF/"><b>Rwanda Franc Converter</b></a>
+</div> <script type="text/javascript" src="http://fx-rate.net/converter.php?size=short&layout=horizontal&currency=RWF"></script></div> 
+<!-- End of Currency Converter script --> 
+
+<h1>Flora and Fauna</h1>
+<p>National parks in Rwanda; Akagera National Park, Gishwati Forest, Nyungwe Forest National Park, Volcans National Park.</p>
+
+<h1>Things to do</h1>
+<p>Coming soon</p>
+
+
+
+
+
+
+
 </div>
 
+<div class="clear"></div>
+<div class="comment">
+<img src="<?php echo base_url() ?>assets/images/comments.png" alt="comment" style="margin-left:300px" /><?php echo anchor('user/make_comment/rwanda', 'Leave a comment') ?>
+</div>
 
 </div>
 
@@ -164,15 +197,39 @@
 <div class="top"></div>
 
 <div class="middle">
-<p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt;<?php echo anchor('regions/africa', 'Africa') ?>&gt; Rwanda</span></p>
-<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Rwanda&amp;aq=&amp;sll=9.0804,8.679199&amp;sspn=14.111742,26.784668&amp;ie=UTF8&amp;hq=&amp;hnear=Rwanda&amp;t=m&amp;ll=-1.944207,29.871826&amp;spn=1.317571,1.911621&amp;z=7&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Rwanda&amp;aq=&amp;sll=9.0804,8.679199&amp;sspn=14.111742,26.784668&amp;ie=UTF8&amp;hq=&amp;hnear=Rwanda&amp;t=m&amp;ll=-1.944207,29.871826&amp;spn=1.317571,1.911621&amp;z=7" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+<p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt; <?php echo anchor('regions/africa', 'Africa') ?>&gt;Rwanda</span></p>
+
+<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Rwanda&amp;aq=&amp;sll=9.0804,8.679199&amp;sspn=14.111742,26.784668&amp;ie=UTF8&amp;hq=&amp;hnear=Rwanda&amp;t=m&amp;ll=-1.944207,29.871826&amp;spn=1.317571,1.911621&amp;z=7&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Rwanda&amp;aq=&amp;sll=9.0804,8.679199&amp;sspn=14.111742,26.784668&amp;ie=UTF8&amp;hq=&amp;hnear=Rwanda&amp;t=m&amp;ll=-1.944207,29.871826&amp;spn=1.317571,1.911621&amp;z=7" target="_blank" style="color:#5F6A6F;text-align:left">View Larger Map</a></small>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 	
+<div class="key-facts">	
+<h2>Key Facts</h2>
+<ul>
+<li><strong>Capital city:</strong></li>
+<li>     </li>
+
+<li><strong>Size:</strong></li>
+<li> km2</li>
+<li> sq mi</li>
+
+<li><strong>Water:</strong></li>
+<li>%</li>
+
+<li><strong>Languages:</strong></li>
+<li>   </li>
+
+<li><strong>Time zone:</strong></li>
+<li>    </li>
+
+<li><strong>Calling code:</strong></li>
+<li>    </li>
+</ul>
+</div>
+
 <h2>Cities</h2>
 <ul>
 <li><?php echo anchor('home/index', 'Home') ?></li>
 </ul>
-
 
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 <h2>Like it..</h2>
@@ -190,15 +247,15 @@
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
 
 <div class="clear"></div>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
-<h2>TOP Adventures</h2>
+<h2>Explore Rwanda</h2>
 <ul>
-<li><?php echo anchor('home/index', 'Home') ?></li>
+<li>Coming soon</li>
 </ul>
 </div>
 <div class="bottom"></div>
@@ -209,18 +266,15 @@
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* Africa Countries */
-google_ad_slot = "6225375940";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- AfricaCountries -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="6225375940"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-
 </div>
 <div class="clear"></div>
 <div class="first-column">
@@ -260,7 +314,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
 </body>

@@ -2,14 +2,19 @@
 
 class topmenu extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Video_model');
+    }
+    
     public function worldmap()
     {
       	$data['main']='topmenu/worldmap.php';
       	$data['heading']='Worldmap';
-      	$this->load->model('User_model');
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_information($this->session->userdata('user_id'));
       	
       	$this->load->view('topmenu/worldmap', $data);
     }
@@ -18,10 +23,9 @@ class topmenu extends CI_Controller
     {
       $data['main']='topmenu/favorites.php';
       $data['heading']='Favorites';
-      $this->load->model('User_model');
 
       if($this->ion_auth->logged_in())
-          $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
 
       $this->load->view('topmenu/favorites', $data);
     }
@@ -30,31 +34,29 @@ class topmenu extends CI_Controller
     {
         $data['main']='topmenu/helpcenter.php';
         $data['heading']='Helpcenter';
-        $this->load->model('User_model');
       
         if($this->ion_auth->logged_in())
-            $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       
         $this->load->view('topmenu/helpcenter', $data);
     }
 
     public function videodump()
     {
-        $this->load->model('Video_model');
         $this->session->set_flashdata('redirectUrl', base_url() . 'index.php/topmenu/videodump');
         
-        if($this->uri->segment(3) == '')
+        if($this->uri->segment(3) == '')    // region not specified
         {
             $data['heading']='Videodump';
-            $data['videos'] = $this->Video_model->get_videos_latest();
+            $data['videos'] = $this->Video_model->get(4, 0, 0);
             $this->load->view('topmenu/videodump', $data);
         }
         
-        else
+        else    // region specified
         {
             $data['main'] = 'topmenu/videodump_view.php';
             $data['heading'] = 'Videos from '.$this->uri->segment(3);
-            //$this->load->view('template', $data);
+            $data['videos'] = $this->Video_model->get_where('region', $this->uri->segment(3));
             $this->load->view('template_view', $data);
         }
     }
@@ -63,10 +65,9 @@ class topmenu extends CI_Controller
     {
         $data['main']='topmenu/main_blog.php';
         $data['heading']='Blog';
-        $this->load->model('User_model');
 
         if($this->ion_auth->logged_in())
-            $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
 
         $this->load->view('topmenu/main_blog', $data);
     }
@@ -84,15 +85,11 @@ class topmenu extends CI_Controller
                 
             redirect('home/index', 'refresh');
         }
-            
-            
-        /* set upload options */
+        
+        /* upload configurations */    
         $config['upload_path']='./uploads/media/videos';
-        /* any extension is allowed for the time being */
-        $config['allowed_types']='*';
-        /* must modify php.ini to increase uploaded file size limit */
+        $config['allowed_types']='mp4';
         $config['max_size']='20971520';
-        /* prevents user to guess a file name and play */
         $config['encrypt_name'] = TRUE;
         $this->load->library('upload', $config);
         
@@ -101,14 +98,15 @@ class topmenu extends CI_Controller
         
         if($this->form_validation->run() == TRUE)
         {
-            if(!$this->upload->do_upload())
+            if(! $this->upload->do_upload())
             {
-                /* if upload not successful */
+                /* upload not successful */
                 $data['main']='topmenu/dump_video_view.php';
                 $data['heading'] = 'Dump Video';
                 $data['banner']=$this->User_model->get_banner($this->ion_auth->user()->row()->id);
                 $data['errors'] = $this->upload->display_errors();
                 $this->load->view('template_user', $data);
+                
             }
             
             else
@@ -123,20 +121,20 @@ class topmenu extends CI_Controller
         {
             $data['main']='topmenu/dump_video_view.php';
             $data['heading'] = 'Dump Video';
+            $data['allowed_types'] = $config['allowed_types'];
             $data['banner']=$this->User_model->get_banner($this->ion_auth->user()->row()->id);
             $this->load->view('template_user', $data);
         }
     }
     
-    /* plays the video */   
-    public function video()
+    /* video playback */   
+    public function video($name)
     {
-        $this->load->model('Video_model');
-        $data['video'] = $this->Video_model->get_video($this->uri->segment(3));
+        $this->load->model('Comment_m');
+        $data['video'] = $this->Video_model->get_where('name', $name, 1);
         $data['main']='topmenu/video_view.php';
         $data['heading'] = 'Holidays Player';
-        $data['comments'] = $this->Video_model->get_comments($this->uri->segment(3));
-        //$this->load->view('template', $data);
+        $data['comments'] = $this->Comment_m->get_where('pid', $name);
         $this->load->view('template_player', $data);
     }
 }

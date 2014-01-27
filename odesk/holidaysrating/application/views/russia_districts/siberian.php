@@ -9,9 +9,7 @@
 <meta name="revisit-after" content="1 days"/>
 <meta content="<?php echo base_url() ?>assets/images/schelpen.jpg" property="og:image" />
 
-<title>Siberian Federal District</title>
-<link href="<?php echo base_url() ?>assets/css/holiday.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
+<title>Siberian Federal District | Russia</title>
 </head>
 
 <body>
@@ -33,16 +31,14 @@
 </div>
 <div id="banner">
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* MainFavoritesTop */
-google_ad_slot = "6487681541";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- RussiaDistrictsTop -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="3813416743"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 
@@ -92,12 +88,20 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
 
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
+<?php endforeach ?>
+</ul>
 
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertisement Here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:8px" />
+
+<?php $this->load->view($left_sidebar) ?>
+
 </div>
+
 <div class="bottom"></div>
 </div>
 
@@ -117,6 +121,32 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="middle">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt; <?php echo anchor('regions/asia', 'Asia') ?>&gt; <?php echo anchor('regions/russia', 'Russia') ?>&gt; Siberian Federal District</span></p>
 <iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=buryatia&amp;aq=&amp;sll=-32.010396,135.119128&amp;sspn=59.596421,114.433594&amp;ie=UTF8&amp;hq=&amp;hnear=Buryatia,+Russia&amp;t=m&amp;ll=55.429013,111.972656&amp;spn=5.987578,15.292969&amp;z=4&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=buryatia&amp;aq=&amp;sll=-32.010396,135.119128&amp;sspn=59.596421,114.433594&amp;ie=UTF8&amp;hq=&amp;hnear=Buryatia,+Russia&amp;t=m&amp;ll=55.429013,111.972656&amp;spn=5.987578,15.292969&amp;z=4&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
+
+<div class="key-facts">	
+<h2>Key Facts</h2>
+<ul>
+<li><strong>Capital city:</strong></li>
+<li>     </li>
+
+<li><strong>Size:</strong></li>
+<li> km2</li>
+<li> sq mi</li>
+
+<li><strong>Water:</strong></li>
+<li>%</li>
+
+<li><strong>Languages:</strong></li>
+<li>   </li>
+
+<li><strong>Time zone:</strong></li>
+<li>    </li>
+
+<li><strong>Calling code:</strong></li>
+<li>    </li>
+</ul>
+</div>
+
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
 <h2>Like it..</h2>
 <div class="social">
@@ -133,7 +163,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
 
@@ -145,18 +175,15 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* MainFavoritesBottom */
-google_ad_slot = "7964414747";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- RussiaDistrictsTop -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="3813416743"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-
 </div>
 <div class="clear"></div>
 
@@ -197,9 +224,9 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
+<link href="<?php echo base_url() ?>assets/css/holiday.css" rel="stylesheet" type="text/css" />
 </body>
 </html>

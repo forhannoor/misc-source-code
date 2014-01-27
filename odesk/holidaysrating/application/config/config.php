@@ -1,5 +1,21 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+function __autoload($classname)
+{
+    if(strpos($classname, 'CI_') !== 0)
+    {
+        $file = APPPATH . 'libraries/' . $classname . '.php';
+        
+        if(file_exists($file) && is_file($file))
+            @include_once($file);
+            
+        else if (file_exists(APPPATH . "models/" . strtolower($classname) . EXT)) 
+        {  
+            include_once(APPPATH . "models/" . strtolower($classname) . EXT);  
+        }  
+    }
+}
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -224,7 +240,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'hello world';
+$config['encryption_key'] = '507c9b0d332303f82cbecb94fede4f1470425f4fc949f0fa63602ee0be02da5184a336085266fcb95ab784725af9683420c0001388c93a2f9c1cb59c2409cf29';
 
 /*
 |--------------------------------------------------------------------------
@@ -247,8 +263,8 @@ $config['encryption_key'] = 'hello world';
 $config['sess_cookie_name']		= 'ci_session';
 $config['sess_expiration']		= 7200;
 $config['sess_expire_on_close']	= FALSE;
-$config['sess_encrypt_cookie']	= FALSE;
-$config['sess_use_database']	= FALSE;
+$config['sess_encrypt_cookie']	= TRUE;
+$config['sess_use_database']	= TRUE;
 $config['sess_table_name']		= 'ci_sessions';
 $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;

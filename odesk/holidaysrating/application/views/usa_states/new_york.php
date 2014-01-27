@@ -3,15 +3,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="description" content="New York"/>
-<meta name="keywords" content="New York"/>
+<meta name="keywords" content="New York, NY"/>
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
 <meta name="language" content="English" />
 <meta content="<?php echo base_url() ?>assets/images/flags/usa.gif" property="og:image" />
 
-<title>New York</title>
-<link href="<?php echo base_url() ?>assets/css/state.css" rel="stylesheet" type="text/css" />
+<title>New York | United States of America</title>
+<link href="<?php echo base_url() ?>assets/css/country.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.easing.1.3.min.js"></script>
@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<div id="top-head">
+<div id="top-head-state">
 <div class="main">
 <div class="logo">
 	<img src="<?php echo base_url() ?>assets/images/logo.png" width="350" height="78" alt="logo" /></div>
@@ -38,7 +38,7 @@
 </div>
 </div>
 
-<div id="slider">
+<div id="slider-state">
 <div class="slideshow"><div class="panel">
  	<div class="container">
         <div class="wt-rotator">
@@ -57,7 +57,7 @@
                             <a href="<?php echo base_url() ?>assets/images/state/usa/new-york/central-park.jpg" title="New York"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract17.jpg"/></a>
                             <a href="#" target="_blank"></a>                        
                             <div style="left:5px; top:94px; width:336px; height:0;"> 
-                            	<h1>Travel to New York</h1>
+                            	<h1>Travel to New York, Visit NY</h1>
                             	Explore the many great things New York has got to offer.</div>
                         </li>
                         <li>
@@ -138,42 +138,74 @@
 <ul class="profile-items">
 <?php $users_online = $this->Ion_auth_model->users_online() ?>
 <?php foreach($users_online as $u_online): ?>
-<li><?php echo $u_online->username ?></li>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
 <?php endforeach ?>
 </ul>
 
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertise here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:8px" />
+
+<?php $this->load->view($left_sidebar) ?>
+
 </div>
 
-<div class="bottom"></div>
+<div class="bottom-state"></div>
 </div>
 
 <div class="center">
 <div class="hot">
 <h1>Introduction</h1>
-<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/usa.jpg" alt="USA" width="100px" height="70px" /></div>
+<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/usa.jpg" alt="USA" />
+<br />
+<h5><?php echo $this->session->flashdata('msg') ?></h5>
 </div>
-<div class="clear"></div>
-<div class="latest-news">
+<p><strong>New York</strong> or simply NY, is a state located in Northeastern United States. It has got a total size of 141,300 square kilometers.</p>
+
+<h1>Climate</h1>
+<p>Climate</p>
+
+<!-- Currency Converter script - fx-rate.net --> 
+<div style="width:474px; background-color:white;border:2px solid #888;text-align:center;margin-top:10px;padding:0px"> 
+<div style="background-color:#CECECE;border-bottom:1px solid #888;width:100%;margin:0px;padding:0px;align:center;text-align:center;">
+<a title="United States Dollar Converter" class="HS1label" style="font-size:12px!important; line-height:16px!important;font-family: arial;text-decoration:none;color:#132105;margin-bottom:6px;" target="_blank" href="http://fx-rate.net/USD/"><b>United States Dollar Converter</b></a>
+</div> <script type="text/javascript" src="http://fx-rate.net/converter.php?size=short&layout=horizontal&currency=USD"></script></div> 
+<!-- End of Currency Converter script --> 
+
+<h1>Flora and Fauna</h1>
+<p>Coming soon.</p>
+
+<h1>Things to do</h1>
+<p>Coming soon.</p>
+
+
+
+
 </div>
 
+<div class="clear"></div>
+<div class="comment">
+<img src="<?php echo base_url() ?>assets/images/comments.png" alt="comment" style="margin-left:300px" /><?php echo anchor('user/make_comment/new_york', 'Leave a comment') ?>
+</div>
 
 </div>
 
 
 <div class="right-side">
-<div class="top"></div>
+<div class="top-state"></div>
 
-<div class="middle">
+<div class="middle-state">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt; <?php echo anchor('regions/north_america', 'North America') ?>&gt;<?php echo anchor('regions/usa', 'USA') ?>&gt;New York</span></p>
-<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=New+York,+United+States&amp;aq=1&amp;oq=state+ne&amp;sll=40.613952,-73.564453&amp;sspn=1.847201,4.185791&amp;ie=UTF8&amp;hq=&amp;hnear=New+York,+United+States&amp;t=m&amp;ll=40.63063,-74.399414&amp;spn=1.00053,1.911621&amp;z=7&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=New+York,+United+States&amp;aq=1&amp;oq=state+ne&amp;sll=40.613952,-73.564453&amp;sspn=1.847201,4.185791&amp;ie=UTF8&amp;hq=&amp;hnear=New+York,+United+States&amp;t=m&amp;ll=40.63063,-74.399414&amp;spn=1.00053,1.911621&amp;z=7&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+
+<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=New+York,+United+States&amp;aq=1&amp;oq=state+ne&amp;sll=40.613952,-73.564453&amp;sspn=1.847201,4.185791&amp;ie=UTF8&amp;hq=&amp;hnear=New+York,+United+States&amp;t=m&amp;ll=40.63063,-74.399414&amp;spn=1.00053,1.911621&amp;z=7&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=New+York,+United+States&amp;aq=1&amp;oq=state+ne&amp;sll=40.613952,-73.564453&amp;sspn=1.847201,4.185791&amp;ie=UTF8&amp;hq=&amp;hnear=New+York,+United+States&amp;t=m&amp;ll=40.63063,-74.399414&amp;spn=1.00053,1.911621&amp;z=7" target="_blank" style="color:#5F6A6F;text-align:left">View Larger Map</a></small>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 	
 <h2>Cities</h2>
 <ul>
 <li><?php echo anchor('home/index', 'New York City') ?></li>
+</ul>
+
+<h2>Explore New York</h2>
+<ul>
+<li><?php echo anchor('home/index', 'Home') ?></li>
 </ul>
 
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
@@ -192,7 +224,7 @@
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
 
@@ -203,7 +235,7 @@
 <li><?php echo anchor('home/index', 'Home') ?></li>
 </ul>
 </div>
-<div class="bottom"></div>
+<div class="bottom-state"></div>
 
 </div>
 
@@ -211,16 +243,14 @@
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* USA states */
-google_ad_slot = "5946174347";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- USAstates -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="5946174347"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>
@@ -261,7 +291,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
 </body>

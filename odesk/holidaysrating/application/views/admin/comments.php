@@ -7,7 +7,7 @@
 <br />
 <?php echo $comment->description ?>
 <br />
-<a href="<?php echo base_url() ?>index.php/admin/comment_delete/<?php echo $comment->id ?>"><i class="icon-remove">&nbsp;&nbsp;&nbsp;&nbsp;Delete</i></a>
+<a href="<?php echo base_url() ?>index.php/admin/comment_delete/<?php echo $comment->id ?>" onclick="return confirm('You are about to delete a record. This cannot be undone. Are you sure?')"><i class="icon-remove">&nbsp;&nbsp;&nbsp;&nbsp;Delete</i></a>
 <br />
 <br />
 <?php endforeach ?>

@@ -2,18 +2,14 @@
 
 class usa_states extends CI_Controller
 {
-    public function index()
-    {
-    }    
-
     public function alabama()
     {
       	$data['main']='usa_states/alabama.php';
       	$data['heading']='Alabama';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/alabama', $data);
     }
@@ -21,10 +17,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/alaska.php';
       	$data['heading']='Alaska';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/alaska', $data);
     }
@@ -32,10 +28,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/arizona.php';
       	$data['heading']='Arizona';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/arizona', $data);
     }
@@ -43,10 +39,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/arkansas.php';
       	$data['heading']='Arkansas';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/arkansas', $data);
     }
@@ -54,10 +50,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/california.php';
       	$data['heading']='California';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/california', $data);
     }
@@ -65,10 +61,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/colorado.php';
       	$data['heading']='Colorado';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/colorado', $data);
     }
@@ -76,10 +72,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/connecticut.php';
       	$data['heading']='Connecticut';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/connecticut', $data);
     }
@@ -87,10 +83,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/delaware.php';
       	$data['heading']='Delaware';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/delaware', $data);
     }
@@ -98,10 +94,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/florida.php';
       	$data['heading']='Florida';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/florida', $data);
     }
@@ -109,10 +105,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/georgia_us.php';
       	$data['heading']='Georgia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/georgia_us', $data);
     }
@@ -120,10 +116,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/hawaii.php';
       	$data['heading']='Hawaii';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/hawaii', $data);
     }
@@ -131,10 +127,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/idaho.php';
       	$data['heading']='Idaho';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/idaho', $data);
     }
@@ -142,10 +138,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/illinois.php';
       	$data['heading']='illinois';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/illinois', $data);
     }
@@ -153,10 +149,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/indiana.php';
       	$data['heading']='Indiana';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/indiana', $data);
     }
@@ -164,10 +160,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/iowa.php';
       	$data['heading']='Iowa';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/iowa', $data);
     }
@@ -175,10 +171,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/kansas.php';
       	$data['heading']='Kansas';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/kansas', $data);
     }
@@ -186,10 +182,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/kentucky.php';
       	$data['heading']='Kentucky';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/kentucky', $data);
     }
@@ -197,10 +193,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/louisiana.php';
       	$data['heading']='Louisiana';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/louisiana', $data);
     }
@@ -208,10 +204,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/maine.php';
       	$data['heading']='Maine';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/maine', $data);
     }
@@ -219,10 +215,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/maryland.php';
       	$data['heading']='Maryland';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/maryland', $data);
     }
@@ -230,10 +226,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/massachusetts.php';
       	$data['heading']='Massachusetts';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/massachusetts', $data);
     }
@@ -241,10 +237,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/michigan.php';
       	$data['heading']='Michigan';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/michigan', $data);
     }
@@ -252,10 +248,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/minnesota.php';
       	$data['heading']='Minnesota';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/minnesota', $data);
     }
@@ -263,10 +259,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/mississippi.php';
       	$data['heading']='Mississippi';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/mississippi', $data);
     }
@@ -274,10 +270,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/missouri.php';
       	$data['heading']='Missouri';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/missouri', $data);
     }
@@ -285,10 +281,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/montana.php';
       	$data['heading']='Montana';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/montana', $data);
     }
@@ -296,10 +292,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/nebraska.php';
       	$data['heading']='Nebraska';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/nebraska', $data);
     }
@@ -307,10 +303,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/nevada.php';
       	$data['heading']='Nevada';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/nevada', $data);
     }
@@ -318,10 +314,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/new_hampshire.php';
       	$data['heading']='New Hampshire';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/new_hampshire', $data);
     }
@@ -329,10 +325,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/new_jersey.php';
       	$data['heading']='New Jersey';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/new_jersey', $data);
     }
@@ -340,10 +336,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/new_mexico.php';
       	$data['heading']='New Mexico';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/new_mexico', $data);
     }
@@ -351,10 +347,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/new_york.php';
       	$data['heading']='New York';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/new_york', $data);
     }
@@ -362,10 +358,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/north_carolina.php';
       	$data['heading']='North Carolina ';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/north_carolina', $data);
     }
@@ -373,10 +369,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/north_dakota.php';
       	$data['heading']='North Dakota ';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/north_dakota', $data);
     }
@@ -384,10 +380,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/ohio.php';
       	$data['heading']='Ohio';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/ohio', $data);
     }
@@ -395,10 +391,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/oklahoma.php';
       	$data['heading']='Oklahoma';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/oklahoma', $data);
     }
@@ -406,10 +402,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/oregon.php';
       	$data['heading']='Oregon';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/oregon', $data);
     }
@@ -417,10 +413,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/pennsylvania.php';
       	$data['heading']='Pennsylvania';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/pennsylvania', $data);
     }
@@ -428,10 +424,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/rhode_island.php';
       	$data['heading']='Rhode Island';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/rhode_island', $data);
     }
@@ -439,10 +435,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/south_carolina.php';
       	$data['heading']='South Carolina';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/south_carolina', $data);
     }
@@ -450,10 +446,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/south_dakota.php';
       	$data['heading']='South Dakota';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/south_dakota', $data);
     }
@@ -461,10 +457,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/tennessee.php';
       	$data['heading']='Tennessee';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/tennessee', $data);
     }
@@ -472,10 +468,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/texas.php';
       	$data['heading']='Texas';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/texas', $data);
     }
@@ -483,10 +479,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/utah.php';
       	$data['heading']='Utah';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/utah', $data);
     }
@@ -494,10 +490,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/vermont.php';
       	$data['heading']='Vermont';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/vermont', $data);
     }
@@ -505,10 +501,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/virginia.php';
       	$data['heading']='Virginia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/virginia', $data);
     }
@@ -516,10 +512,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/washington.php';
       	$data['heading']='Washington';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/washington', $data);
     }
@@ -527,10 +523,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/west_virginia.php';
       	$data['heading']='West Virginia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/west_virginia', $data);
     }
@@ -538,10 +534,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/wisconsin.php';
       	$data['heading']='Wisconsin';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/wisconsin', $data);
     }
@@ -549,10 +545,10 @@ class usa_states extends CI_Controller
     {
       	$data['main']='usa_states/wyoming.php';
       	$data['heading']='Wyoming';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('usa_states/wyoming', $data);
     }

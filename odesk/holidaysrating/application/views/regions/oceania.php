@@ -7,10 +7,10 @@
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta name="language" content="English" />
 <meta content="<?php echo base_url() ?>assets/images/thumbs/oceania.jpg" property="og:image" />
 
-<title>Oceania | Holidaysrating.com</title>
-<link href="<?php echo base_url() ?>assets/css/region.css" rel="stylesheet" type="text/css" />
+<title>Oceania | Holidaysrating</title>
 </head>
 
 <body>
@@ -22,17 +22,17 @@
 <ul>
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
-<li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('blog/blog_index', 'BLOG') ?></li>
+<li><?php echo anchor('news/news_index', 'TRAVELNEWS') ?></li>
 <li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="slider" >
+<div id="slider-oceania" >
 <center><img src="<?php echo base_url() ?>assets/images/regions/oceania/oceania.jpg" height="412" width="940" alt="Oceania" title="Oceania" useMap="#oceania"/></center>
 <map name="oceania">
 <area shape="poly" coords="825, 251, 855, 257, 849, 275, 823, 266" href="<?php echo base_url() ?>index.php/oceania_countries/pitcairn_islands" alt="Pitcairn Islands (UK)" title="Pitcairn Islands (UK)"   />
@@ -44,7 +44,7 @@
 <area shape="poly" coords="635, 218, 650, 227, 640, 234, 627, 225" href="<?php echo base_url() ?>index.php/oceania_countries/niue" alt="Niue" title="Niue"   />
 <area shape="poly" coords="602, 197, 618, 209, 604, 222, 581, 213" href="<?php echo base_url() ?>index.php/oceania_countries/tonga" alt="Tonga" title="Tonga"   />
 <area shape="poly" coords="497, 210, 522, 197, 530, 205, 506, 220" href="<?php echo base_url() ?>index.php/oceania_countries/fiji" alt="Fiji" title="Fiji"   />
-<area shape="poly" coords="683, 8, 717, 7, 720, 31, 685, 30" href="<?php echo base_url() ?>index.php/oceania_countries/hawaii" alt="Hawaii (United States of America)" title="Hawaii (United States of America)"   />
+<area shape="poly" coords="683, 8, 717, 7, 720, 31, 685, 30" href="<?php echo base_url() ?>index.php/usa_states/hawaii" alt="Hawaii (United States of America)" title="Hawaii (United States of America)"   />
 <area shape="poly" coords="439, 197, 461, 219, 434, 248, 397, 228, 404, 212, 424, 198" href="<?php echo base_url() ?>index.php/oceania_countries/vanuatu" alt="Vanuatu" title="Vanuatu"   />
 <area shape="poly" coords="495, 135, 513, 135, 513, 148, 491, 146" href="<?php echo base_url() ?>index.php/oceania_countries/kiribati" alt="Kiribati" title="Kiribati"   />
 <area shape="poly" coords="487, 79, 534, 82, 531, 102, 486, 99" href="<?php echo base_url() ?>index.php/oceania_countries/marshall_islands" alt="Marshall Islands" title="Marshall Islands"   />
@@ -70,20 +70,18 @@
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
-<?php echo img('./uploads/'.$value->avatar) ?>
+<p class="avatar"><?php echo anchor('user/index', img('./uploads/'.$value->avatar)) ?></p>
 <?php endforeach ?>
+<?php else: ?>
+<p class="avatar"><?php echo anchor('user/index', img('assets/assets/avatar.jpg')) ?></p>
 <?php endif ?>
 <br />
-<?php echo $this->ion_auth->user()->row()->first_name.' ' ?>
-<?php echo $this->ion_auth->user()->row()->last_name.' ' ?>
-<?php echo '<br>' ?>
-<?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
-<?php echo 'Member since&nbsp;: '.$joined_in ?>
-<br />
-<?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
-<?php echo 'Last logged in: '.$last_login ?>
-<?php $this->load->model('User_model') ?>
-<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<?php echo $this->session->userdata('username') ?>
+<br/>
+<?php echo 'Member since&nbsp;: ' . date("d-m-Y" , $this->session->userdata('created_on')) ?>
+<br/>
+<?php echo 'Last logged in: ' . date("d-m-Y" , $this->session->userdata('old_last_login')) ?>
+<?php $new_message_counter = $this->User_model->count_new($this->session->userdata('user_id')) ?>
 <br/>
 <br/>
 <?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
@@ -99,14 +97,13 @@
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
-
+<img src="<?php echo base_url('assets/images/border.png') ?>" alt="Holiday" style="margin-top:12px" />
 <h2>Members online</h2>
 <br/>
 <ul class="profile-items">
 <?php $users_online = $this->Ion_auth_model->users_online() ?>
 <?php foreach($users_online as $u_online): ?>
-<li><?php echo $u_online->username ?></li>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
 <?php endforeach ?>
 </ul>
 </div>
@@ -118,14 +115,16 @@
 <h1>INTRODUCTION</h1>
 <div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/oceania.jpg" alt="Oceania" width="100px" height="70px" /></div>
 <div class="intro">
-<p><strong>Oceania</strong>, the best word to describe would probably be; distance. It stretches from the untouched charm of the Cook islands to the distinctive biodiversity of New Zealand. 
-From the sunshine coast in Australia to the many undiscovered species of plants and animals in the world's least explored Papua New Guinea.</p>
+<p><strong>Oceania</strong>, the best word to describe would probably be; distance. It stretches from the untouched charm of the Cook islands to the distinctive biodiversity of New Zealand. <br />
+From the sunshine coast in Australia to the many undiscovered species of plants and animals in the world's least explored Papua New Guinea.<br /><br />
+This region has a total size of 8,563,295 square kilometers. There are three main-languages spoken in this region; Austronesian, such languages as Indonesian, Filipino, and Polynesian languages such as Maori and Hawaiian.<br />
+Then the Aboriginal Australian languages and the Papuan languages of <?php echo anchor('oceania_countries/papua_new_guinea', 'Papua New Guinea') ?> and neighbouring islands.</p>
 </div>
 
 <div class="options">
 <ul>
-<li><?php echo anchor('oceania_cities/cities_oceania', img('assets/images/buttonblue-cities-bg.png')); ?></li>
-<li><?php echo anchor('oceania_national_parks/oceania_nat_parks', img('assets/images/buttonblue-parks-bg.png')); ?></li>
+<li><?php echo anchor('oceania_cities/oceania_index', img('assets/images/buttonblue-cities-bg.png')); ?></li>
+<li><?php echo anchor('http://www.holidaysrating.com/index.php/topmenu/videodump/oceania', img('assets/images/buttonblue-videos-bg.png')); ?></li>
 <li><?php echo anchor('help/external_links', img('assets/images/buttonblue-links-bg.png')); ?></li>
 </ul>
 <br />
@@ -157,12 +156,12 @@ From the sunshine coast in Australia to the many undiscovered species of plants 
 		<tr>
 			<td><?php echo anchor('oceania_countries/kiribati', 'Kiribati') ?></td>
 			<td><?php echo anchor('oceania_countries/papua_new_guinea', 'Papua New Guinea') ?></td>
-			<td><?php echo anchor('oceania_countries/vanuatu', 'Vanuatu') ?></td>
+			<td><?php echo anchor('oceania_countries/us_samoa', 'U.S. Samoa') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('oceania_countries/marshall_islands', 'Marshall Islands') ?></td>
 			<td><?php echo anchor('oceania_countries/pitcairn_islands', 'Pitcairn Islands') ?></td>
-			<td>&nbsp;</td>
+			<td><?php echo anchor('oceania_countries/vanuatu', 'Vanuatu') ?></td>
 		</tr>
 	</table>
 
@@ -203,16 +202,17 @@ Oceania</span></p>
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
+<div class="clear"></div>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 <h2>Cities</h2>
 <ul>
-<li>Christchurch (New Zealand)</li>
-<li>text</li>
+<li>Christchurch <?php echo anchor('oceania_countries/new_zealand', 'New Zealand') ?></li>
+<li>Suva <?php echo anchor('oceania_countries/fiji', 'Fiji') ?></li>
+<li>Sydney <?php echo anchor('regions/australia', 'Australia') ?></li> 
 </ul>
-<div class="clear"></div>
 </div>
 
 <div class="bottom"></div>
@@ -223,18 +223,15 @@ Oceania</span></p>
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* Oceania */
-google_ad_slot = "6267355547";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Oceania -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="6267355547"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-
 </div>
 <div class="clear"></div>
 <div class="first-column">
@@ -264,8 +261,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="first-column">
 <ul>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
-<li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
-<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('news/news_index', 'TRAVEL NEWS') ?></li>
+<li><?php echo anchor('blog/blog_index', 'BLOG') ?></li>
 <li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
@@ -274,8 +271,9 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | <?php echo anchor('home/contact_us', 'Contact Us') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
+<link href="<?php echo base_url() ?>assets/css/region.css" rel="stylesheet" type="text/css" />
 </body>
 </html>

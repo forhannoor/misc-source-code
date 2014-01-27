@@ -32,16 +32,14 @@
 </div>
 <div id="banner">
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* MainBlogTop */
-google_ad_slot = "9116306745";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- CitiesTop -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="6046808745"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 
@@ -92,11 +90,16 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
 
 <h2>Members online</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertisement Here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<br/>
+<ul class="profile-items">
+<?php $users_online = $this->Ion_auth_model->users_online() ?>
+<?php foreach($users_online as $u_online): ?>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
+<?php endforeach ?>
+</ul>
+
 </div>
+
 <div class="bottom"></div>
 </div>
 
@@ -148,6 +151,14 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 
 <div class="clear"></div>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:8px" />
+<!--Currency Converter widget - HTML code - fx-rate.net --> 
+<div style="width: 135px; border:1px solid #000;background-color:#fff;align:center;text-align;left;margin:10px 0px 10px 20px;padding:0px 0px;"> 
+<div style="text-align:center;font-size:11px; line-height:16px;font-family: arial;color:#173a00; font-weight:bold;background:#FFFFFF;padding:3px 3px;"> 
+<a href="http://fx-rate.net/USD/" title="American Dollar Exchange Rate" style="text-decoration:none;color:#173a00;font-size:11px; line-height:16px;font-family: arial;"> <img border="" width="16" height="11" style="margin:0;padding:0;border:0;" src = "http://fx-rate.net/images/countries/us.png"></img> &#160; Dollar Exchange Rate</a> 
+</div>		
+<script type="text/javascript" src="http://fx-rate.net/fx-rates.php?currency=USD&length=short&label_type=currency_code"></script></div>
+<!--end of code-->
 
 </div>
 <div class="bottom"></div>
@@ -156,16 +167,14 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* MainBlogBottom */
-google_ad_slot = "4546506340";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- CitiesBottom -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="7523541940"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>
@@ -207,7 +216,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
 </body>

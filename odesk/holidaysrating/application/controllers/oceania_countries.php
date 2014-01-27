@@ -2,18 +2,14 @@
 
 class oceania_countries extends CI_Controller
 {
-    public function index()
-    {
-    }    
-
     public function cook_islands()
     {
       	$data['main']='oceania_countries/cook_islands.php';
       	$data['heading']='Cook Islands';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/cook_islands', $data);
     }
@@ -21,10 +17,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/fiji.php';
       	$data['heading']='Fiji';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/fiji', $data);
     }
@@ -32,10 +28,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/french_polynesia.php';
       	$data['heading']='French Polynesia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/french_polynesia', $data);
     }
@@ -43,10 +39,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/kiribati.php';
       	$data['heading']='Kiribati';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/kiribati', $data);
     }
@@ -54,10 +50,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/marshall_islands.php';
       	$data['heading']='Marshall Islands';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/marshall_islands', $data);
     }
@@ -65,10 +61,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/nauru.php';
       	$data['heading']='Nauru';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/nauru', $data);
     }
@@ -76,10 +72,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/new_zealand.php';
       	$data['heading']='New Zealand';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/new_zealand', $data);
     }
@@ -88,10 +84,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/niue.php';
       	$data['heading']='Niue';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/niue', $data);
     }
@@ -99,10 +95,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/northern_mariana_islands.php';
       	$data['heading']='Northern Mariana Islands';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/northern_mariana_islands', $data);
     }
@@ -110,10 +106,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/papua_new_guinea.php';
       	$data['heading']='Papua New Guinea';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/papua_new_guinea', $data);
     }
@@ -121,10 +117,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/pitcairn_islands.php';
       	$data['heading']='Pitcairn Islands';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/pitcairn_islands', $data);
     }
@@ -132,10 +128,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/samoa.php';
       	$data['heading']='Samoa';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/samoa', $data);
     }
@@ -143,10 +139,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/solomon_islands.php';
       	$data['heading']='Solomon Islands';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/solomon_islands', $data);
     }
@@ -154,10 +150,10 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/tonga.php';
       	$data['heading']='Tonga';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/tonga', $data);
     }
@@ -165,21 +161,33 @@ class oceania_countries extends CI_Controller
     {
       	$data['main']='oceania_countries/tuvalu.php';
       	$data['heading']='Tuvalu';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/tuvalu', $data);
     }
+    public function us_samoa()
+    {
+      	$data['main']='oceania_countries/us_samoa.php';
+      	$data['heading']='U.S. Samoa';
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
+      	if($this->ion_auth->logged_in())
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
+      	
+      	$this->load->view('oceania_countries/us_samoa', $data);
+    }
+
     public function vanuatu()
     {
       	$data['main']='oceania_countries/vanuatu.php';
       	$data['heading']='Vanuatu';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('oceania_countries/vanuatu', $data);
     }

@@ -1,26 +1,26 @@
-<?php $this->load->model('User_model') ?>
-<?php foreach($message->result() as $m): ?>
-<?php $sender = $this->User_model->get_username($m->from) ?>
-<?php $receiver = $this->User_model->get_username($m->to) ?>
+<?php if(isset($message)): ?>
+<?php $sender = $this->User_model->username($message->from) ?>
+<?php $recipient = $this->User_model->username($message->to) ?>
 <p class="bold">From:</p>
-<?php echo $sender[0]->username ?>
+<?php echo $sender ?>
 <br /><br />
 <p class="bold">To:</p>
-<?php echo $receiver[0]->username ?>
+<?php echo $recipient ?>
 <br /><br />
 <p class="bold">Subject:</p>
-<?php echo $m->subject ?>
+<?php echo $message->subject ?>
 <br /><br />
 <p class="bold">Message:</p>
-<?php echo $m->content ?>
-<?php endforeach ?>
+<?php echo parse_smileys($message->content, base_url('assets/smileys/')) ?>
 <br/><br/>
-<?php foreach($message->result() as $m): ?>
-<?php if($m->from != $this->ion_auth->user()->row()->id): ?>
-<?php echo anchor('user/send_message/'.$m->from, img(base_url().'assets/assets/reply.png')) ?>
+<?php if($message->from != $this->session->userdata('user_id')): ?>
+<?php echo anchor('user/send_message/' . urlsafe_b64encode($message->from), img(base_url('assets/assets/reply.png'))) ?>
 <?php endif ?>
-<?php endforeach ?>
 <br/><br/>
-<?php echo anchor('user/inbox', img(base_url().'assets/assets/inbox.png')) ?>
+<?php else: ?>
+<p>You have no such message.</p>
 <br/><br/>
-<?php echo anchor('user/sent', img(base_url().'assets/assets/sent.png')) ?>
+<?php endif ?>
+<?php echo anchor('user/inbox', img('assets/assets/inbox.png')) ?>
+<br/><br/>
+<?php echo anchor('user/sent', img('assets/assets/sent.png')) ?>

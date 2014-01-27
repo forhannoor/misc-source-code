@@ -5,13 +5,11 @@ class africa_countries extends CI_Controller
     public function algeria()
     {
       	$data['main']='africa_countries/algeria.php';
-      	$data['heading']='Algeria';
-        $data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-        
-        $this->session->set_flashdata('redirectUrl', current_url());
+		$data['heading']='Algeria';
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/algeria', $data);
     }
@@ -19,36 +17,33 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/angola.php';
       	$data['heading']='Angola';
-        $data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-        $this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
               	      	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/angola', $data);
     }
     public function benin()
     {
       	$data['main']='africa_countries/benin.php';
-      	$data['heading']='Benin';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-        $this->session->set_flashdata('redirectUrl', current_url());
-      	
+		$data['heading']='Benin';
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
+
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/benin', $data);
     }
     public function botswana()
     {
       	$data['main']='africa_countries/botswana.php';
-      	$data['heading']='Botswana';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-        $this->session->set_flashdata('redirectUrl', current_url());
+		$data['heading']='Botswana';
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/botswana', $data);
     }
@@ -56,11 +51,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/burkino_faso.php';
       	$data['heading']='Burkino Faso';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/burkino_faso', $data);
     }
@@ -68,11 +62,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/burundi.php';
       	$data['heading']='Burundi';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/burundi', $data);
     }
@@ -80,23 +73,33 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/cameroon.php';
       	$data['heading']='Cameroon';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/cameroon', $data);
     }
+    public function cape_verde()
+    {
+      	$data['main']='africa_countries/cape_verde.php';
+      	$data['heading']='Cape Verde';
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
+      	
+      	if($this->ion_auth->logged_in())
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
+      	
+      	$this->load->view('africa_countries/cape_verde', $data);
+    }
+
     public function central_african_republic()
     {
       	$data['main']='africa_countries/central_african_republic.php';
       	$data['heading']='Central African Republic';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/central_african_republic', $data);
     }
@@ -104,11 +107,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/chad.php';
       	$data['heading']='Chad';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/chad', $data);
     }
@@ -116,11 +118,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/comoros.php';
       	$data['heading']='Comoros';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/comoros', $data);
     }
@@ -128,35 +129,32 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/congo.php';
       	$data['heading']='Congo';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/congo', $data);
     }
-    public function cote_d_ivore()
+    public function cote_d_ivoire()
     {
-      	$data['main']='africa_countries/cote_d_ivore.php';
-      	$data['heading']='Côte d Ivore';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+      	$data['main']='africa_countries/cote_d_ivoire.php';
+      	$data['heading']='Côte d Ivoire';
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
-      	$this->load->view('africa_countries/cote_d_ivore', $data);
+      	$this->load->view('africa_countries/cote_d_ivoire', $data);
     }
     public function democratic_republic_of_congo()
     {
       	$data['main']='africa_countries/democratic_republic_of_congo.php';
       	$data['heading']='Democratic Republic of Congo';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/democratic_republic_of_congo', $data);
     }
@@ -164,11 +162,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/djibouti.php';
       	$data['heading']='Djibouti';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/djibouti', $data);
     }
@@ -176,11 +173,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/egypt.php';
       	$data['heading']='Egypt';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/egypt', $data);
     }
@@ -188,11 +184,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/equatorial_guinea.php';
       	$data['heading']='Equatorial Guinea';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/equatorial_guinea', $data);
     }
@@ -200,11 +195,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/eritrea.php';
       	$data['heading']='Eritrea';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/eritrea', $data);
     }
@@ -212,11 +206,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/ethiopia.php';
       	$data['heading']='Ethiopia';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/ethiopia', $data);
     }
@@ -224,11 +217,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/gabon.php';
       	$data['heading']='Gabon';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/gabon', $data);
     }
@@ -236,11 +228,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/gambia.php';
       	$data['heading']='Gambia';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/gambia', $data);
     }
@@ -248,11 +239,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/ghana.php';
       	$data['heading']='Ghana';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/ghana', $data);
     }
@@ -260,23 +250,21 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/guinea.php';
       	$data['heading']='Guinea';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/guinea', $data);
     }
     public function guinea_bissau()
     {
-      	$data['main']='africa_countries/guinea_bissau.php';
+      	$data['main']='africa_countries/ghana_bissau.php';
       	$data['heading']='Guinea Bissau';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/guinea_bissau', $data);
     }
@@ -284,11 +272,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/kenya.php';
       	$data['heading']='Kenya';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/kenya', $data);
     }
@@ -296,11 +283,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/lesotho.php';
       	$data['heading']='Lesotho';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/lesotho', $data);
     }
@@ -308,11 +294,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/liberia.php';
       	$data['heading']='Liberia';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/liberia', $data);
     }
@@ -320,11 +305,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/libya.php';
       	$data['heading']='Libya';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/libya', $data);
     }
@@ -332,11 +316,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/madagascar.php';
       	$data['heading']='Madagascar';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/madagascar', $data);
     }
@@ -344,11 +327,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/malawi.php';
       	$data['heading']='Malawi';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/malawi', $data);
     }
@@ -356,11 +338,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/mali.php';
       	$data['heading']='Mali';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/mali', $data);
     }
@@ -368,11 +349,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/mauritania.php';
       	$data['heading']='Mauritania';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/mauritania', $data);
     }
@@ -380,24 +360,33 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/mauritius.php';
       	$data['heading']='Mauritius';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/mauritius', $data);
     }
-   
+    public function mayotte()
+    {
+      	$data['main']='africa_countries/mayotte.php';
+      	$data['heading']='Mayotte';
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
+      	
+      	if($this->ion_auth->logged_in())
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
+      	
+      	$this->load->view('africa_countries/mayotte', $data);
+    }
+  
     public function morocco()
     {
       	$data['main']='africa_countries/morocco.php';
       	$data['heading']='Morocco';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/morocco', $data);
     }
@@ -405,35 +394,65 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/mozambique.php';
       	$data['heading']='mozambique';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/mozambique', $data);
+    }
+    public function mwali()
+    {
+      	$data['main']='africa_countries/mwali.php';
+      	$data['heading']='Mwali';
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
+      	
+      	if($this->ion_auth->logged_in())
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
+      	
+      	$this->load->view('africa_countries/mwali', $data);
     }
     public function namibia()
     {
       	$data['main']='africa_countries/namibia.php';
       	$data['heading']='Namibia';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/namibia', $data);
+    }
+    public function ndzwani()
+    {
+      	$data['main']='africa_countries/ndzwani.php';
+      	$data['heading']='Ndzwani';
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
+      	
+      	if($this->ion_auth->logged_in())
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
+      	
+      	$this->load->view('africa_countries/ndzwani', $data);
+    }
+    public function ngazidja()
+    {
+      	$data['main']='africa_countries/ngazidja.php';
+      	$data['heading']='Ngazidja';
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
+      	
+      	if($this->ion_auth->logged_in())
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
+      	
+      	$this->load->view('africa_countries/ngazidja', $data);
     }
     public function niger()
     {
       	$data['main']='africa_countries/niger.php';
       	$data['heading']='Niger';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/niger', $data);
     }
@@ -441,11 +460,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/nigeria.php';
       	$data['heading']='Nigeria';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/nigeria', $data);
     }
@@ -454,23 +472,21 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/rwanda.php';
       	$data['heading']='Rwanda';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/rwanda', $data);
     }
     public function sao_tome_and_principe()
     {
       	$data['main']='africa_countries/sao_tome_and_principe.php';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$data['heading']='São Tomé and Príncipe';
-      	$this->session->set_flashdata('redirectUrl', current_url());
+      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(2));
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/sao_tome_and_principe', $data);
     }
@@ -478,11 +494,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/senegal.php';
       	$data['heading']='Senegal';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/senegal', $data);
     }
@@ -490,11 +505,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/seychelles.php';
       	$data['heading']='Seychelles';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/seychelles', $data);
     }
@@ -503,11 +517,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/sierra_leone.php';
       	$data['heading']='Sierra Leone';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/sierra_leone', $data);
     }
@@ -515,11 +528,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/somalia.php';
       	$data['heading']='Somalia';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/somalia', $data);
     }
@@ -527,11 +539,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/south_africa.php';
       	$data['heading']='South Africa';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/south_africa', $data);
     }
@@ -539,11 +550,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/south_sudan.php';
       	$data['heading']='South Sudan';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/south_sudan', $data);
     }
@@ -551,11 +561,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/sudan.php';
       	$data['heading']='Sudan';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/sudan', $data);
     }
@@ -563,11 +572,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/swaziland.php';
       	$data['heading']='Swaziland';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/swaziland', $data);
     }
@@ -575,11 +583,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/tanzania.php';
       	$data['heading']='Tanzania';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/tanzania', $data);
     }
@@ -587,11 +594,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/togo.php';
       	$data['heading']='Togo';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/togo', $data);
     }
@@ -599,11 +605,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/tunisia.php';
       	$data['heading']='Tunisia';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/tunisia', $data);
     }
@@ -611,11 +616,10 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/uganda.php';
       	$data['heading']='Uganda';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/uganda', $data);
     }
@@ -623,36 +627,50 @@ class africa_countries extends CI_Controller
     {
       	$data['main']='africa_countries/western_sahara.php';
       	$data['heading']='Western Sahara';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/western_sahara', $data);
     }
     public function zambia()
-    {
+    {	
       	$data['main']='africa_countries/zambia.php';
       	$data['heading']='Zambia';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/zambia', $data);
+    }
+    public function zanzibar()
+    {
+      	$data['main']='africa_countries/zanzibar.php';
+      	$data['heading']='Zanzibar';
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
+      	
+      	if($this->ion_auth->logged_in())
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
+      	
+      	$this->load->view('africa_countries/zanzibar', $data);
     }
     public function zimbabwe()
     {
       	$data['main']='africa_countries/zimbabwe.php';
       	$data['heading']='Zimbabwe';
-      	$data['rating'] = $this->User_model->get_rating($this->uri->segment(3));
-      	$this->session->set_flashdata('redirectUrl', current_url());
+        $data['left_sidebar'] = 'sidebar/left_sidebar';
       	
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('africa_countries/zimbabwe', $data);
     }
+    
+    
+    
+    
+    
+    
 }

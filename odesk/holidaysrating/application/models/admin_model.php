@@ -33,22 +33,27 @@ class Admin_model extends CI_Model
     
     public function get_pictures()
     {
-        $pictures = R::findAll('media');
+        $pictures = R::findAll('pictures');
         return $pictures;
     }
     
     public function delete_picture($id)
     {
-        $picture = R::load('media', $id);
-        R::trash($picture);       
+        $picture = R::load('pictures', $id);
+        R::trash($picture);
     }
     
     public function get_videos()
     {
-        $sql = 'SELECT * FROM videos GROUP BY region ORDER BY region';
+        $sql = '
+            SELECT v.id, v.name, v.name, v.orig_name, v.title, v.uploader, u.username 
+            FROM videos as v
+            JOIN users as u
+            ON v.uploader = u.id
+        ';
+        
         $rows = R::getAll($sql);
-        $videos = R::convertToBeans('videos', $rows);
-        return $videos;
+        return $rows;
     }
     
     public function delete_video($id)
@@ -77,5 +82,77 @@ class Admin_model extends CI_Model
         $rows = R::getAll($sql);
         $ratings = R::convertToBeans('ratings', $rows);
         return $ratings;
+    }
+    
+    public function get_num_voters($name)
+    {
+        $num_voters = R::count('ratings', 'name = ?', array($name));
+        return $num_voters;
+    }
+    
+    public function send_pm()
+    {
+        R::setStrictTyping(false);
+        $from = $this->input->post('from');
+        $subject = $this->input->post('subject');
+        $content = $this->input->post('message');
+        
+        $users = R::findAll('users', " WHERE id <> $from");
+        
+        foreach($users as $user)
+        {
+            $personal_message = R::dispense('personal_messages');
+            $personal_message->from = $from;
+            $personal_message->to = $user->id;
+            $personal_message->content = $content;
+            $personal_message->subject = $subject;
+            R::store($personal_message);
+        }
+    }
+    
+    public function get_notes($id = 0)
+    {
+        if($id == 0)
+            $notes = R::findAll('notes', 'ORDER BY created_at');
+            
+        else
+            $notes = R::findOne('notes', ' id = :id', array(':id' => $id)); 
+            
+        return $notes;       
+    }
+    
+    public function create_note($writer)
+    {
+        $note = R::dispense('notes');
+        $note->author = $writer;
+        $note->title = $this->input->post('title');
+        $note->description = $this->input->post('description');
+        R::store($note);
+    }
+    
+    public function updatestatus_note($id)
+    {
+        $note = R::findOne('notes', ' id = :id', array(':id' => $id));
+        
+        if($note->status == 1)
+        {
+            $note->status = 0;
+            R::store($note);
+        }
+    }
+    
+    public function delete_note($id)
+    {
+        $note = R::load('notes', $id);
+        R::trash($note);       
+    }
+    
+    public function update_note($id)
+    {
+        $note = R::load('notes', $id);
+        $note->title = $this->input->post('title');
+        $note->description = $this->input->post('description');
+        $note->status = $this->input->post('status');
+        R::store($note);       
     }
 }

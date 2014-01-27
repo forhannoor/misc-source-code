@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database', 'session', 'form_validation', 'parser
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('form', 'url', 'html', 'captcha');
+$autoload['helper'] = array('form', 'url', 'html', 'captcha', 'smiley', 'holidaysrating');
 
 
 /*
@@ -80,7 +80,7 @@ $autoload['helper'] = array('form', 'url', 'html', 'captcha');
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('facebook');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('Ion_auth_model', 'User_model', 'Video_model', 'Admin_model', 'Country_model');
+$autoload['model'] = array('Ion_auth_model', 'User_model', 'Admin_model', 'Country_model', 'Picture_model', 'Rating_model');
 
 
 /* End of file autoload.php */

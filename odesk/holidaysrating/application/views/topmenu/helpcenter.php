@@ -9,13 +9,20 @@
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
 
-<title>Helpcenter | Holidaysrating.com</title>
-<link href="<?php echo base_url() ?>assets/css/holiday.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
+<title>Helpcenter | Holidaysrating</title>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=187439388064490";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div id="top-head">
 <div class="main">
 <div class="logo">
@@ -24,10 +31,10 @@
 <ul>
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
-<li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('blog/blog_index', 'BLOG') ?></li>
+<li><?php echo anchor('news/news_index', 'TRAVELNEWS') ?></li>
 <li class="active"><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
@@ -35,16 +42,14 @@
 </div>
 <div id="banner">
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* Help Top */
-google_ad_slot = "8416472740";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Help Top -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="8416472740"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 
@@ -60,23 +65,20 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
 <h2>Welcome</h2>
-<br/>
 <?php if(isset($profile_info)): ?>
-<?php foreach($profile_info->result() as $value): ?>
-<?php echo img('./uploads/'.$value->avatar) ?>
-<?php endforeach ?>
+<p class="avatar"><?php echo anchor('user/index', img('./uploads/'.$profile_info->avatar)) ?></p>
+<?php else: ?>
+<p class="avatar"><?php echo anchor('user/index', img('assets/assets/avatar.jpg')) ?></p>
 <?php endif ?>
 <br />
-<?php echo $this->ion_auth->user()->row()->first_name.' ' ?>
-<?php echo $this->ion_auth->user()->row()->last_name.' ' ?>
-<?php echo '<br>' ?>
-<?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
-<?php echo 'Member since&nbsp;: '.$joined_in ?>
+<?php echo $this->session->userdata('username') ?>
 <br />
-<?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
-<?php echo 'Last logged in: '.$last_login ?>
-<?php $this->load->model('User_model') ?>
-<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<?php echo 'Member since&nbsp;: ' . date("d-m-Y" , $this->session->userdata('created_on')) ?>
+<br />
+<?php echo 'Last logged in: ' . date("d-m-Y" , $this->session->userdata('old_last_login')) ?>
+<?php $CI = & get_instance() ?>
+<?php $CI->load->model('Message_model') ?>
+<?php $new_message_counter = $CI->Message_model->count_new($this->session->userdata('user_id')) ?>
 <br/>
 <br/>
 <?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
@@ -85,14 +87,23 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <?php echo anchor('auth/logout', 'Logout') ?>
 <?php else: ?>
 <h2>Member Login</h2>
-<?php include APPPATH.'views/auth/my_login.php' ?>
+<?php $this->load->view('auth/my_login') ?>
 <br />
 <?php echo anchor('auth/forgot_password', 'Forgot Password') ?>
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
+<img src="<?php echo base_url('assets/images/border.png') ?>" alt="Holiday" style="margin-top:12px" />
+<p>Click on the following button if you do have any questions, comments or ant to shar something elsewith us...</p>
+<div class="social">
+<ul>
+<li class="buttonlink" style="margin-top:8px"><?php echo anchor('home/contact_us', img('assets/assets/contact.png')); ?></li>
+</ul>
+</div>
+<p>Design, record and edit your Holidaysrating promo video! Upload it to YouTube and send us your embed link. We will publish it here!</p>
+
+<img src="<?php echo base_url() ?>assets/images/border.png" style="margin-top:12px;margin-bottom:8px" alt="border" />
 
 <h2>Members online</h2>
 <br/>
@@ -110,14 +121,15 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="center">
 <div class="hot">
 <div class="image">
-<p><strong>Holidaysrating.com</strong> is a new, fun and social travel-website where you can search for information, vote for your favorite destination or share your holiday experience!</p> 
+<p style="color:#FFFFEE">Holidaysrating.com is a new, fun and social travel-website where you can search for information, vote for your favorite destination, share your holiday experience or make new travel buddies!</p> 
+<div class="fb-follow" style="margin:18px 0 5px 34px" data-href="https://www.facebook.com/Holidaysrating" data-width="400" data-height="20" data-colorscheme="light" data-layout="standard" data-show-faces="false"></div>
 </div>
 <br /><br />
-<h3 style="margin-top:-15px">Frequently asked questions</h3>
+<h3 style="margin:-15px 0px 7px 0px">Frequently asked questions</h3>
 
-<p><a id="q1" style="cursor: pointer;">Why become a member?</a></p>
+<p><a id="q1" style="cursor: pointer">Why become a member?</a></p>
 <div id="a1">
-<p>With your own profile, you can find travel information, vote for your favorite destination, leave comments and upload your best pictures and explore our videodump.</p> 
+<p>With your own profile, you can find travel information, vote for your favorite destination, leave comments and upload your most beautiful pictures and explore our videodump.</p> 
 </div>
 
 <script type="text/javascript">
@@ -146,40 +158,61 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
             $("#a3").toggle("medium");
         }
         );
+        
+        $("#a4").hide();
+        
+        $("#q4").click(function()
+        {
+            $("#a4").toggle("medium");
+        }
+        );
+        $("#a5").hide();
+        
+        $("#q5").click(function()
+        {
+            $("#a5").toggle("medium");
+        }
+        );
+
     }
     );
 </script>
 
-<p><a id="q2" style="cursor: pointer;">How to rate my favorite destination?</a></p>
+<p><a id="q2" style="cursor: pointer">How to rate my favorite destination or adventure?</a></p>
 <div id="a2">
 <p>With your own profile, you can give a rating to your favorite destination and/or adventures. Go to worldmap and find your favorite. once there, click on the button rate now.
 This brings you to the rate now page.</p> 
 </div>
 
-<p><a id="q3" style="cursor: pointer;">How to upload and watch movies?</a></p>
+<p><a id="q3" style="cursor: pointer">How to upload and watch movies?</a></p>
 <div id="a3">
-<p>every visitor to the videodump is able to watch movies but with your own profile, you can upload videos for others to watch. Go to my profile and click on the upload button on the right center bar. This brings you to the upload screen. You are also able to upload movies in the videodump section.\
+<p>Every visitor to the videodump is able to watch movies but with your own profile, you can upload videos for others to watch. Go to my profile and click on the upload button on the right center bar. This brings you to the upload screen. You are also able to upload movies in the videodump section.\
 All uploaded video's will be stored in videodump and on your profile.</p> 
 </div>
 
-<p style="text-align:center">Click for more information:</p>
+<p><a id="q4" style="cursor: pointer">What is the bucketlist and what can you do with it?</a></p>
+<div id="a4">
+<p>Every member can place ten adventures in his bucketlist which is available in his/her profile page. Ten things you like to do. Your favorites.</p> 
+</div>
+
+<p><a id="q5" style="cursor: pointer">What is the cookbook and how to use it?</a></p>
+<div id="a5">
+<p>On your profile page ou will see the cookbook. Here you can store the recipes of local food around the world. When you browse through the different countries you will see the local food section. Here you can upload and find recipes of local food from other members.</p> 
+</div>
+
+<p style="text-align:center;margin-top:25px;">Click for more information:</p>
 
 <div class="selectHelp">
-<ul style="margin-left:25px">
-<li><?php echo anchor('help/profile_help', img('assets/images/profile.jpg')); ?></li>
-<li><?php echo anchor('help/bookings_help', img('assets/images/bookings.jpg')); ?></li>
+<ul>
+<li><?php echo anchor('help/profile_help', img('assets/images/help/profile.jpg')); ?></li>
+<li><?php echo anchor('help/ratings_help', img('assets/images/help/ratings.jpg')); ?></li>
+<li><?php echo anchor('help/video_help', img('assets/images/help/video.jpg')); ?></li>
+<li><?php echo anchor('help/bookings_help', img('assets/images/help/bookings.jpg')); ?></li>
 </ul>
 </div>
-<div class="selectHelp">
-<ul style="margin-left:25px">
-<li><?php echo anchor('help/ratings_help', img('assets/images/ratings.jpg')); ?></li>
-<li><?php echo anchor('help/video_help', img('assets/images/video.jpg')); ?></li>
-</ul>
-</div>
+<img src="<?php echo base_url() ?>assets/images/palm.JPG" style="margin-top:8px;margin-bottom:5px" alt="Palm" />
 </div>
 <div class="clear"></div>
-<div class="latest-news">
-</div>
 
 </div>
 
@@ -188,27 +221,44 @@ All uploaded video's will be stored in videodump and on your profile.</p>
 <div class="top"></div>
 <div class="middle">
 <p><span>You are here &gt;<?php echo anchor('home/index', 'Home') ?>&gt;Helpcenter</span></p>
-<h2>Helpcenter</h2>
+<h2 style="margin-bottom:6px">Holidaysrating</h2>
+<iframe width="192" height="120"  src="http://www.youtube-nocookie.com/embed/nihFnlZKiGY" frameborder="0" allowfullscreen></iframe>
+	
 <div class="social">
+<p style="margin:5px 0 0 5px">Are you not a member?? Why wait.. Become a member, it is totally FREE!!</p>
 <ul>
-<li class="buttonlink" style="margin-top:10px"><?php echo anchor('help/external_links', img('assets/assets/links.png')); ?></li>
-<li class="buttonlink" style="margin-top:10px"><?php echo anchor('home/contact_us', img('assets/assets/contact.png')); ?></li>
+<li class="buttonlink"><?php echo anchor('auth/register', img('assets/assets/register.png')); ?></li>
 </ul>
-<img src="<?php echo base_url() ?>assets/images/border.png" style="margin-top:8px ; margin-bottom:20px" alt="border" />
+<img src="<?php echo base_url() ?>assets/images/border.png" style="margin-top:8px;margin-bottom:12px" alt="border" />
+<p style="margin:5px 0 0 5px">Browse through the many partnersites and external sources.</p>
+<ul>
+<li class="buttonlink"><?php echo anchor('help/external_links', img('assets/assets/links.png')); ?></li>
+</ul>
+<img src="<?php echo base_url() ?>assets/images/border.png" style="margin-top:8px;margin-bottom:12px" alt="border" />
 
-<div class="googleRight">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* HelpcenterRight */
-google_ad_slot = "9279476745";
-google_ad_width = 120;
-google_ad_height = 600;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<div class="google-right">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- HelpcenterRight -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:180px;height:150px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="7441933540"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
+<div class="google-right">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- HelpcenterRight2 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:180px;height:150px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="8918666740"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
 </div>
 <div class="clear"></div>
 
@@ -219,16 +269,14 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* Help Bottom */
-google_ad_slot = "2369939146";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="file:///pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Help Bottom -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="2369939146"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>
@@ -259,8 +307,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="first-column">
 <ul>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
-<li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
-<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('news/news_index', 'TRAVEL NEWS') ?></li>
+<li><?php echo anchor('blog/blog_index', 'BLOG') ?></li>
 <li class="active"><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
@@ -269,8 +317,9 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | <?php echo anchor('home/contact_us', 'Contact Us') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
+<link href="<?php echo base_url() ?>assets/css/holiday.css" rel="stylesheet" type="text/css" />
 </body>
 </html>

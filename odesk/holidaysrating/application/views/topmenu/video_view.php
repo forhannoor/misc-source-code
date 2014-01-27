@@ -9,32 +9,33 @@ $(document).ready(function() {
     );
 });
 </script>
-
-<br />
 <h2>Comments</h2>
 <br />
-<br />
-<?php foreach($comments->result() as $comment): ?>
-<?php $av = $this->User_model->get_avatar($comment->cid) ?>
-<?php foreach($av->result() as $avtr): ?>
-<?php echo img('./uploads/'.$avtr->avatar) ?>
-<?php endforeach ?>
-<?php $commenter = $this->User_model->get_username($comment->cid) ?>
-<?php foreach($commenter as $cmntr): ?>
-<p><?php echo $cmntr->username ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<?php echo anchor('user/send_message/'.$comment->cid, img(base_url().'assets/images/pm-icon.gif')) ?>
-</p>
-<?php endforeach ?>
+<?php foreach ($comments as $comment): ?>
+<?php $commentator = $this->User_model->get_profile_information($comment->cid) ?>
+<?php if (isset($commentator->avatar)): ?>
+<p class="avatar"><?php echo img('./uploads/'.$commentator->avatar) ?></p>
+<?php else: ?>
+<p class="avatar"><?php echo img('assets/assets/avatar.jpg') ?></p>
+<?php endif ?>
+<p class="comment"><?php echo $comment->description ?></p>
+<?php if (isset($commentator->display_name)): ?>
+<p><?php echo $commentator->display_name ?></p>
+<?php endif ?>
 <p><?php echo $comment->time ?></p>
-<br />
-<br />
-<p><?php echo $comment->description ?></p>
-<hr />
-<br />
+<?php if ($comment->cid != $this->session->userdata('user_id')): ?>
+<p><?php echo anchor('user/send_message/' . urlsafe_b64encode($comment->cid), img('assets/images/pm-icon.gif')) ?></p>
+<?php endif ?>
 <br />
 <?php endforeach ?>
+
+<div class = "link-without-orientation">
+<img src="<?php echo base_url() ?>assets/images/comments.png" alt="comment"/>
 <?php echo anchor('user/make_comment/'.$temp[0], 'Leave a Comment') ?>
 <br />
+<img src="<?php echo base_url() ?>assets/assets/from-region.png" alt="holidaysplayer" style="margin-top:4px">
 <?php echo anchor('topmenu/videodump/'.$region, 'Videos from '.strtoupper($region)) ?>
 <br />
+<img src="<?php echo base_url() ?>assets/assets/browse.png" alt="browse" style="margin-top:4px">
 <?php echo anchor('topmenu/videodump', 'Browse Videos by Region') ?>
+</div>

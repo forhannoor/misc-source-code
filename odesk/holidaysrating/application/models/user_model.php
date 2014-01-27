@@ -7,14 +7,34 @@ class User_model extends CI_Model
 		parent::__construct();
 	}
     
-    /* get profile information */
     public function get_profile_info($user_id)
     {
         $this->db->where('uid', $user_id);
         return $this->db->get('users_personal');
     }
     
-    /* add profile information */
+    /* get user information from both users and users_personal table */
+    public function get_user_info($user_id)
+    {
+        $sql = '
+            SELECT u.email, u.created_on, u.last_login, u.first_name, u.last_name, p.avatar, p.display_name, p.country, p.favorite_destination, p.about, p.privacy
+            FROM users as u
+            JOIN users_personal as p
+            ON u.id = p.uid
+            LIMIT 1
+        ';
+        
+        $result = R::getRow($sql);
+        return $result;
+    }
+    
+    /* updated function to get profile information */
+    public function get_profile_information($user_id)
+    {
+        $profile = R::findOne('users_personal', ' uid = :uid LIMIT 1', array(':uid' => $user_id));
+        return $profile;
+    }
+    
     public function add_profile_info($user_id)
     {
         $udata=$this->upload->data();
@@ -22,6 +42,7 @@ class User_model extends CI_Model
                     'uid' => $user_id,
                     'avatar' =>$udata['file_name'] ,
                     'country' => $this->input->post('country'),
+                    'display_name' => $this->input->post('display_name'),
                     'favorite_destination' => $this->input->post('destination'),
                     'about' => $this->input->post('about'),
                     'privacy' => $this->input->post('privacy')
@@ -30,13 +51,13 @@ class User_model extends CI_Model
         $this->db->insert('users_personal', $data);
     }
     
-    /* update profile information */
     public function update_profile_info($user_id)
     {
         $udata=$this->upload->data();
         $data=array(
                     'avatar' =>$udata['file_name'] ,
                     'country' => $this->input->post('country'),
+                    'display_name' => $this->input->post('display_name'),
                     'favorite_destination' => $this->input->post('destination'),
                     'about' => $this->input->post('about'),
                     'privacy' => $this->input->post('privacy')
@@ -83,31 +104,16 @@ class User_model extends CI_Model
         $this->db->insert('banners', $data);
     }
     
-    public function edit_banner($user_id)
-    {
-        $udata=$this->upload->data();
-        
-        $data=array(
-            'name' => $udata['file_name']
-        );       
-        
-        $this->db->where('uploader', $user_id);
-        $this->db->update('banners', $data);
-    }
-    
     public function get_banner($user_id)
     {
-        $this->db->where('uploader', $user_id);     
-        $query=$this->db->get('banners');
+        $banners = R::findOne('banners', ' uploader = :uploader ORDER BY time DESC LIMIT 1', array(':uploader' => $user_id));
         
-        /* if no banner is uploaded, use the default one */
-        if($query->num_rows()==0)
+        if(is_null($banners))
         {
-            $this->db->where('uploader', 0);
-            return $this->db->get('banners');
+            $banners = R::findOne('banners', ' uploader = 0');
         }
-        
-        return $query;
+            
+        return $banners;
     }
     
     public function make_comment($user_id)
@@ -136,11 +142,23 @@ class User_model extends CI_Model
         return $this->db->get('users')->result();       
     }
     
+    public function username($id)
+    {
+        $sql = '
+            SELECT username FROM users
+            WHERE id = ' . $id . '
+            LIMIT 1
+        ';
+        
+        $username = R::getRow($sql);
+        return $username['username'];
+    }
+    
     public function set_rating($user_id, $pid)
     {
         $data=array(
             'name' => $pid,
-            'rating' => $this->input->post('rating'),
+            'rating' => $this->rate_conversion($this->input->post('rating')),
             'rater' => $user_id
         );
         
@@ -179,6 +197,19 @@ class User_model extends CI_Model
         $this->db->select('avatar');
         $this->db->where('uid', $user_id);
         return $this->db->get('users_personal');       
+    }
+    
+    public function avatar($user_id)
+    {
+        $sql = '
+            SELECT avatar
+            FROM users_personal
+            WHERE uid = ' . $user_id . '
+            LIMIT 1
+        ';
+        
+        $result = R::getRow($sql);
+        return $result['avatar'];
     }
     
     /* sends message to a specific user */
@@ -229,5 +260,42 @@ class User_model extends CI_Model
         
         $this->db->where('id', $message_id);
         return $this->db->get('personal_messages');       
+    }
+    
+    /* add to bucket list */
+    public function add_to_bucket($user_id)
+    {
+        $bucket = R::dispense('bucket_list');
+        $bucket->user_id = $user_id;
+        $bucket->url = $this->session->flashdata('redirectUrl');
+        R::store($bucket);
+    }
+    
+    public function get_bucket_list($user_id)
+    {
+        $bucket_list = R::find('bucket_list', ' user_id = :user_id LIMIT 10', array(':user_id' => $user_id));
+        return $bucket_list;
+    }
+
+    /* get display name */
+    public function get_display_name($user_id)
+    {
+        $this->db->where('uid', $user_id);
+        return $this->db->get('users_personal')->result();
+    }
+    
+    /* returns fullname of user */
+    public function get_name($user_id)
+    {
+        $sql = '
+            SELECT first_name, last_name
+            FROM users
+            WHERE id = 2
+            LIMIT 1
+        ';
+        
+        $result = R::getRow($sql);
+        $name = $result['first_name'] . ' ' . $result['last_name'];
+        return $name;
     }
 }

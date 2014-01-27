@@ -15,16 +15,22 @@
     <tbody>
         <?php foreach($users as $user): ?>
         <tr>
+            <?php if(isset($user->avatar)): ?>
             <td><?php echo img('./uploads/'.$user->avatar) ?></td>
+            <?php else: ?>
+            <td><?php echo img('assets/assets/avatar.jpg') ?></td>
+            <?php endif ?>
             <td><?php echo $user->username ?></td>
             <td><?php echo $user->first_name ?></td>
             <td><?php echo $user->last_name ?></td>
             <td><?php echo $user->country ?></td>
             <td><?php echo $user->email ?></td>
-            <td><a href="<?php echo base_url() ?>index.php/admin/user_delete/<?php echo $user->id ?>"><i class="icon-remove"></i></a></td>
+            <td><?php echo btn_delete('admin/user_delete/' . $user->id) ?></td>
         </tr>
         <?php endforeach ?>
     </tbody>
 </table>
+<br />
+<?php echo anchor('admin/pm', 'Send PM to all') ?>
 <br />
 <?php echo anchor('admin/index', 'Back') ?>

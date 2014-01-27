@@ -2,31 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="Upload your video here!"/>
-<meta name="keywords" content="Videos, video, videodump, vacation, movie, travelvideo, travelmovie "/>
+<meta name="description" content="Watch travel videos on Holidaysrating...!"/>
+<meta name="keywords" content="Video dump, video, videodump, vacation, party movie, travelvideo, travelmovie, holiday, travel, holidaystube, holidaysplayer"/>
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
 <meta content="<?php echo base_url() ?>assets/images/thumbs/videodump.jpg" property="og:image" />
 
-<title>Videodump | Holidaysrating.com</title>
+<title>Videodump | Holidaysrating</title>
 
 <link href="<?php echo base_url() ?>assets/css/holiday.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 </head>
 
 <body>
 <div id="top-head">
 <div class="main">
-<div class="logo"><img src="<?php echo base_url() ?>assets/images/logo.png" width="350" height="78" alt="logo" /></div>
+<div class="logo"><img src="<?php echo base_url() ?>assets/images/logo.png" width="350" height="78" alt="videodump" /></div>
 <div class="menu">
 <ul>
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
-<li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 <li class="active"><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('blog/blog_index', 'BLOG') ?></li>
+<li><?php echo anchor('news/news_index', 'TRAVELNEWS') ?></li>
 <li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
@@ -34,16 +33,14 @@
 </div>
 <div id="banner">
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* Videobanner */
-google_ad_slot = "7824813946";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- VideoTop -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="7824813946"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 
@@ -58,23 +55,20 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="my_login">
 <?php if($this->ion_auth->logged_in()): ?>
 <h2>Welcome</h2>
-<br/>
 <?php if(isset($profile_info)): ?>
-<?php foreach($profile_info->result() as $value): ?>
-<?php echo img('./uploads/'.$value->avatar) ?>
-<?php endforeach ?>
+<p class="avatar"><?php echo anchor('user/index', img('./uploads/'.$profile_info->avatar)) ?></p>
+<?php else: ?>
+<p class="avatar"><?php echo anchor('user/index', img('assets/assets/avatar.jpg')) ?></p>
 <?php endif ?>
 <br />
-<?php echo $this->ion_auth->user()->row()->first_name.' ' ?>
-<?php echo $this->ion_auth->user()->row()->last_name.' ' ?>
-<?php echo '<br>' ?>
-<?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
-<?php echo 'Member since&nbsp;: '.$joined_in ?>
+<?php echo $this->session->userdata('username') ?>
 <br />
-<?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
-<?php echo 'Last logged in: '.$last_login ?>
-<?php $this->load->model('User_model') ?>
-<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<?php echo 'Member since&nbsp;: ' . date("d-m-Y" , $this->session->userdata('created_on')) ?>
+<br />
+<?php echo 'Last logged in: ' . date("d-m-Y" , $this->session->userdata('old_last_login')) ?>
+<?php $CI = & get_instance() ?>
+<?php $CI->load->model('Message_model') ?>
+<?php $new_message_counter = $CI->Message_model->count_new($this->session->userdata('user_id')) ?>
 <br/>
 <br/>
 <?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
@@ -83,15 +77,14 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <?php echo anchor('auth/logout', 'Logout') ?>
 <?php else: ?>
 <h2>Member Login</h2>
-<?php include APPPATH.'views/auth/my_login.php' ?>
+<?php $this->load->view('auth/my_login') ?>
 <br />
 <?php echo anchor('auth/forgot_password', 'Forgot Password') ?>
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
-
+<img src="<?php echo base_url('assets/images/border.png') ?>" alt="Holiday" style="margin-top:12px" />
 <h2>Members online</h2>
 <br/>
 <ul class="profile-items">
@@ -110,14 +103,16 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <?php echo $this->session->flashdata('msg') ?>
 
 <h1>latest videos</h1>
-<div class="middle">
+<div class="top"></div>
+<div class="middleVideo">
     <?php foreach($videos as $video): ?>
     <?php $thumbnail = array('src' => 'assets/images/thumbnail.jpg', 'title' => $video->orig_name) ?>
     <?php echo anchor('topmenu/video/'.$video->name, img($thumbnail)) ?>
     <?php endforeach ?>
 </div>
+<div class="bottom"></div>
 <br/>
-<p style="text-align:center"><strong>Choose a region:</strong></p>
+<h1>Choose a region</h1>
 <ul>
 <li><?php echo anchor('topmenu/videodump/africa', img('assets/images/flags/africa.jpg')); ?></li>
 <li><?php echo anchor('topmenu/videodump/antarctica', img('assets/images/flags/antarctica.jpg')); ?></li>
@@ -147,9 +142,9 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="top"></div>
 <div class="middle">
 <p><span>You are here&gt;<?php echo anchor('home/index', 'Home') ?>&gt;Videodump</span></p>
-<h2>Videos</h2>
-<p>Share your holiday experience! Upload your video and be our travel guide..</p>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
+<h2 style="margin-bottom:7px">Videos</h2>
+<p>Select a region and watch the movies... You can also share your own holiday experience! Upload your video and become our travel guide..</p>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="videodump" />
 <h2>Like it..</h2>
 <div class="social">
 <!-- AddThis Button BEGIN -->
@@ -165,11 +160,31 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="videodump" style="margin-top:12px"/>
+
+<h2 style="margin-bottom:5px">Travel News</h2>
+<p>Make sure you are up-to-date, read the latest <?php echo anchor('news/main_news', 'News') ?> on Holidaysrating!.</p>
 
 <div class="clear"></div>
+
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
+
+<div class="google-right">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- VideodumpRight -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:180px;height:150px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="2276703946"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+
 </div>
 <div class="bottom"></div>
 </div>
@@ -177,16 +192,14 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* VideoBottom */
-google_ad_slot = "9301547147";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- VideoBottom -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="9301547147"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>
@@ -218,8 +231,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="first-column">
 <ul>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
-<li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
-<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('news/news_index', 'TRAVEL NEWS') ?></li>
+<li><?php echo anchor('blog/blog_index', 'BLOG') ?></li>
 <li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
@@ -228,7 +241,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | <?php echo anchor('home/contact_us', 'Contact Us') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
 </body>

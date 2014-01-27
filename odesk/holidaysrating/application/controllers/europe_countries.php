@@ -2,18 +2,14 @@
 
 class europe_countries extends CI_Controller
 {
-    public function index()
-    {
-    }    
-
     public function albania()
     {
       	$data['main']='europe_countries/albania.php';
       	$data['heading']='Albania';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/albania', $data);
     }
@@ -21,10 +17,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/armenia.php';
       	$data['heading']='Armenia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/armenia', $data);
     }
@@ -32,10 +28,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/austria.php';
       	$data['heading']='Austria';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/austria', $data);
     }
@@ -43,10 +39,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/azerbijan.php';
       	$data['heading']='Azerbaijan';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/azerbaijan', $data);
     }
@@ -54,10 +50,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/belarus.php';
       	$data['heading']='Belarus';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/belarus', $data);
     }
@@ -65,10 +61,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/belgium.php';
       	$data['heading']='Belgium';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/belgium', $data);
     }
@@ -76,10 +72,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/bosnia_herzegovina.php';
       	$data['heading']='Bosnia Herzegovina';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/bosnia_herzegovina', $data);
     }
@@ -87,10 +83,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/bulgaria.php';
       	$data['heading']='Bulgaria';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/bulgaria', $data);
     }
@@ -98,21 +94,33 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/croatia.php';
       	$data['heading']='Croatia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/croatia', $data);
     }
+    public function cyprus()
+    {
+      	$data['main']='europe_countries/cyprus.php';
+      	$data['heading']='Cyprus';
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
+      	if($this->ion_auth->logged_in())
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
+      	
+      	$this->load->view('europe_countries/cyprus', $data);
+    }
+
     public function czech_republic()
     {
       	$data['main']='europe_countries/czech_republic.php';
       	$data['heading']='Czech Republic';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/czech_republic', $data);
     }
@@ -120,10 +128,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/denmark.php';
       	$data['heading']='Denmark';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/denmark', $data);
     }
@@ -131,10 +139,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/estonia.php';
       	$data['heading']='Estonia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/estonia', $data);
     }
@@ -142,10 +150,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/finland.php';
       	$data['heading']='Finland';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/finland', $data);
     }
@@ -153,10 +161,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/france.php';
       	$data['heading']='France';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/france', $data);
     }
@@ -164,10 +172,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/georgia.php';
       	$data['heading']='Georgia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/georgia', $data);
     }
@@ -175,10 +183,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/germany.php';
       	$data['heading']='Germany';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/germany', $data);
     }
@@ -186,10 +194,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/greece.php';
       	$data['heading']='Greece';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/greece', $data);
     }
@@ -197,10 +205,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/hungary.php';
       	$data['heading']='Hungary';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/hungary', $data);
     }
@@ -208,10 +216,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/iceland.php';
       	$data['heading']='Iceland';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/iceland', $data);
     }
@@ -219,10 +227,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/ireland.php';
       	$data['heading']='Ireland';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/ireland', $data);
     }
@@ -230,10 +238,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/italy.php';
       	$data['heading']='Italy';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/italy', $data);
     }
@@ -241,10 +249,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/latvia.php';
       	$data['heading']='Latvia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/latvia', $data);
     }
@@ -252,10 +260,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/lithuania.php';
       	$data['heading']='Lithuania';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/lithuania', $data);
     }
@@ -263,10 +271,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/luxembourg.php';
       	$data['heading']='Luxembourg';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/luxembourg', $data);
     }
@@ -274,10 +282,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/macedonia.php';
       	$data['heading']='Macedonia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/macedonia', $data);
     }
@@ -285,10 +293,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/moldova.php';
       	$data['heading']='Moldova';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/moldova', $data);
     }
@@ -296,10 +304,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/netherlands.php';
       	$data['heading']='Netherlands';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/netherlands', $data);
     }
@@ -307,10 +315,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/norway.php';
       	$data['heading']='Norway';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/norway', $data);
     }
@@ -318,10 +326,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/poland.php';
       	$data['heading']='Poland';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/poland', $data);
     }
@@ -329,10 +337,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/portugal.php';
       	$data['heading']='portugal';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/portugal', $data);
     }
@@ -340,10 +348,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/romania.php';
       	$data['heading']='Romania';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/romania', $data);
     }
@@ -351,10 +359,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/serbia.php';
       	$data['heading']='Serbia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/serbia', $data);
     }
@@ -362,10 +370,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/slovakia.php';
       	$data['heading']='Slovakia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/slovakia', $data);
     }
@@ -373,10 +381,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/slovenia.php';
       	$data['heading']='Slovenia';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/slovenia', $data);
     }
@@ -384,10 +392,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/spain.php';
       	$data['heading']='Spain';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/spain', $data);
     }
@@ -395,10 +403,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/sweden.php';
       	$data['heading']='Sweden';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/sweden', $data);
     }
@@ -406,10 +414,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/switzerland.php';
       	$data['heading']='Switzerland';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/switzerland', $data);
     }
@@ -417,10 +425,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/ukraine.php';
       	$data['heading']='Ukraine';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/ukraine', $data);
     }
@@ -428,10 +436,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/united_kingdom.php';
       	$data['heading']='United Kingdom';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';              	
+        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/united_kingdom', $data);
     }
@@ -439,10 +447,10 @@ class europe_countries extends CI_Controller
     {
       	$data['main']='europe_countries/vatican_city.php';
       	$data['heading']='Vatican City';
-      	$this->load->model('User_model');
-      	
+        $data['left_sidebar'] = 'sidebar/left_sidebar';  
+          	        
       	if($this->ion_auth->logged_in())
-      	   $data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_info($this->session->userdata('user_id'));
       	
       	$this->load->view('europe_countries/vatican_city', $data);
     }

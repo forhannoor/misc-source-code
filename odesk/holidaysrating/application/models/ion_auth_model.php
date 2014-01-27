@@ -850,7 +850,7 @@ class Ion_auth_model extends CI_Model
 
 		$this->trigger_events('extra_where');
 
-		$query = $this->db->select($this->identity_column . ', username, email, id, password, active, last_login')
+		$query = $this->db->select($this->identity_column . ', username, email, id, password, active, created_on, last_login')
 		                  ->where($this->identity_column, $this->db->escape_str($identity))
 		                  ->limit(1)
 		                  ->get($this->tables['users']);
@@ -887,8 +887,15 @@ class Ion_auth_model extends CI_Model
 				    'username'             => $user->username,
 				    'email'                => $user->email,
 				    'user_id'              => $user->id, //everyone likes to overwrite id so we'll use user_id
+                    'created_on'           => $user->created_on,
 				    'old_last_login'       => $user->last_login
 				);
+                
+                $user_group = R::findOne('users_groups', ' user_id = :user_id', array(':user_id' => $user->id));
+                
+                # if user is admin
+                if($user_group->group_id == 1)
+                    $session_data['is_admin'] = true;
 
 				$this->update_last_login($user->id);
 
@@ -910,9 +917,7 @@ class Ion_auth_model extends CI_Model
 
 		//Hash something anyway, just to take up time
 		$this->hash_password($password);
-
-		$this->increase_login_attempts($identity);
-
+        $this->increase_login_attempts($identity);
 		$this->trigger_events('post_login_unsuccessful');
 		$this->set_error('login_unsuccessful');
 
@@ -2038,10 +2043,63 @@ class Ion_auth_model extends CI_Model
         return $new_q;
     }
     
-    /* get first name */
     public function get_user_information($id)
     {
         $this->db->where('id', $id);
         return $this->db->get('users');
+    }
+    
+    public function get_username($id)
+    {
+        $user = R::findOne('users', ' id = :id', array(':id' => $id));
+        return $user->username;
+    }
+    
+    public function facebook_email_exists($email)
+    {
+        $user = R::findOne('users', ' email = :email', array(':email' => $email));
+        
+        return isset($user) ? true : false; 
+    }
+    
+    public function process_fb_login()
+    {
+        $user = $this->facebook->api('/me');
+        
+        $user_id = null;
+        
+        /* email address doesn't exist in database */
+        /* store the user and load from database */       
+        if(!$this->facebook_email_exists($user['email']))
+        {
+            $new_user = R::dispense('users');
+            $new_user->ip_address = '7f000001';
+            $new_user->username = $user['username'];
+            $new_user->password = $this->hash_password($user['email'], $user['username']);
+            $new_user->email = $user['email'];
+            $new_user->created_on = time();
+            $new_user->last_login = time();
+            $new_user->active = 0;
+            $new_user->first_name = $user['first_name'];
+            $new_user->last_name = $user['last_name'];
+            $user_id = R::store($new_user);
+            
+            $user = R::load('users', $user_id);
+        }
+        
+        /* email address already exists, so load the user */
+        else
+        {
+            $user = R::findOne('users', ' email = :email', array(':email' => $user['email']));
+        }
+        
+        $session_data = array(
+		    'identity'             => $user->email,
+		    'username'             => $user->username,
+		    'email'                => $user->email, 
+		    'user_id'              => $user->id
+		);
+        
+        $this->session->set_userdata($session_data);
     }
 }

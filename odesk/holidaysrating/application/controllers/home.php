@@ -4,12 +4,13 @@ class Home extends CI_Controller
 {
     public function index()
     {
+        $this->load->model('Video_model');
         $data['main']='home.php';
         $data['heading']='Check out our favorites...';
-        $data['videos'] = $this->Video_model->get_videos_latest();
+        $data['videos'] = $this->Video_model->get(4, 0, 0);
 		
         if($this->ion_auth->logged_in())
-			$data['profile_info']=$this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+            $data['profile_info']=$this->User_model->get_profile_information($this->session->userdata('user_id'));
             
 		$this->load->view('template', $data);
     }
@@ -17,9 +18,7 @@ class Home extends CI_Controller
     public function contact_us()
     {
         $config['upload_path']='./uploads/';
-        /* allowed file types */
         $config['allowed_types']='gif|png|jpg|pdf|doc|rtf|txt';
-        /* allowed file size in kilobyte */
         $config['max_size']=8000;
         $config['encrypt_name']=FALSE;
         $this->load->library('upload', $config);
@@ -30,12 +29,10 @@ class Home extends CI_Controller
         
         if($this->form_validation->run() == TRUE)
         {
-            /* case insensitive captcha validation */
             if(strcasecmp($this->session->userdata('captcha'), $this->input->post('captcha')) == 0)
             {
                 $this->email->from($this->input->post('email'));
                 $this->email->to('contact@holidaysrating.com');
-                //$this->email->to('donotreply@holidaysrating.com');
                 $this->email->subject($this->input->post('subject'));
                 $this->email->message($this->input->post('message'));
                 $fpath = '';
@@ -59,15 +56,12 @@ class Home extends CI_Controller
                     
                 $data['main']='thank_you.php';
                 $data['heading'] = 'Message Sent';
-                //$this->load->view('template', $data);
                 $this->load->view('template_view', $data);
             }
             
             /* wrong captcha, redirect to same page */
             else
             {
-                //redirect('home/contact_us', 'refresh');
-                
                 $generated_captcha = $this->generateRandStr(5);
                 $this->session->set_userdata('captcha', $generated_captcha);
                 $captcha = array(
@@ -106,8 +100,10 @@ class Home extends CI_Controller
     		$data['image'] = $img['image'];
             $data['main'] = 'contact_us.php';
             $data['heading'] = 'Contact Us';
-            $data['profile_info']=
-            $this->User_model->get_profile_info($this->ion_auth->user()->row()->id);
+
+            if($this->ion_auth->logged_in())
+            $data['profile_info']=$this->User_model->get_profile_information($this->session->userdata('user_id'));
+            
             $this->load->view('template_view', $data);
         }       
     }
@@ -147,6 +143,8 @@ class Home extends CI_Controller
     
     public function search()
     {
-        $country = $this->input->post('country');   // search key       
+        $country = $this->input->post('country');
+        $result = $this->Country_model->country_to_controller($country);
+        redirect($result . '/' . $country, 'refresh');
     }
 }

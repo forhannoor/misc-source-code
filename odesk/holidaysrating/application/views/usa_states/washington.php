@@ -10,7 +10,7 @@
 <meta name="language" content="English" />
 <meta content="<?php echo base_url() ?>assets/images/flags/usa.gif" property="og:image" />
 
-<title>Washington</title>
+<title>Washington | United States of America</title>
 <link href="<?php echo base_url() ?>assets/css/country.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/wt-rotator.css"/>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-1.4.2.min.js"></script>
@@ -54,32 +54,32 @@
                 <div class="thumbnails">
                     <ul>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/state/usa/virginia/virginia.jpg" title="Virginia"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract17.jpg"/></a>
+                            <a href="<?php echo base_url() ?>assets/images/state/usa/washington/washington.jpg" title="Washington"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract17.jpg"/></a>
                             <a href="#" target="_blank"></a>                        
                             <div style="left:5px; top:94px; width:336px; height:0;"> 
-                            	<h1>Travel to amazing Virginia</h1>
-                            	Explore the wonderful things Virginia has got to offer.</div>
+                            	<h1>Travel to amazing Washington</h1>
+                            	Explore the wonderful things Washington has got to offer.</div>
                         </li>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/state/usa/virginia/beach.jpg" title="Virginia"><img src="<?php echo base_url() ?>assets/images/thumbs/sf.jpg"/></a>
+                            <a href="<?php echo base_url() ?>assets/images/state/usa/washington/bellevue.jpg" title="Washington"><img src="<?php echo base_url() ?>assets/images/thumbs/sf.jpg"/></a>
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:336px; height:0; color:#000; background-color:#FFF"> 
-                                <h1 style="color:#0CF">Virginia in the United States of America</h1>
-                                Where are you going this year? Is it going to be Virginia, USA?</div>                                                  	
+                                <h1 style="color:#0CF">Washington in the United States of America</h1>
+                                Where are you going this year? Is it going to be Washington, USA?</div>                                                  	
                         </li>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/state/usa/virginia/fishing-pier.jpg" title="Virginia"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract26.jpg"/></a>   
+                            <a href="<?php echo base_url() ?>assets/images/state/usa/washington/lake-union.jpg" title="Washington"><img src="<?php echo base_url() ?>assets/images/thumbs/triworks_abstract26.jpg"/></a>   
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:336px; height:0; color:#000; background-color:#FFF">
-                            	<h1 style="color:#0CF">Visit Virginia</h1>
-                                Holidaysrating recommand; Virginia, United States of America.</div>                                                          	                   
+                            	<h1 style="color:#0CF">Visit Washington</h1>
+                                Holidaysrating recommand; Washington, United States of America.</div>                                                          	                   
                         </li>
                         <li>
-                            <a href="<?php echo base_url() ?>assets/images/state/usa/virginia/cathedral-waterfalls.jpg" title="Virginia"><img src="<?php echo base_url() ?>assets/images/thumbs/tokyo.jpg"/></a>                  
+                            <a href="<?php echo base_url() ?>assets/images/state/usa/washington/seattle.jpg" title="Washington"><img src="<?php echo base_url() ?>assets/images/thumbs/tokyo.jpg"/></a>                  
                             <a href="#" target="_blank"></a>
                             <div style="left:5px; top:36px; width:350px; height:0;"> 
-                                <h1>Explore Virginia, USA</h1>
-                                Have you travelled to Virginia in the past? Tell us your story, become our travelguide!</div>                                          	                          
+                                <h1>Explore Washington, USA</h1>
+                                Have you travelled to Washington in the past? Tell us your story, become our travelguide!</div>                                          	                          
                         </li>     
                     </ul>
                 </div>     
@@ -138,13 +138,14 @@
 <ul class="profile-items">
 <?php $users_online = $this->Ion_auth_model->users_online() ?>
 <?php foreach($users_online as $u_online): ?>
-<li><?php echo $u_online->username ?></li>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
 <?php endforeach ?>
 </ul>
 
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="border" />
-<h2>Advertise here</h2>
-<p>Holidaysrating is a new, fun and social website where you can search for information, vote for your favorite destination or share your holiday experience!</p>
+<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:8px" />
+
+<?php $this->load->view($left_sidebar) ?>
+
 </div>
 
 <div class="bottom-state"></div>
@@ -153,12 +154,38 @@
 <div class="center">
 <div class="hot">
 <h1>Introduction</h1>
-<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/usa.jpg" alt="USA" width="100px" height="70px" /></div>
+<div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/usa.jpg" alt="USA" />
+<br />
+<h5><?php echo $this->session->flashdata('msg') ?></h5>
 </div>
-<div class="clear"></div>
-<div class="latest-news">
+<p><strong>Washington</strong> is a state located in Northwest United States. It has got a total size of 184,827 square kilometers.</p>
+
+<h1>Climate</h1>
+<p>Climate</p>
+
+<!-- Currency Converter script - fx-rate.net --> 
+<div style="width:474px; background-color:white;border:2px solid #888;text-align:center;margin-top:10px;padding:0px"> 
+<div style="background-color:#CECECE;border-bottom:1px solid #888;width:100%;margin:0px;padding:0px;align:center;text-align:center;">
+<a title="United States Dollar Converter" class="HS1label" style="font-size:12px!important; line-height:16px!important;font-family: arial;text-decoration:none;color:#132105;margin-bottom:6px;" target="_blank" href="http://fx-rate.net/USD/"><b>United States Dollar Converter</b></a>
+</div> <script type="text/javascript" src="http://fx-rate.net/converter.php?size=short&layout=horizontal&currency=USD"></script></div> 
+<!-- End of Currency Converter script --> 
+
+<h1>Flora and Fauna</h1>
+<p>Coming soon.</p>
+
+<h1>Things to do</h1>
+<p>Coming soon.</p>
+
+
+
+
+
 </div>
 
+<div class="clear"></div>
+<div class="comment">
+<img src="<?php echo base_url() ?>assets/images/comments.png" alt="comment" style="margin-left:300px" /><?php echo anchor('user/make_comment/washington', 'Leave a comment') ?>
+</div>
 
 </div>
 
@@ -168,10 +195,16 @@
 
 <div class="middle-state">
 <p><span>You are here&gt; <?php echo anchor('home/index', 'Home') ?>&gt;<?php echo anchor('topmenu/worldmap', 'Worldmap') ?>&gt; <?php echo anchor('regions/north_america', 'North America') ?>&gt;<?php echo anchor('regions/usa', 'USA') ?>&gt;Washington</span></p>
-<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=albania&amp;aq=&amp;sll=12.189704,-68.604126&amp;sspn=1.750332,3.348083&amp;ie=UTF8&amp;hq=&amp;hnear=Albania&amp;t=m&amp;ll=40.955011,19.951172&amp;spn=0.995654,1.911621&amp;z=7&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=albania&amp;aq=&amp;sll=12.189704,-68.604126&amp;sspn=1.750332,3.348083&amp;ie=UTF8&amp;hq=&amp;hnear=Albania&amp;t=m&amp;ll=40.955011,19.951172&amp;spn=0.995654,1.911621&amp;z=7" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+
+<iframe width="175" height="120" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=WA,+United+States&amp;aq=0&amp;oq=WA,+United+States&amp;sll=46.240652,-118.234863&amp;sspn=7.355776,18.676758&amp;ie=UTF8&amp;hq=&amp;hnear=Washington,+District+of+Columbia,+United+States&amp;t=m&amp;ll=47.204642,-119.926758&amp;spn=1.791351,3.823242&amp;z=6&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.au/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=WA,+United+States&amp;aq=0&amp;oq=WA,+United+States&amp;sll=46.240652,-118.234863&amp;sspn=7.355776,18.676758&amp;ie=UTF8&amp;hq=&amp;hnear=Washington,+District+of+Columbia,+United+States&amp;t=m&amp;ll=47.204642,-119.926758&amp;spn=1.791351,3.823242&amp;z=6" target="_blank" style="color:#5F6A6F;text-align:left">View Larger Map</a></small>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 	
 <h2>Cities</h2>
+<ul>
+<li><?php echo anchor('home/index', 'Home') ?></li>
+</ul>
+
+<h2>Explore Washington</h2>
 <ul>
 <li><?php echo anchor('home/index', 'Home') ?></li>
 </ul>
@@ -192,7 +225,7 @@
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
 
@@ -211,16 +244,14 @@
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* USA states */
-google_ad_slot = "5946174347";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- USAstates -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="5946174347"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 </div>
 <div class="clear"></div>
@@ -261,7 +292,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
 </body>

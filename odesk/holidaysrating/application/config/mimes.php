@@ -99,7 +99,7 @@ $mimes = array(	'hqx'	=>	'application/mac-binhex40',
 				'xl'	=>	'application/excel',
 				'eml'	=>	'message/rfc822',
 				'json' => array('application/json', 'text/json'),
-                'mp4' => 'video/mp4',
+                'mp4' =>  array('video/mp4', 'video/3gpp'),
                 'flv' => 'video/x-flv', 
 			);
 

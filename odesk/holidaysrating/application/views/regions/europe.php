@@ -7,10 +7,10 @@
 <meta name="author" content="Raymond"/>
 <meta name="robots" content="index, follow"/>
 <meta name="revisit-after" content="1 days"/>
+<meta name="language" content="English" />
 <meta content="<?php echo base_url() ?>assets/images/thumbs/europe.jpg" property="og:image" />
 
-<title>Europe | Holidaysrating.com</title>
-<link href="<?php echo base_url() ?>assets/css/region.css" rel="stylesheet" type="text/css" />
+<title>Europe | Holidaysrating</title>
 </head>
 
 <body>
@@ -22,17 +22,17 @@
 <ul>
 <li><?php echo anchor('home/index', 'HOME') ?></li>
 <li><?php echo anchor('user/index', 'MY PROFILE') ?></li>
-<li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
 <li><?php echo anchor('topmenu/worldmap', 'WORLDMAP') ?></li>
 <li><?php echo anchor('topmenu/videodump', 'VIDEODUMP') ?></li>
-<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('blog/blog_index', 'BLOG') ?></li>
+<li><?php echo anchor('news/news_index', 'TRAVELNEWS') ?></li>
 <li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="slider" >
+<div id="slider-europe" >
 <center><img src="<?php echo base_url() ?>assets/images/regions/europe/europe.jpg" height="412" width="940" alt="Europe" title="Europe" usemap="#europe" /></center>
 <map name="europe">
 <area shape="poly" coords="680, 0, 936, 1, 937, 406, 749, 408, 754, 378, 741, 360, 719, 360, 720, 382, 704, 389, 693, 387, 685, 370, 657, 367, 656, 376, 634, 377, 614, 383, 575, 357, 573, 331, 579, 324, 593, 317, 643, 323, 673, 308, 696, 306, 755, 307, 769, 303, 791, 294, 829, 294, 830, 301, 876, 307, 895, 295, 923, 299, 916, 279, 924, 277, 921, 272, 910, 273, 889, 266, 880, 274, 863, 273, 844, 273, 840, 269, 826, 271, 813, 272, 798, 271, 784, 274, 759, 275, 759, 278, 710, 269, 699, 264, 683, 266, 678, 259, 711, 245, 725, 234, 721, 216, 695, 214, 681, 213, 666, 216, 652, 210, 639, 206, 629, 200, 617, 202, 603, 203, 608, 193, 601, 187, 580, 171, 551, 168, 540, 154, 535, 132, 551, 128, 541, 119, 555, 96, 541, 83, 530, 66, 518, 54, 520, 48, 518, 42, 508, 39, 517, 25, 526, 21, 610, 38, 600, 52, 544, 51, 574, 71, 590, 65, 616, 64, 609, 58, 622, 43, 634, 46, 634, 35, 625, 34, 618, 19, 639, 20, 634, 26, 644, 32, 655, 28, 653, 20" href="<?php echo base_url() ?>index.php/regions/asia" alt="Asia" title="Asia"   />
@@ -82,6 +82,7 @@
 <area shape="poly" coords="860, 272, 880, 275, 886, 265, 912, 274, 921, 274, 915, 279, 919, 298, 904, 296, 901, 290, 894, 291, 884, 299, 878, 295, 866, 293, 851, 283, 866, 280" href="<?php echo base_url() ?>index.php/europe_countries/azerbaijan" alt="Azerbaijan" title="Azerbaijan"   />
 <area shape="poly" coords="827, 290, 844, 285, 880, 301, 851, 300, 831, 299" href="<?php echo base_url() ?>index.php/europe_countries/armenia" alt="Armenia" title="Armenia"   />
 <area shape="poly" coords="201, 90, 193, 99, 205, 106, 212, 96" href="<?php echo base_url() ?>index.php/europe_countries/denmark"  alt="Denmark" title="Denmark"   />
+<area shape="poly" coords="691,379,722,371,728,385,695,388," href="<?php echo base_url() ?>index.php/europe_countries/cyprus" alt="Cyprus" title="Cyprus"   />
 <area shape="poly" coords="245, 114, 254, 125, 241, 132, 237, 125" href="<?php echo base_url() ?>index.php/europe_countries/united_kingdom" alt="United kingdom" title="United kingdom"   />
 </map>
 </div>
@@ -97,20 +98,18 @@
 <br/>
 <?php if(isset($profile_info)): ?>
 <?php foreach($profile_info->result() as $value): ?>
-<?php echo img('./uploads/'.$value->avatar) ?>
+<p class="avatar"><?php echo anchor('user/index', img('./uploads/'.$value->avatar)) ?></p>
 <?php endforeach ?>
+<?php else: ?>
+<p class="avatar"><?php echo anchor('user/index', img('assets/assets/avatar.jpg')) ?></p>
 <?php endif ?>
 <br />
-<?php echo $this->ion_auth->user()->row()->first_name.' ' ?>
-<?php echo $this->ion_auth->user()->row()->last_name.' ' ?>
-<?php echo '<br>' ?>
-<?php $joined_in=date("d-m-Y" , $this->ion_auth->user()->row()->created_on) ?>
-<?php echo 'Member since&nbsp;: '.$joined_in ?>
-<br />
-<?php $last_login=date("d-m-Y" , $this->ion_auth->user()->row()->last_login) ?>
-<?php echo 'Last logged in: '.$last_login ?>
-<?php $this->load->model('User_model') ?>
-<?php $new_message_counter = $this->User_model->count_new($this->ion_auth->user()->row()->id) ?>
+<?php echo $this->session->userdata('username') ?>
+<br/>
+<?php echo 'Member since&nbsp;: ' . date("d-m-Y" , $this->session->userdata('created_on')) ?>
+<br/>
+<?php echo 'Last logged in: ' . date("d-m-Y" , $this->session->userdata('old_last_login')) ?>
+<?php $new_message_counter = $this->User_model->count_new($this->session->userdata('user_id')) ?>
 <br/>
 <br/>
 <?php echo anchor('user/inbox', "Inbox ($new_message_counter new)") ?>
@@ -126,14 +125,13 @@
 <?php echo anchor('auth/register', 'Register') ?>
 <?php endif ?>
 </div>
-<img src="<?php echo base_url() ?>assets/images/border.png" alt="Holiday" style="margin-top:12px" />
-
+<img src="<?php echo base_url('assets/images/border.png') ?>" alt="Holiday" style="margin-top:12px" />
 <h2>Members online</h2>
 <br/>
 <ul class="profile-items">
 <?php $users_online = $this->Ion_auth_model->users_online() ?>
 <?php foreach($users_online as $u_online): ?>
-<li><?php echo $u_online->username ?></li>
+<li><?php echo anchor('user/browse/' . $u_online->id, $u_online->username) ?></li>
 <?php endforeach ?>
 </ul>
 </div>
@@ -145,94 +143,94 @@
 <h1>INTRODUCTION</h1>
 <div class="flag" style="float:left"><img src="<?php echo base_url() ?>assets/images/flags/europe.jpg" alt="Europe" width="100px" height="70px" /></div>
 <div class="intro">
-<p><strong>Europe</strong> is the world's most visited continent. It stretches from the vulcanic ground in Iceland to the wonderous eiffeltower in Paris, the cold winters in Moskou to the romantic gondola rides in Venice. Europe has a wide range of natural and manmade attractions, a generally excellent transport network and numerous of cities.</p>
+<p><strong>Europe</strong> stretches from the vulcanic ground in Iceland to the wonderous eiffeltower in Paris, the cold winters in Moskou, <?php echo anchor('regions/russia', 'Russia') ?> to the romantic gondola rides in Venice. <br />
+Europe is the world's most visited continent and has a wide range of natural and manmade attractions, a excellent transport network and numerous of large cities.<br />
+It has a total size of 23,048,931 square kilometers. There are many different cultures and languages in Europe.</p>
+</div>
 
 <div class="options">
 <ul>
-<li><?php echo anchor('europe_cities/cities_europe', img('assets/images/buttonblue-cities-bg.png')); ?></li>
-<li><?php echo anchor('europe_national_parks/europe_nat_parks', img('assets/images/buttonblue-parks-bg.png')); ?></li>
+<li><?php echo anchor('europe_cities/europe_index', img('assets/images/buttonblue-cities-bg.png')); ?></li>
+<li><?php echo anchor('http://www.holidaysrating.com/index.php/topmenu/videodump/africa', img('assets/images/buttonblue-videos-bg.png')); ?></li>
 <li><?php echo anchor('help/external_links', img('assets/images/buttonblue-links-bg.png')); ?></li>
 </ul>
 <br />
 </div>
 
 <h1>COUNTRIES</h1>
-</div>
-
 <p style="margin-bottom:20px;text-align:center">Click on the map or choose a country below:</p>
 	<table style="width: 100%">
 		<tr>
 			<td><?php echo anchor('europe_countries/albania', 'Albania') ?></td>
-			<td><?php echo anchor('europe_countries/georgia', 'Georgia') ?></td>
+			<td><?php echo anchor('europe_countries/france', 'France') ?></td>
 			<td><?php echo anchor('europe_countries/norway', 'Norway') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('europe_countries/armenia', 'Armenia') ?></td>
-			<td><?php echo anchor('europe_countries/germany', 'Germany') ?></td>
+			<td><?php echo anchor('europe_countries/georgia', 'Georgia') ?></td>
 			<td><?php echo anchor('europe_countries/poland', 'Poland') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('europe_countries/austria', 'Austria') ?></td>
-			<td><?php echo anchor('europe_countries/greece', 'Greece') ?></td>
+			<td><?php echo anchor('europe_countries/germany', 'Germany') ?></td>
 			<td><?php echo anchor('europe_countries/portugal', 'Portugal') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('europe_countries/azerbaijan', 'Azerbaijan') ?></td>
-			<td><?php echo anchor('europe_countries/hungary', 'Hungary') ?></td>
+			<td><?php echo anchor('europe_countries/greece', 'Greece') ?></td>
 			<td><?php echo anchor('europe_countries/romania', 'Romania') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('europe_countries/belarus', 'Belarus') ?></td>
-			<td><?php echo anchor('europe_countries/iceland', 'Iceland') ?></td>
+			<td><?php echo anchor('europe_countries/hungary', 'Hungary') ?></td>
 			<td><?php echo anchor('europe_countries/serbia', 'Serbia') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('europe_countries/belgium', 'Belgium') ?></td>
-			<td><?php echo anchor('europe_countries/ireland', 'Ireland') ?></td>
+			<td><?php echo anchor('europe_countries/iceland', 'Iceland') ?></td>
 			<td><?php echo anchor('europe_countries/slovakia', 'Slovakia') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('europe_countries/bosnia_herzegovina', 'Bosnia - Herzegovina') ?></td>
-			<td><?php echo anchor('europe_countries/italy', 'Italy') ?></td>
+			<td><?php echo anchor('europe_countries/ireland', 'Ireland') ?></td>
 			<td><?php echo anchor('europe_countries/slovenia', 'Slovenia') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('europe_countries/bulgaria', 'Bulgaria') ?></td>
-			<td><?php echo anchor('europe_countries/latvia', 'Latvia') ?></td>
+			<td><?php echo anchor('europe_countries/italy', 'Italy') ?></td>
 			<td><?php echo anchor('europe_countries/spain', 'Spain') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('europe_countries/croatia', 'Croatia') ?></td>
-			<td><?php echo anchor('europe_countries/lithuania', 'Lithuania') ?></td>
+			<td><?php echo anchor('europe_countries/latvia', 'Latvia') ?></td>
 			<td><?php echo anchor('europe_countries/sweden', 'Sweden') ?></td>
+		</tr>
+		<tr>
+			<td><?php echo anchor('europe_countries/cyprus', 'Cyprus') ?></td>
+			<td><?php echo anchor('europe_countries/lithuania', 'Lithuania') ?></td>
+			<td><?php echo anchor('europe_countries/switzerland', 'Switzerland') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('europe_countries/czech_republic', 'Czech Republic') ?></td>
 			<td><?php echo anchor('europe_countries/luxembourg', 'Luxembourg') ?></td>
-			<td><?php echo anchor('europe_countries/switzerland', 'Switzerland') ?></td>
+			<td><?php echo anchor('europe_countries/ukraine', 'Ukraine') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('europe_countries/denmark', 'Denmark') ?></td>
 			<td><?php echo anchor('europe_countries/macedonia', 'Macedonia') ?></td>
-			<td><?php echo anchor('europe_countries/ukraine', 'Ukraine') ?></td>
+			<td><?php echo anchor('europe_countries/united_kingdom', 'United Kingdom') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('europe_countries/estonia', 'Estonia') ?></td>
 			<td><?php echo anchor('europe_countries/moldova', 'Moldova') ?></td>
-			<td><?php echo anchor('europe_countries/united_kingdom', 'United Kingdom') ?></td>
+			<td><?php echo anchor('europe_countries/vatican_city', 'Vatican City') ?></td>
 		</tr>
 		<tr>
 			<td><?php echo anchor('europe_countries/finland', 'Finland') ?></td>
 			<td><?php echo anchor('europe_countries/netherlands', 'Netherlands') ?></td>
-			<td><?php echo anchor('europe_countries/vatican_city', 'Vatican City') ?></td>
-		</tr>
-		<tr>
-			<td><?php echo anchor('europe_countries/france', 'France') ?></td>
-			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 		</tr>
 	</table>
-
 
 </div>
 <div class="clear"></div>
@@ -249,7 +247,7 @@
 <ol>
 <li>It is widely believed that Europe is named  after 'Europa', the Phoenician princess from Greek mythology.</li>
 <li>Europe has six of the world's most visited countries in the world.</li>
-<li>The smallest country in Europe is <a href="../countries/europe/vatican-city.html">Vatican City</a> – actually only 110 acres in total and with a population of just more than 800. It is located within the city of Rome and is the home of Catholicism.</li>
+<li>The smallest country in Europe is <?php echo anchor('europe_countries/vatican_city', 'Vatican City') ?> – actually only 110 acres in total and with a population of just more than 800. It is located within the city of Rome and is the home of Catholicism.</li>
 </ol>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 <h2>Like it..</h2>
@@ -267,17 +265,22 @@
 </tr>
 </table>
 </div>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512f1c611545a1da"></script>
 <!-- AddThis Button END -->
 </div>
+
+<div class="clear"></div>
 <img src="<?php echo base_url() ?>assets/images/border.png" alt="border" style="margin-top:8px"/>
 <h2>Cities</h2>
 <ul>
-<li>Amsterdam</li>
-<li>Paris</li>
+<li>Amsterdam <?php echo anchor('europe_countries/netherlands', 'Netherlands') ?></li>
+<li>Paris <?php echo anchor('europe_countries/france', 'France') ?></li>
+<li>London <?php echo anchor('europe_countries/netherlands', 'Netherlands') ?></li>
+<li>Seville <?php echo anchor('europe_countries/spain', 'Spain') ?></li>
+<li>Lisbon <?php echo anchor('europe_countries/portugal', 'Portugal') ?></li>
+<li>Prague <?php echo anchor('europe_countries/czech_republic', 'Czech Republic') ?></li>
 </ul>
 
-<div class="clear"></div>
 </div>
 
 <div class="bottom"></div>
@@ -288,18 +291,15 @@
 <div id="footer">
 
 <div class="google">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-0797455318364345";
-/* Europe */
-google_ad_slot = "9360422743";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Europe -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-0797455318364345"
+     data-ad-slot="9360422743"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-
 </div>
 <div class="clear"></div>
 <div class="first-column">
@@ -329,8 +329,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div class="first-column">
 <ul>
 <li><?php echo anchor('topmenu/favorites', 'FAVORITES') ?></li>
-<li><?php echo anchor('news/main_news', 'TRAVEL NEWS') ?></li>
-<li><?php echo anchor('topmenu/main_blog', 'BLOG') ?></li>
+<li><?php echo anchor('news/news_index', 'TRAVEL NEWS') ?></li>
+<li><?php echo anchor('blog/blog_index', 'BLOG') ?></li>
 <li><?php echo anchor('topmenu/helpcenter', 'HELPCENTER') ?></li>
 </ul>
 </div>
@@ -339,8 +339,9 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </div>
 <div class="clear"></div>
-<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | &copy; Copyright 2013 Holidays Rating All Rights Reserved</p>
+<p> <?php echo anchor('privacy/privacy_policy', 'Privacy Policy') ?> | <?php echo anchor('privacy/terms_of_use', 'Terms of Use') ?> | <?php echo anchor('home/contact_us', 'Contact Us') ?> | &copy; Copyright <?php echo date('Y') ?> Holidaysrating All Rights Reserved</p>
 </div>
 </div>
+<link href="<?php echo base_url() ?>assets/css/region.css" rel="stylesheet" type="text/css" />
 </body>
 </html>
