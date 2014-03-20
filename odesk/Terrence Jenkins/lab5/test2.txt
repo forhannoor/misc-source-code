@@ -1,0 +1,44 @@
+//This is a code sample from a C++ program.
+
+bool positionChecker(eightGame activeGame)
+	{
+		int n = 0;
+		int check = 0;
+
+		int * temp = activeGame.base.getPuzzle();
+		int state[9];
+		int j = 0;
+		while(j < 9)
+		{
+			state[j] = *(temp + j);
+			j++;
+		}
+		int zeroLocation = activeGame.base.getOpenTile();
+
+		while(n < activeGame.arrayLength[zeroLocation])
+		{
+			int i = 0;
+			while(i < 9)
+			
+				if(state[i] != pastPositions[zeroLocation][(n * 9 + i)])
+				{
+					i = 13;
+				}
+				else if(i == 8)
+				{
+					check = 1;
+					n = 0;
+				}
+				i++;
+			}
+			n++;
+		}
+		if(check == 0)
+		{
+			return true;//True represents the position not being previously used.
+		}
+		else
+		{
+			return false;//False represents the position being previously used.
+		}
+	}
