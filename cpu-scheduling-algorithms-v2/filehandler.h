@@ -1,9 +1,10 @@
 #ifndef FILEHANDLER_H
 #define FILEHANDLER_H
 
-#include <iostream>
+#include <cstdio>
 #include <fstream>
 
-double * read_from_file(const char file_name [], int &size, bool hasPair); // read numbers given a file name, return the data and size
+// read numbers from file given filename and return data
+double * read_from_file(const char file_name [], int &size, bool hasPair);
 
 #endif
