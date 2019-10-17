@@ -1,46 +1,74 @@
-/*
- * Handles BMI calculation
- */
+public enum UnitHeight
+{
+    Inch,
+    Meter
+}
+
+public enum UnitWeight
+{
+    Lb,
+    Kg
+}
 
 public class BMI
 {
-    private double height, weight, value;
+    // Different stages of BMI type.
+    private readonly string [] STATUS = {"Underweight", "Normal Weight", "Overweight", "Obese"};
+    private double _height, _weight, _value;
 
-	public BMI(string hu, double h, string wu, double w)
-	{
-        height = (hu.Equals("inch")) ? h * 0.0254 : h;
-        weight = (wu.Equals("lb")) ? w / 2.2 : w;
-        value = weight / (height * height);
+    // Calculates BMI value given height and weight parameters.
+    public void CalculateBMI(UnitHeight unitHeight, double height, UnitWeight unitWeight, double weight)
+    {
+        _height = height;
+        _weight = weight;
+
+        if(unitHeight == UnitHeight.Inch)
+        {
+            _height *= 0.0254;
+        }
+
+        if(unitWeight == UnitWeight.Lb)
+        {
+            _weight /= 2.2;
+        }
+
+        _value = _weight / (_height * _height);
     }
 	
-    // return BMI value
-	public double Value() { return value; }
-
-    // return weight status based on BMI
-    public string Status()
+    public double Value
     {
-        string s;
+        get { return _value; }
+    }
 
-        if (value < 18.5)
+    // Returns status/feedback about supplied BMI value.
+    public string Status(double value)
+    {
+        int index;
+
+        // If underweight.
+        if (_value < 18.5)
         {
-            s = "underweight";
+            index = 0;
         }
         
-        else if (value >= 18.5 && value <= 24.9)
+        // If normal weight.
+        else if (_value >= 18.5 && _value <= 24.9)
         {
-            s = "normal weight";
+            index = 1;
         }
         
-        else if (value >= 25 && value <= 29.9)
+        // If overweight.
+        else if (_value >= 25 && _value <= 29.9)
         {
-            s = "overweight";
+            index = 2;
         }
         
+        // If obese.
         else
         {
-            s = "obese";
+            index = 3;
         }
 
-        return s;
+        return STATUS[index];
     }
 }
