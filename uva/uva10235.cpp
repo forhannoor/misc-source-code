@@ -1,58 +1,66 @@
 #include <iostream>
+#include <cstdio>
 #include <sstream>
 #include <cmath>
 
-using namespace std;
-
-
-string str_rev(string a)
+std::string str_rev(std::string a)
 {
-    string r = "";
+    std::string r = "";
 
-    for(int i = a.length() - 1; i >= 0; i--)
+    for(int i = a.length() - 1; i >= 0; --i)
+    {
         r += a[i];
+    }
 
     return r;
 }
 
-bool primality(string x)
+bool primality(std::string x)
 {
-    bool flag = true;
-    stringstream ss(x);
+    std::stringstream ss(x);
+    bool is_prime = true;
     long long num;
-    ss>>num;
+    ss >> num;
+    int limit = sqrt(num);
 
-    for(int i = 2; i <= sqrt(num); i++)
+    for(int i = 2; i <= limit && is_prime; ++i)
+    {
         if(num % i == 0)
         {
-            flag = false;
-            break;
+            is_prime = false;
         }
+    }
 
-    return flag;
+    return is_prime;
 }
 
 int main()
 {
-    string inp;
+    std::string inp;
 
-    while(cin>>inp)
+    while(std::cin >> inp)
     {
-        bool r = primality(inp);
+        bool is_prime = primality(inp);
 
-        if(r == false)
-            cout<<inp<<" is not prime."<<endl;
+        if(!is_prime)
+        {
+            std::cout<<inp<<" is not prime.\n";
+        }
 
         else
         {
-            string rev = str_rev(inp);
-            bool j = primality(rev);
+            std::string rev = str_rev(inp);
+            is_prime = primality(rev);
 
-            if(j == true && inp != rev)
-                cout<<inp<<" is emirp."<<endl;
+            if(is_prime && inp != rev)
+            {
+                std::cout<<inp<<" is emirp.\n";
+            }
 
             else
-                cout<<inp<<" is prime."<<endl;
+            {
+                std::cout<<inp<<" is prime.\n";
+            }
         }
     }
 

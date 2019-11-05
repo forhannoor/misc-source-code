@@ -1,29 +1,33 @@
-#include <iostream>
-
-using namespace std;
-
+#include <cstdio>
 
 int main()
 {
-    int n;
+    int number, num_exchange;
+    int *arr;
 
-    while(cin>>n)
+    while(scanf("%d", &number))
     {
-        int *p;
-        p = new int [n];
+        arr = new int [number];
+        num_exchange = 0;
 
-        for(int i = 0; i < n; i++)
-            cin>>p[i];
+        for(int i = 0; i < number; ++i)
+        {
+            scanf("%d", &arr[i]);
+        }
 
-        int num_ex = 0;
+        for(int i = 0; i < number; ++i)
+        {
+            for(int j = i + 1; j < number; ++j)
+            {
+                if(arr[i] > arr[j])
+                {
+                    num_exchange += 1;
+                }
+            }
+        }
 
-        for(int i = 0; i < n; i++)
-            for(int j = i + 1; j < n; j++)
-                if(p[i] > p[j])
-                    num_ex++;
-
-        delete [] p;
-        cout<<"Minimum exchange operations : "<<num_ex<<endl;
+        delete [] arr;
+        printf("Minimum exchange operations : %d\n", num_exchange);
     }
 
     return 0;

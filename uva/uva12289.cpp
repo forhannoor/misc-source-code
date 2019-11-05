@@ -1,5 +1,5 @@
-#include<iostream>
-#include<cstdio>
+#include <iostream>
+#include <cstdio>
 
 int main()
 {
@@ -9,13 +9,23 @@ int main()
 
     while(numInput > 0)
     {
-        std::cin>>input;
+        std::cin >> input;
 
-        if(input.size() > 3){ printf("3\n"); }
+        if(input.size() > 3)
+        {
+            printf("3\n");
+        }
 
-        else if(input[0] == 'o'){ printf("1\n"); }
+        else if(input[0] == 'o')
+        {
+            printf("1\n");
+        }
 
-        else{ printf("2\n"); }
+        else
+        {
+            printf("2\n");
+        }
+
         --numInput;
     }
 

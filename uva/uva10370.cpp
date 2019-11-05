@@ -1,42 +1,42 @@
+#include <cstdio>
 #include <iostream>
 #include <iomanip>
 
-using namespace std;
-
-
 int main()
 {
-    int c;  // number of cases
-    cin>>c;
+    int num_case, num_student, temp, count;
+    int * grades;
+    long long sum;
+    double avg, percentage_below_avg;
+    scanf("%d", &num_case);
 
-    for(int i = 0; i < c; i++)
+    for(int i = 0; i < num_case; ++i)
     {
-        int n;  // number of students in class
-        cin>>n;
-        int * p;
-        p = new int [n];    // array that holds the grades for each case
-        long long sum = 0;
-        int inp;
+        scanf("%d", &num_student);
+        grades = new int [num_student];
+        sum = 0;
 
-        for(int j = 0; j < n; j++)
+        for(int j = 0; j < num_student; ++j)
         {
-            cin>>inp;
-            sum += inp;
-            p[j] = inp;
+            scanf("%d", &temp);
+            sum += temp;
+            grades[j] = temp;
         }
 
-        double avg = sum / (double) n;
-        int count = 0;
+        avg = sum / (double) num_student;
+        count = 0;
 
-        for(int j = 0; j < n; j++)
+        for(int j = 0; j < num_student; ++j)
         {
-            if(p[j] > avg)  // if grade is below average
-                count++;
+            if(grades[j] > avg)
+            {
+                ++count;
+            }
         }
 
-        double r = (count * 100) / (double) n;
-        cout<<fixed<<setprecision(3)<<r<<"%"<<endl;
-        delete [] p;
+        percentage_below_avg = (count * 100) / (double) num_student;
+        printf("%.3f%%\n", percentage_below_avg);
+        delete [] grades;
     }
 
     return 0;

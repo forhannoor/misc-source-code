@@ -1,22 +1,18 @@
-#include<iostream>
+#include <iostream>
 #include <map>
 #include <cstring>
 #include <cstdio>
 
-using namespace std;
-
-
 int main()
 {
-    map <string, string> dictionary;
+    std::map <std::string, std::string> dictionary;
+    std::string english, foreign;
     char inp[100];
     char *ptr;
-    string english, foreign;
 
     while(gets(inp))
     {
-        if(strlen(inp) == 0)
-            break;
+        if(strlen(inp) == 0) { break; }
 
         ptr = strtok(inp, " ");
         english = ptr;
@@ -29,11 +25,13 @@ int main()
     {
         foreign = inp;
 
-        if(dictionary[foreign].length() == 0)   // not found
-            cout<<"eh"<<endl;
+        if(dictionary[foreign].length() == 0)
+        {
+            printf("eh\n");
+        }
 
         else
-            cout<<dictionary[foreign]<<endl;
+            std::cout << dictionary[foreign] <<"\n";
     }
 
     return 0;

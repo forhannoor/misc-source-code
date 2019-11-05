@@ -16,9 +16,17 @@ int main()
         {
             scanf("%d", &current);
 
-            if(current > max){ max = current; }
-            if(current < min){ min = current;}
+            if(current > max)
+            {
+                max = current;
+            }
+
+            else if(current < min)
+            {
+                min = current;
+            }
         }
+
         dif = max - min;
         dif = dif <<1;
         printf("%d\n", dif);

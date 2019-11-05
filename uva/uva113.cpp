@@ -1,17 +1,13 @@
-#include <iostream>
 #include <cmath>
 #include <cstdio>
 
-using namespace std;
-
-
 int main()
 {
-    double n,p;
+    double n, p;
 
-    while(scanf("%lf%lf",&n,&p)==2)
+    while(scanf("%lf%lf", &n, &p) == 2)
     {
-        printf("%.0lf\n",pow(p,1/n));
+        printf("%.0lf\n", pow(p, 1 / n));
     }
 
     return 0;

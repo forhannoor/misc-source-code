@@ -1,10 +1,7 @@
 #include <iostream>
 #include <map>
 
-using namespace std;
-
-
-map <char, char> m;
+std::map <char, char> m;
 
 void init()
 {
@@ -53,23 +50,23 @@ void init()
     m['='] = '-';
 }
 
-string decoded(string s)
+std::string decoded(std::string s)
 {
-    string result = "";
+    std::string result = "";
     char c;
+    int length = s.length();
 
-    for(int i = 0; i < s.length(); i++)
+    for(int i = 0; i < length; ++i)
     {
         c = s[i];
 
-        if(c == ' ')
-            result += c;
-
-        else
+        // If character is not a blank space.
+        if(c != ' ')
         {
             c = m[c];
-            result += c;
         }
+
+        result += c;
     }
 
     return result;
@@ -78,11 +75,11 @@ string decoded(string s)
 int main()
 {
     init();
-    string inp;
+    std::string inp;
 
-    while(getline(cin, inp))
+    while(getline(std::cin, inp))
     {
-        cout<<decoded(inp)<<endl;
+        std::cout << decoded(inp) << "\n";
     }
 
 	return 0;

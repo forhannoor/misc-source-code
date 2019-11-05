@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 
 int main()
 {
@@ -6,7 +6,7 @@ int main()
 
     while(std::getline(std::cin, input))
     {
-        std::cout<<input<<std::endl;
+        std::cout << input << "\n";
     }
 
     return 0;

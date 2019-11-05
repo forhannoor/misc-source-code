@@ -5,47 +5,45 @@
  * There will be no invalid numbers in the input.
  */
 
-
 #include <iostream>
 #include <iomanip>
 #include <sstream>
 
-using namespace std;
-
-
-long long hex_to_deci(string a)
+long long hex_to_deci(std::string a)
 {
-    stringstream s;
+    std::stringstream s;
     long long r;
-    s<<hex<<a;
-    s>>r;
+    s << std::hex << a;
+    s >> r;
     return r;
 }
 
 
 int main()
 {
-    string inp;
+    std::string inp;
     long long x;
 
     while(true)
     {
-        cin>>inp;
-        stringstream ss(inp);
-        ss>>x;
+        std::cin >> inp;
+        std::stringstream ss(inp);
+        ss >> x;
 
-        if(x < 0)  // negative input, end of string
-            break;
-
-        else if(x == 0) // hex string
+        if(x < 0)
         {
-            long long p = hex_to_deci(inp);   // convert hex to decimal
-            cout<<dec<<p<<endl;
+            break;
         }
 
-        else if(x > 0)   // decimal
+        else if(x == 0)
         {
-            cout<<"0x"<<hex<<uppercase<<x<<endl;
+            long long p = hex_to_deci(inp);
+            std::cout << std::dec << p <<"\n";
+        }
+
+        else if(x > 0)
+        {
+            std::cout << "0x" << std::hex << std::uppercase << x <<"\n";
         }
     }
 
