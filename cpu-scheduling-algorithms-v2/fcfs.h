@@ -3,6 +3,6 @@
 
 #include "filehandler.h"
 
-double first_come_first_served(double *data, int size);
+double first_come_first_served(double* data, int size);
 
 #endif

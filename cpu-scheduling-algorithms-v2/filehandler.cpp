@@ -1,13 +1,15 @@
 #include "filehandler.h"
 
-// read numbers from file given filename and return data
-double * read_from_file(const char file_name [], int &size, bool hasPair)
+// Returns numbers from a file given filename.
+double* read_from_file(const char file_name [], int& size, bool has_pair)
 {
-	double * durations; // duration/burst time of each process
+    // List of duration for each process.
+	double* durations;
 	std::ifstream in;
 	in.open(file_name);
 
-	if(! in) // failed to open file
+    // If unable to open file.
+	if(! in)
 	{
 		printf("File not found!");
 	}
@@ -16,11 +18,14 @@ double * read_from_file(const char file_name [], int &size, bool hasPair)
 	{
 		int i = 0;
 		double data;
+		// Number of process.
 		in>>size;
 
-		if(hasPair) // read arrival time along with burst time
+        // If input is in pair, first input is arrival time, second input is duration or burst time.
+		if(has_pair)
 		{
-			size += size;
+		    // Size should be twice for pair of inputs.
+			size << 2;
 		}
 
 		durations = new double [size];
