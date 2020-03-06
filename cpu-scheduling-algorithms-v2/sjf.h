@@ -5,6 +5,8 @@
 #include<queue>
 #include<vector>
 
+const int BUFFER_SIZE = 30;
+
 struct Process
 {
 	int id;
@@ -15,20 +17,21 @@ struct Process
 
 	Process();
     Process(int i, int at, int bt);
-    char* Show(); // display process information
+    char* Show();
 };
 
 class Compare
 {
 	public:
-		bool operator()(Process& a, Process& b) // custom comparator
+	    // Custom comparator considering burst time for comparison.
+		bool operator()(Process& a, Process& b)
 		{
-		    return (a.burst_time > b.burst_time) ? true : false;
+		    return (a.burst_time > b.burst_time);
 		}
 };
 
-double non_preemptive_shortest_job_first(Process * data, int size);
+double non_preemptive_shortest_job_first(Process* data, int size);
 
-double preemptive_shortest_job_first(Process *p, int size);
+double preemptive_shortest_job_first(Process* p, int size);
 
 #endif
