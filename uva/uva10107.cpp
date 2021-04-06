@@ -20,7 +20,6 @@ int main()
         {
             printf("%lld\n", v[size / 2]);
         }
-
         else
         {
             printf("%lld\n", (v[size / 2] + v[(size / 2) - 1]) / 2);

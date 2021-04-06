@@ -9,14 +9,15 @@ int main()
     std::string english, foreign;
     char inp[100];
     char *ptr;
+    char *space = " ";
 
     while(gets(inp))
     {
         if(strlen(inp) == 0) { break; }
 
-        ptr = strtok(inp, " ");
+        ptr = strtok(inp, space);
         english = ptr;
-        ptr = strtok(NULL, " ");
+        ptr = strtok(NULL, space);
         foreign = ptr;
         dictionary[foreign] = english;
     }
@@ -29,9 +30,10 @@ int main()
         {
             printf("eh\n");
         }
-
         else
+        {
             std::cout << dictionary[foreign] <<"\n";
+        }
     }
 
     return 0;

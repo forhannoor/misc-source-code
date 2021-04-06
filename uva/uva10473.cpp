@@ -34,13 +34,11 @@ int main()
         {
             break;
         }
-
         else if(x == 0)
         {
             long long p = hex_to_deci(inp);
             std::cout << std::dec << p <<"\n";
         }
-
         else if(x > 0)
         {
             std::cout << "0x" << std::hex << std::uppercase << x <<"\n";

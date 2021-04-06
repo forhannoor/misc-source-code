@@ -44,13 +44,14 @@ int max_cycle_length(long long a, long long b)
 
 int cycle_length(long long n, int c)
 {
-    if(n == 1){ return c; }
-
+    if(n == 1)
+    {
+        return c;
+    }
     else if(n % 2 == 1)
     {
         cycle_length(((3 * n) + 1), c + 1);
     }
-
     else
     {
         cycle_length(n / 2, c + 1);

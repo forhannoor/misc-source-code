@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <sstream>
 #include <cmath>
+#include <cstring>
 
 std::string str_rev(std::string a)
 {
@@ -9,16 +10,16 @@ std::string str_rev(std::string a)
 
     for(int i = a.length() - 1; i >= 0; --i)
     {
-        r += a[i];
+        r.append(1, a[i]);
     }
 
     return r;
 }
 
-bool primality(std::string x)
+bool is_prime(std::string x)
 {
     std::stringstream ss(x);
-    bool is_prime = true;
+    bool result = true;
     long long num;
     ss >> num;
     int limit = sqrt(num);
@@ -27,11 +28,11 @@ bool primality(std::string x)
     {
         if(num % i == 0)
         {
-            is_prime = false;
+            result = false;
         }
     }
 
-    return is_prime;
+    return result;
 }
 
 int main()
@@ -40,23 +41,21 @@ int main()
 
     while(std::cin >> inp)
     {
-        bool is_prime = primality(inp);
+        bool result = is_prime(inp);
 
-        if(!is_prime)
+        if(!result)
         {
             std::cout<<inp<<" is not prime.\n";
         }
-
         else
         {
             std::string rev = str_rev(inp);
-            is_prime = primality(rev);
+            result = is_prime(rev);
 
-            if(is_prime && inp != rev)
+            if(result && inp != rev)
             {
                 std::cout<<inp<<" is emirp.\n";
             }
-
             else
             {
                 std::cout<<inp<<" is prime.\n";

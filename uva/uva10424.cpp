@@ -65,7 +65,6 @@ int main()
         {
             printf("%.2f\n", ((s2 * 100) / (double) s1));
         }
-
         else
         {
             printf("%.2f\n", ((s1 * 100) / (double) s2));

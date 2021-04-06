@@ -15,12 +15,10 @@ int main()
         {
             printf("3\n");
         }
-
         else if(input[0] == 'o')
         {
             printf("1\n");
         }
-
         else
         {
             printf("2\n");
