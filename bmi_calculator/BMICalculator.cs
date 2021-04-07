@@ -34,7 +34,6 @@ class BMICalculator
         heightGroup.Controls.Add(_inchButton);
         heightGroup.Controls.Add(_heightBox);
         heightGroup.Height = _heightBox.Bottom + HALFSPACE;
-
         // Control block for weight.
         GroupBox weightGroup = new GroupBox { Top = heightGroup.Bottom + SPACE, Left = HALFSPACE, 
             Width = TEXTBOX_WIDTH + SPACE, FlatStyle = FlatStyle.Flat, Text = "Weight" };
@@ -46,7 +45,6 @@ class BMICalculator
         weightGroup.Controls.Add(_lbButton);
         weightGroup.Controls.Add(_weightBox);
         weightGroup.Height = _weightBox.Bottom + HALFSPACE;
-
         // Control block for result.
         GroupBox resultGroup = new GroupBox { Top = HALFSPACE, Left = heightGroup.Width + SPACE, 
             FlatStyle = FlatStyle.Flat, Text = "Result" };
@@ -56,7 +54,6 @@ class BMICalculator
         resultGroup.Controls.Add(_statusBox);
         resultGroup.Height = heightGroup.Height;
         resultGroup.Width = heightGroup.Width;
-
         // Calculate button.
         _calculateButton = new Button { Left = resultGroup.Left, Top = weightGroup.Top + HALFSPACE / 2, 
             Width = weightGroup.Width / 2 - HALFSPACE, Text = "Calculate" };
@@ -65,7 +62,6 @@ class BMICalculator
         _clearButton = new Button { Left = _calculateButton.Right + SPACE, Top = _calculateButton.Top, 
             Width = weightGroup.Width / 2 - HALFSPACE, Text = "Clear" };
         _clearButton.Click += ClearClicked;
-
         // Form.
         _form = new Form {
             Text = "BMI Calculator",
