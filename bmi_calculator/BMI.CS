@@ -50,19 +50,16 @@ public class BMI
         {
             index = 0;
         }
-        
         // If normal weight.
         else if (_value >= 18.5 && _value <= 24.9)
         {
             index = 1;
         }
-        
         // If overweight.
         else if (_value >= 25 && _value <= 29.9)
         {
             index = 2;
         }
-        
         // If obese.
         else
         {
