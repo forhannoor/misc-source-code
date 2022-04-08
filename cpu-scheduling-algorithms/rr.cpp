@@ -1,77 +1,85 @@
-#include<iostream>
-#include<fstream>
-#include<queue>
-
-using namespace std;
+#include <fstream>
+#include <iostream>
+#include <queue>
 
 struct process
 {
     int id;
-    double burstTime;
-    double lastExecutionTime;
-    double waitingTime;
+    double burst_time;
+    double last_execution_time;
+    double waiting_time;
 };
 
 int main()
 {
-    int n;//number of processes
-    double tQ;//time quantum
-    double systemTime=0.0;
-    char fileName[20];//to take file name from user
-    cout<<"Enter fileName:\n";
-    gets(fileName);
-    ifstream in(fileName);//input file stream
-    in>>n;
-    cout<<"Number of process:"<<n<<"\n";
-    process done[n];//array to keep done processes
-    queue <process> q;//queue
-    cout<<"Burst Times:\n";
-    for(int i=0;i<n;i++)
-    {
-        process s;
-        s.id=i+1;//id initialization
-        double bt;
-        in>>bt;
-        s.burstTime=bt;//burst time initialization
-        s.lastExecutionTime=0.0;
-        s.waitingTime=0.0;
-        q.push(s);//pushing into a queue
-        cout<<"Process"<<s.id<<":"<<bt<<"\n";//printing burst times for each process
-    }
-    in>>tQ;
-    cout<<"Time Quantum:"<<tQ<<"\n";
-    int j=0;
-    while(!q.empty())
-    {
-        process t=q.front();//reference to the topmost queue element
-        q.pop();//removing the topmost queue element
+    // Number of process.
+    int process_count;
+    // Time quantum.
+    double time_quantum;
+    double system_time = 0.0;
+    char file_name[40];
+    printf("File name:\n");
+    gets(file_name);
+    // File stream to read file.
+    std::ifstream in(file_name);
+    in >> process_count;
+    printf("#process: %d\n", process_count);
+    // Array to store finished processes.
+    process done[process_count];
+    std::queue <process> process_queue;
+    printf("Printing Burst Times:\n");
 
-        if(t.burstTime>tQ)
-        {
-            t.burstTime-=tQ;
-			t.waitingTime+=systemTime-t.lastExecutionTime;
-			systemTime+=tQ;
-			t.lastExecutionTime=systemTime;
-			q.push(t);//not done,so pushing back into queue
-        }
-        
-        else 
-        {
-			t.waitingTime+=systemTime-t.lastExecutionTime;
-			systemTime+=t.burstTime;
-			t.lastExecutionTime=systemTime;
-			done[j]=t;//done,so storing into an array to calculate waiting time for total
-            j++;
-        }
-    }
-    double totalWaitingTime=0.0;
-    double averageWaitingTime;
-    for(int k=0;k<n;k++)
+    for(int i = 0; i < process_count; i++)
     {
-        cout<<"Waiting time for process"<<done[k].id<<":"<<done[k].waitingTime<<"\n";
-        totalWaitingTime+=done[k].waitingTime;
+        process temp;
+        temp.id = i + 1;
+        in >> temp.burst_time;
+        temp.last_execution_time = 0.0;
+        temp.waiting_time = 0.0;
+        process_queue.push(temp);
+        printf("Process#%d: %lf\n", temp.id, temp.burst_time);
     }
-    cout<<"Total waiting time in Round Robin scheduling:"<<totalWaitingTime;
-    averageWaitingTime=totalWaitingTime/(double)n;
-    cout<<"\nAverage waiting time in Round Robin scheduling:"<<averageWaitingTime<<"\n";
+
+    in >> time_quantum;
+    printf("Time Quantum: %lf\n", time_quantum);
+    int j = 0;
+
+    // While there's a process present in queue.
+    while(!process_queue.empty())
+    {
+        process temp = process_queue.front();
+        process_queue.pop();
+
+        // If burst time exceeds time quantum.
+        if(temp.burst_time > time_quantum)
+        {
+            temp.burst_time -= time_quantum;
+            temp.waiting_time += system_time - temp.last_execution_time;
+            system_time += time_quantum;
+            temp.last_execution_time = system_time;
+            // Process is not finished, so push it back to the queue.
+            process_queue.push(temp);
+        }
+        else
+        {
+            temp.waiting_time += system_time - temp.last_execution_time;
+            system_time += temp.burst_time;
+            temp.last_execution_time = system_time;
+            // Process is finished, so store it an array to calculate total wait time.
+            done[j++] = temp;
+        }
+    }
+
+    double total_waiting_time = 0.0;
+    double average_waiting_time;
+
+    for(int k = 0; k < process_count; k++)
+    {
+        printf("Waiting time for process#%d: %lf\n", done[k].id, done[k].waiting_time);
+        total_waiting_time += done[k].waiting_time;
+    }
+
+    printf("Total waiting time: %lf\n", total_waiting_time);
+    average_waiting_time = total_waiting_time / (double) process_count;
+    printf("Average waiting time: %lf\n", average_waiting_time);
 }

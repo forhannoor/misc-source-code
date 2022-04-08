@@ -1,59 +1,59 @@
-#include <iostream>
-#include <fstream>
 #include <cstdio>
 #include <cstdlib>
+#include <fstream>
+#include <iostream>
 
-int fcfs(int array[], int size);
+int fcfs(int array[], int process_count);
 
 int main()
 {
     // File name.
-    char fileName[20];
+    char file_name[20];
     printf("File to read from:\n");
-    gets(fileName);
+    gets(file_name);
     // Number of processes.
-    int size;
+    int process_count;
     // Input file stream to read file.
     std::ifstream in(fileName);
-    in>>size;
-    printf("#process: %d\n", size);
-    int b[size];
+    in >> process_count;
+    printf("#process: %d\n", process_count);
+    int burst_times[process_count];
 
-    for(int i = 0; i < size; i++)
+    for(int i = 0; i < process_count; i++)
     {
-        // Storing burst times into an array.
-        in>>b[i];
+        // Initializing array with burst times.
+        in >> burst_times[i];
     }
 
     printf("Process burst times:\n");
 
-    for(int j = 0; j < size; j++)
+    for(int j = 0; j < process_count; j++)
     {
-        printf("%d\n", b[j]);
+        printf("%d\n", burst_times[j]);
     }
 
-    fcfs(b,size);
+    fcfs(burst_times, process_count);
 }
 
-int fcfs(int array[], int size)
+int fcfs(int array[], int process_count)
 {
-    int p[size];
+    int p[process_count];
     double total = 0.0;
     double avg;
     p[0] = 0;
 
-    for(int i = 1; i < size; i++)
+    for(int i = 1; i < process_count; i++)
     {
         p[i] = p[i-1] + array[i];
     }
 
-    for(int k = 0; k < size; k++)
+    for(int k = 0; k < process_count; k++)
     {
         total = total + p[k];
         printf("Waiting time for process#%d: %d\n", k, p[k]);
     }
 
-    avg = total / (double) size;
+    avg = total / (double) process_count;
     printf("Total waiting time: %lf\n", total);
     printf("Average waiting time: %lf\n", avg);
     return 0;
