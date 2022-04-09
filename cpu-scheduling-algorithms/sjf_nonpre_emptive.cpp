@@ -1,55 +1,63 @@
-#include<iostream>
-#include<stdlib.h>
-#include<fstream>
-#include<stdio.h>
-
-using namespace std;
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
 
 void selection_sort(int list[], int n);
-void swap(int *x,int *y);
-int sjf_nonpreemptive(int array[],int size);
+void swap(int *x, int *y);
+int sjf_nonpreemptive(int array[], int size);
 
 int main()
 {
-    int size;//number of processes
-    char fileName[20];//to take file name from user
-    cout<<"Enter file name:\n";
-    gets(fileName);
-    ifstream in(fileName);//input file stream
-    in>>size;
-    cout<<"Number of processes:\n"<<size;
-    int b[size];
-    for(int i=0;i<size;i++)
+    int process_count;
+    char file_name[40];
+    printf("File name: ");
+    gets(file_name);
+    std::ifstream in(file_name);
+    in >> process_count;
+    printf("#Process: %d\n", process_count);
+    int burst_times[process_count];
+
+    for(int i = 0; i < process_count; i++)
     {
-        in>>b[i];
+        in >> burst_times[i];
     }
-    cout<<"\nProcess burst times are:\n";
-    for(int j=0;j<size;j++)
+
+    printf("Process burst times: \n");
+
+    for(int j = 0; j < process_count; j++)
     {
-        cout<<b[j]<<"\n";//printing burst times
+        printf("Process#%d burst time: %d\n", j + 1, burst_times[j]);
     }
-    sjf_nonpreemptive(b,size);
+
+    sjf_nonpreemptive(burst_times, process_count);
 }
 
-int sjf_nonpreemptive(int array[],int size)
+int sjf_nonpreemptive(int array[], int size)
 {
-    selection_sort(array,size);//sorting array with selection sort
+    selection_sort(array,size);
     int p[size];
-    double total=0.0;
+    double total = 0.0;
     double avg;
-    p[0]=0;
-    for(int i=1;i<size;i++)
-    p[i]=p[i-1]+array[i];
-    for(int k=0;k<size;k++)
+    p[0] = 0;
+
+    for(int i = 1; i < size; i++)
     {
-        total=total+p[k];
-        cout<<"\nWaiting time for process "<<k<<":"<<p[k]<<"\n";
+        p[i] = p[i-1] + array[i];
     }
-    avg=total/(double)size;
-    cout<<"\nTotal waiting time in SJF(non-preemptive) scheduling:\n"<<total;
-    cout<<"\nAverage waiting time in SJF(non-preemptive) scheduling:\n"<<avg;
+
+    for(int k = 0; k < size; k++)
+    {
+        total = total + p[k];
+        printf("Process#%d waiting time: %d\n", k + 1, p[k]);
+    }
+
+    avg = total / (double) size;
+    printf("Total waiting time: %lf\n", total);
+    printf("Average waiting time: %lf\n", avg);
     return 0;
 }
+
 void swap(int *x,int *y)
 {
     int temp;
@@ -61,17 +69,19 @@ void swap(int *x,int *y)
 void selection_sort(int list[], int n)
 {
     int i, j,min;
- 
+
     for (i = 0; i < n - 1; i++)
     {
         min = i;
+
         for (j = i+1; j < n; j++)
         {
             if (list[j] < list[min])
-            {          
+            {
                 min = j;
             }
         }
+
         swap(&list[i], &list[min]);
     }
 }

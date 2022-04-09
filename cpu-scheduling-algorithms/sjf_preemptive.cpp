@@ -1,116 +1,121 @@
-#include<iostream>
-#include<queue>
-#include<algorithm>
-#include<fstream>
-#include<vector>
-
-using namespace std;
+#include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <queue>
+#include <vector>
 
 struct process
 {
     int id;
-    double arrivalTime;
-    double burstTime;
-    double lastExecutionTime;
-    double waitingTime;
+    double arrival_time;
+    double burst_time;
+    double last_execution_time;
+    double waiting_time;
 };
 
-bool operator<(process p, process q)//operator to decide priority for priority queue
+// Overloaded operator for priority queue.
+bool operator<(process p, process q)
 {
-    return p.burstTime>q.burstTime;
+    return p.burst_time > q.burst_time;
 }
 
-bool cmpForSorting(process p, process q)//used later as a reference to sort done vector
+// Reference to sort vector based on process id.
+bool cmp_for_sorting(process p, process q)
 {
-    return p.id<q.id;
+    return p.id < q.id;
 }
 
 int main()
 {
-    char fileName[20];//to take file name from user
-    cout<<"Enter file name:\n";
-    gets(fileName);
-    ifstream in(fileName);//input file stream
+    char file_name[40];
+    printf("File name: ");
+    gets(file_name);
+    std::ifstream in(file_name);
     int n;
-    in>>n;
+    in >> n;
     double arrival_time,burst_time;
-    vector <process> v;//vector to store processes ready for execution
-    vector <process> done;//vector to store processes done execution
-    
-    priority_queue<process> myqueue;//priority queue
-    
-    for(int i=1;i<n;i++)
+    // Vector to store processes that are ready for execution.
+    std::vector <process> v;
+    // Vector to store processes that finished execution.
+    std::vector <process> done;
+    std::priority_queue <process> myqueue;
+
+    for(int i = 1; i < n; i++)
     {
-        in>>arrival_time>>burst_time;
+        in >> arrival_time >> burst_time;
         process a;
         a.id = i;
-        a.arrivalTime = arrival_time;
-        cout<<"Arrival time of process "<<i<<":"<<a.arrivalTime<<"\n";
-        a.burstTime = burst_time;
-        cout<<"Burst time of process "<<i<<":"<<a.burstTime<<"\n";
-        a.lastExecutionTime = arrival_time;
-        a.waitingTime = 0.0;
-        v.push_back(a);//storing into vector v
+        a.arrival_time = arrival_time;
+        a.burst_time = burst_time;
+        a.last_execution_time = arrival_time;
+        a.waiting_time = 0.0;
+        v.push_back(a);
     }
-    
-    int j=0;
-    double currentTime=0.0;
-    
-    while(j<n)
+
+    int j = 0;
+    double current_time = 0.0;
+
+    while(j < n)
     {
         process m = v[j];
-        double currentArrivalTime = m.arrivalTime;
+        double current_arrival_time = m.arrival_time;
 
         if (!myqueue.empty())
         {
-            process o = myqueue.top();//reference to the topmost queue element
-            o.waitingTime += currentTime-o.lastExecutionTime;
-            myqueue.pop();//removing topmost queue element
-            o.burstTime -=(currentArrivalTime-currentTime);
-            currentTime +=(currentArrivalTime-currentTime);
+            process o = myqueue.top();
+            o.waiting_time += current_time - o.last_execution_time;
+            myqueue.pop();
+            o.burst_time -= (current_arrival_time - current_time);
+            current_time += (current_arrival_time - current_time);
 
-            if (o.burstTime<0)
-            currentTime +=o.burstTime;
+            if (o.burst_time < 0)
+            {
+                current_time += o.burst_time;
+            }
 
-            o.lastExecutionTime =currentTime;
-            
-            if (o.burstTime>0)
-            myqueue.push(o);//not done,pushed back into queue
-            
+            o.last_execution_time = current_time;
+
+            if (o.burst_time > 0)
+            {
+                // Process not finished, pushed back into queue.
+                myqueue.push(o);
+            }
             else
-            done.push_back(o);//done,pushed into done vector
-
+            {
+                // Process finished,pushed into done vector.
+                done.push_back(o);
+            }
         }
+
         myqueue.push(m);
-        j++;   
+        j++;
     }
-    
-    int k=0;
-    
+
+    int k = 0;
+
     while(!myqueue.empty())
     {
-        process q = myqueue.top();//reference to the topmost queue element
-        myqueue.pop();//removing topmost queue element
-
-        q.waitingTime += (currentTime-q.lastExecutionTime);
-        currentTime+=q.burstTime;
-        q.burstTime = 0.0;
-        q.lastExecutionTime = currentTime;
+        process q = myqueue.top();
+        myqueue.pop();
+        q.waiting_time += (current_time - q.last_execution_time);
+        current_time += q.burst_time;
+        q.burst_time = 0.0;
+        q.last_execution_time = current_time;
         done.push_back(q);
         k++;
     }
-    
-    sort(done.begin(),done.end(),cmpForSorting);//sorting done vector based on process id
-    
-    double totalWaitingTime=0.0;
-    
-    for (int l =0; l<done.size(); l++)
+
+    // Sort done vector based on process id.
+    sort(done.begin(), done.end(), cmp_for_sorting);
+    double total_waiting_time = 0.0;
+
+    for (int l =0; l < done.size(); l++)
     {
-        totalWaitingTime+=done[l].waitingTime;
-        cout<<"Waiting time for process "<<l<<":"<<done[l].waitingTime<<"\n";
+        total_waiting_time += done[l].waiting_time;
+        printf("Process#%d waiting time: %lf\n", l + 1, done[l].waiting_time);
     }
 
-    double averageWaitingTime = totalWaitingTime/n;
-    cout<<"Total waiting time in SJF(pre-emptive) scheduling:\n"<<totalWaitingTime;
-    cout<<"\nAvarage waiting time in SJF(pre-emptive) scheduling:\n"<<averageWaitingTime;
+    double average_waiting_time = total_waiting_time / n;
+    printf("Total waiting time: %lf\n", total_waiting_time);
+    printf("Average waiting time: %lf\n", average_waiting_time);
 }
